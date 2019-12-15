@@ -1,12 +1,21 @@
 import * as React from 'react';
 
+import {
+    LoginContainer
+} from 'Containers';
+
+import {
+    FooterComponent
+} from 'Components';
 
 
 function LoginPage() {
     return (
         <div>
-            Login Page
+            <LoginContainer/>
+            <FooterComponent/>
         </div>
+
     );
 }
 
