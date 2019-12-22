@@ -3,7 +3,6 @@ import { Route, Router } from "react-router-dom";
 import History from "./Routes/History";
 import RouteRoot from "./Routes/RouteRoot";
 
-
 import "Assets/css/reset.css";
 import "Assets/css/variables.css";
 import "Assets/css/globals.css";
@@ -19,17 +18,16 @@ import "Assets/css/mobile.css";
 const App = () => {
 
     const app =  (
-        <Router history={History}>
-        <Route component={RouteRoot}/>
+        <Router history={ History }>
+        <Route component={ RouteRoot }/>
         </Router>
     );
 
     return (
         <div className="App">
-            {app}
+            { app }
         </div>
     );
 }
-
 
 export default App;

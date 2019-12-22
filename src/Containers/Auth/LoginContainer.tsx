@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-
 import image_phoneImage from 'Assets/Images/phoneImage.png';
 import image_loginLogo from 'Assets/Images/loginLogo.png';
 import image_ios from 'Assets/Images/ios.png';
