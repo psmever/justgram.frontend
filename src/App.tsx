@@ -19,7 +19,7 @@ const App = () => {
 
     const app =  (
         <Router history={ History }>
-        <Route component={ RouteRoot }/>
+            <Route component={ RouteRoot }/>
         </Router>
     );
 
