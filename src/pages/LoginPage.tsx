@@ -6,10 +6,10 @@ import { FooterComponent } from 'Components';
 
 function LoginPage() {
     return (
-        <div>
+        <>
             <LoginContainer />
             <FooterComponent />
-        </div>
+        </>
 
     );
 }

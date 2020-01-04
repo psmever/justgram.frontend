@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import image_avatar from 'Assets/Images/avatar.jpg';
+import image_avatar from 'assets/images/avatar.jpg';
 
 function ExploreContainer() {
     return (

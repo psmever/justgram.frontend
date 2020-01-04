@@ -3,11 +3,11 @@ import * as React from 'react';
 import {
     DefaultNavComponent,
     FooterComponent
-} from 'Components';
+} from 'components';
 
 import {
     ProfileContainer
-} from 'Containers';
+} from 'containers';
 
 function ProfilePage() {
     return (
