@@ -3,20 +3,20 @@ import * as React from 'react';
 import {
     DefaultNavComponent,
     FooterComponent
-} from 'Components';
+} from 'components';
 
 import {
-    FeedContainer
-} from 'Containers';
+    EditProfileContainer
+} from 'containers';
 
-function FeedPage() {
+function EditProfilePage() {
     return (
         <div>
             <DefaultNavComponent/>
-            <FeedContainer/>
+            <EditProfileContainer/>
             <FooterComponent/>
         </div>
     );
 }
 
-export default FeedPage;
+export default EditProfilePage;

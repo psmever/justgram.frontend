@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import image_avatar from 'Assets/Images/avatar.jpg';
-import image_feedPhoto from 'Assets/Images/feedPhoto.jpg';
+import image_avatar from 'assets/images/avatar.jpg';
+import image_feedPhoto from 'assets/images/feedPhoto.jpg';
 
 function ProfileContainer() {
     return (

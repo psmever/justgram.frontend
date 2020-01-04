@@ -3,11 +3,11 @@ import * as React from 'react';
 import {
     DefaultNavComponent,
     FooterComponent
-} from 'Components';
+} from 'components';
 
 import {
     ExploreContainer
-} from 'Containers';
+} from 'containers';
 
 function ExplodePage() {
     return (

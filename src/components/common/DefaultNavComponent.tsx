@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import image_logo from 'Assets/Images/logo.png';
+import image_logo from 'assets/images/logo.png';
 
 function DefaultNavComponent() {
     return (

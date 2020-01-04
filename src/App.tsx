@@ -4,21 +4,21 @@ import { Route, Router } from "react-router-dom";
 import { createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
 
-import rootReducer from "./Modules";
-import History from "./Routes/History";
-import RouteRoot from "./Routes/RouteRoot";
+import rootReducer from "./modules";
+import History from "./routes/History";
+import RouteRoot from "./routes/RouteRoot";
 
-import "Assets/css/reset.css";
-import "Assets/css/variables.css";
-import "Assets/css/globals.css";
-import "Assets/css/login.css";
-import "Assets/css/footer.css";
-import "Assets/css/navigation.css";
-import "Assets/css/explore.css";
-import "Assets/css/feed.css";
-import "Assets/css/profile.css";
-import "Assets/css/edit-profile.css";
-import "Assets/css/mobile.css";
+import "assets/css/reset.css";
+import "assets/css/variables.css";
+import "assets/css/globals.css";
+import "assets/css/login.css";
+import "assets/css/footer.css";
+import "assets/css/navigation.css";
+import "assets/css/explore.css";
+import "assets/css/feed.css";
+import "assets/css/profile.css";
+import "assets/css/edit-profile.css";
+import "assets/css/mobile.css";
 
 
 const store = createStore(
