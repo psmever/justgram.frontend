@@ -9,7 +9,7 @@ import {
     EditProfilePage,
     DefaultPage,
     TestPage,
-} from 'Pages';
+} from 'pages';
 
 const RouteRoot = () => {
     return (

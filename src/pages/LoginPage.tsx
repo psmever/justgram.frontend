@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { LoginContainer } from 'Containers';
-import { FooterComponent } from 'Components';
+import { LoginContainer } from 'containers';
+import { FooterComponent } from 'components';
 
 
 function LoginPage() {
