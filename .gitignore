@@ -20,9 +20,9 @@
 .env.production.local
 
 # environment
-.development.env
-.local.env
-.production.env
+config/development.env
+config/local.env
+config/production.env
 
 # editor
 .vscode
