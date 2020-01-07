@@ -5,10 +5,6 @@ import {
     FooterComponent
 } from 'components';
 
-import {
-    ExploreContainer
-} from 'containers';
-
 import image_avatar from 'assets/images/avatar.jpg';
 
 function ExplodePage() {

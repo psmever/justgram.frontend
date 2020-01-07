@@ -5,10 +5,6 @@ import {
     FooterComponent
 } from 'components';
 
-import {
-    FeedContainer
-} from 'containers';
-
 import image_feedPhoto from 'assets/images/feedPhoto.jpg';
 import image_avatar from 'assets/images/avatar.jpg';
 

@@ -5,10 +5,6 @@ import {
     FooterComponent
 } from 'components';
 
-import {
-    EditProfileContainer
-} from 'containers';
-
 import image_avatar from 'assets/images/avatar.jpg';
 
 function EditProfilePage() {
