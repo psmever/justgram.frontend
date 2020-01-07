@@ -1,39 +1,54 @@
-import * as React from 'react';
-
-import image_phoneImage from 'assets/images/phoneImage.png';
-import image_loginLogo from 'assets/images/loginLogo.png';
-import image_ios from 'assets/images/ios.png';
-import image_android from 'assets/images/android.png';
-
+import React, { FormEvent, useState, useEffect }  from 'react';
+import { useHistory } from "react-router-dom";
 import { LoginForm } from "components";
+import { tryLogin } from "lib/API";
+import { storageManager } from "lib/Helper";
 
-function LoginContainer() {
+export default function LoginContainer() {
+
+    const history = useHistory();
+
+    const [ email, setEmail ] = useState('');
+    const [ password, setPassword ] = useState('');
+    const [ logincheck, setLogincheck ] = useState(false);
+
+    const onChangeEmail = ( email: string ) => {
+        setEmail(email);
+    }
+
+    const onChangePassword = ( password: string ) => {
+        setPassword(password);
+    }
+
+    const onSubmit = async ( e: FormEvent<HTMLFormElement> ) => {
+        e.preventDefault();
+
+        const checkResult = await tryLogin(email, password);
+
+        console.debug(checkResult);
+
+        if( checkResult.state === true) {
+            storageManager.set('login_info', checkResult.data);
+            setLogincheck(true);
+        } else {
+            setLogincheck(false);
+        }
+    }
+
+    useEffect(() => {
+        if(logincheck === true) {
+            history.push('/feed');
+        }
+    }, [logincheck]);
+
+
     return (
-        <div>
-            <main id="login">
-                <div className="login__column"><img src={ image_phoneImage } className="login__phone" alt="phoneimage"/></div>
-                <div className="login__column">
-                    <div className="login__box">
-                        <img src={ image_loginLogo } className="login__logo" alt="loginlogo"/>
-
-                        <LoginForm />
-
-                        <span className="login__divider">or</span>
-                        <a href={`/login`} className="login__link"><i className="fa fa-money"></i>Log in with Facebook</a>
-                        <a href={`/login`} className="login__link login__link--small">Forgot password</a>
-                    </div>
-                    <div className="login__box"><span>Don't have an account?</span> <a href={`/login`}>Sign up</a></div>
-                    <div className="login__box--transparent">
-                        <span>Get the app.</span>
-                        <div className="login__appstores">
-                            <img src={ image_ios } className="login__appstore" alt="Apple appstore logo" title="Apple appstore logo" />
-                            <img src={ image_android } className="login__appstore" alt="Android appstore logo" title="Android appstore logo" />
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div>
+        <>
+            <LoginForm
+                onChangeUserEmail={ onChangeEmail }
+                onChangeUserPassword={ onChangePassword }
+                onSubmit={ onSubmit }
+            />
+        </>
     );
 }
-
-export default LoginContainer;
