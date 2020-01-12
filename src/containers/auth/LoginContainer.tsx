@@ -14,18 +14,16 @@ export default function LoginContainer() {
 
     const onChangeEmail = ( email: string ) => {
         setEmail(email);
-    }
+    };
 
     const onChangePassword = ( password: string ) => {
         setPassword(password);
-    }
+    };
 
     const onSubmit = async ( e: FormEvent<HTMLFormElement> ) => {
         e.preventDefault();
 
         const checkResult = await tryLogin(email, password);
-
-        console.debug(checkResult);
 
         if( checkResult.state === true) {
             storageManager.set('login_info', checkResult.data);
@@ -33,12 +31,15 @@ export default function LoginContainer() {
         } else {
             setLogincheck(false);
         }
-    }
+    };
 
     useEffect(() => {
         if(logincheck === true) {
             history.push('/feed');
         }
+        //TODO: eslint-disable-next-line
+
+        // eslint-disable-next-line
     }, [logincheck]);
 
 
