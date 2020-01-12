@@ -38,7 +38,6 @@ export default function LoginContainer() {
             history.push('/feed');
         }
         //TODO: eslint-disable-next-line
-
         // eslint-disable-next-line
     }, [logincheck]);
 
