@@ -23,8 +23,7 @@ export const storageManager = {
         }
 
         try {
-            const parsed = JSON.parse(localStorage[key]);
-            return parsed;
+            return JSON.parse(localStorage[key]);
         } catch(e) {
             return localStorage[key];
         }
