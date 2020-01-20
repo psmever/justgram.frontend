@@ -1,12 +1,10 @@
 import * as React from "react";
 import { Route, Router } from "react-router-dom";
-
-import { createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
-
-import rootReducer from "./modules";
 import History from "./routes/History";
 import RouteRoot from "./routes/RouteRoot";
+import { createBrowserHistory } from 'history'
+import configureStore from './configureStore'
 
 import "assets/css/reset.css";
 import "assets/css/variables.css";
@@ -21,12 +19,12 @@ import "assets/css/edit-profile.css";
 import "assets/css/mobile.css";
 
 
-const store = createStore(
-    rootReducer,
-    compose(
-       (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
-    )
-);
+const history = createBrowserHistory()
+
+declare var window: any;
+const initialState = window.INITIAL_REDUX_STATE
+const store = configureStore(history, initialState)
+
 
 
 const App = () => {
