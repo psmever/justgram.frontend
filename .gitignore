@@ -15,13 +15,19 @@
 .DS_Store
 .env
 .env.local
-.env.development.local
+.env.development
 .env.test.local
 .env.production.local
+
+# environment
+/config/development.env
+/config/local.env
+/config/production.env
 
 # editor
 .vscode
 .idea
+yarn.lock
 
 
 npm-debug.log*
