@@ -3,14 +3,7 @@ import React, { FormEvent, useState, useEffect }  from 'react';
 import { LoginForm } from "components";
 import { RootState } from 'modules';
 import { useDispatch, useSelector } from 'react-redux';
-
-
-// import useTryLogin from "hooks/login/useTryLogin";
-
-// import { storageManager } from "lib/Helper";
-
 import { tryLoginAsync } from 'modules/logins';
-
 
 export default function LoginContainer() {
 
@@ -18,13 +11,8 @@ export default function LoginContainer() {
 
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
-    // const [ logincheck, setLogincheck ] = useState(false);
-
     const dispatch = useDispatch();
-    const { request } = useSelector((state: RootState) => state.logins.login);
-
-
-    // const tryLoginHook = useTryLogin();
+    const { request, data, error } = useSelector((state: RootState) => state.logins.login);
 
     const onChangeEmail = ( email: string ) => {
         setEmail(email);
@@ -36,10 +24,6 @@ export default function LoginContainer() {
 
     const onSubmit = async ( e: FormEvent<HTMLFormElement> ) => {
         e.preventDefault();
-
-        // const checkResult = await tryLogin({email: email, password: password});
-
-        // console.debug({email, password});
 
         dispatch(tryLoginAsync.request({email: email, password: password}));
 
@@ -60,7 +44,15 @@ export default function LoginContainer() {
 
     useEffect(() => {
 
-    }, []);
+        if(error) {
+            console.debug({error: error});
+        } else if (request === false && data) {
+            // 푸하하하하하핳..
+        }
+
+        console.debug(typeof error);
+
+    }, [request, data, error]);
 
 
     return (
@@ -69,9 +61,7 @@ export default function LoginContainer() {
                 onChangeUserEmail={ onChangeEmail }
                 onChangeUserPassword={ onChangePassword }
                 onSubmit={ onSubmit }
-
             />
-            {request && <p style={{ textAlign: 'center' }}>tryLogin..</p>}
         </>
     );
 }

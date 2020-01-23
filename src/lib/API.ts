@@ -1,9 +1,5 @@
 import { defaultAxios } from "./RootAxios";
 
-// 로그인 시도.
-// export const tryLogin: any = async (email: string, password: string) => await defaultAxios.post('/api/justgram/v1/login', {email:email, password:password});
-
-
 export interface apiRequestInterface {
     token_type: string;
     expires_in: bigint;
@@ -12,14 +8,11 @@ export interface apiRequestInterface {
 
     email: string;
     password: string;
+    state: boolean;
+    message: string;
+    data: object;
 }
 
-
-
-export async function doLogin(email: string , password: string) {
-    console.debug(`${email}, ${password}`);
-    const response = await defaultAxios.post<apiRequestInterface>('/api/justgram/v1/login', { email: email, password: password } );
-    return response.data;
+export const doLogin = async (payload: object) => {
+    return await defaultAxios.post<apiRequestInterface>('/api/justgram/v1/login', payload );
 };
-
-

@@ -1,6 +1,6 @@
 import { createReducer } from 'typesafe-actions';
 import { LoginState, LoginAction} from './types';
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR} from './actions';
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_ERROR} from './actions';
 
 
 const initialState: LoginState = {
@@ -12,15 +12,17 @@ const initialState: LoginState = {
 };
 
 const loginReducer = createReducer<LoginState, LoginAction>(initialState, {
-    [LOGIN_REQUEST]: state => ({
-        ...state,
-        login: {
-            request: true,
-            data: null,
-            error: null,
-
+    [LOGIN_START]: state => {
+        console.debug("LOGIN_START :",state);
+        return {
+            ...state,
+            login: {
+                request: false,
+                data: null,
+                error: null,
+            }
         }
-    }),
+    },
     [LOGIN_SUCCESS]: (state, action) => ({
         ...state,
         login: {
@@ -39,7 +41,6 @@ const loginReducer = createReducer<LoginState, LoginAction>(initialState, {
         }
     })
 });
-
 
 export default loginReducer;
 

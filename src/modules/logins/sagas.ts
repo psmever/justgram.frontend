@@ -1,20 +1,24 @@
-import { tryLoginAsync, LOGIN_REQUEST } from "./actions";
+import { tryLoginAsync, LOGIN_START } from "./actions";
 import { doLogin, apiRequestInterface} from "lib/API";
 import { call, put, takeEvery } from "redux-saga/effects";
 
 function* LoginSaga(actions: ReturnType<typeof tryLoginAsync.request>) {
-
     try {
-        const login: apiRequestInterface = yield call(doLogin, 'psmever@gmail.com','1212');
-        console.debug(login);
-        yield put(tryLoginAsync.success(login));
+        const loginResult: apiRequestInterface = yield call(doLogin, actions.payload);
+        // console.debug(loginResult);
+        if(loginResult.state) {
+            yield put(tryLoginAsync.success(loginResult));
+        } else {
+            // yield put(tryLoginAsync.failure(loginResult.error));
+        }
     } catch (e) {
         yield put(tryLoginAsync.failure(e));
+
     }
 }
 
 export function* loginSaga() {
-    yield takeEvery(LOGIN_REQUEST, LoginSaga);
+    yield takeEvery(LOGIN_START, LoginSaga);
 }
 
 

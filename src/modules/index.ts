@@ -1,27 +1,25 @@
 import { combineReducers } from 'redux';
-import { connectRouter } from 'connected-react-router'
+import { connectRouter, RouterState } from 'connected-react-router'
 import { History } from 'history'
 
-import logins from './logins';
 import { all } from 'redux-saga/effects';
-import { loginSaga } from './logins';
+import logins, { loginSaga, LoginState } from './logins';
 
+export interface RootState {
+    router: RouterState
+    logins: LoginState
+}
 
-export const createRootReducer = (history: History) =>
-    combineReducers({
-        logins: logins,
-        router: connectRouter(history)
-    })
-
-const rootReducer = combineReducers({
-    logins
+export const createRootReducer = (history: History) => combineReducers({
+    router: connectRouter(history),
+    logins: logins,
 });
-
-export type RootState = ReturnType<typeof rootReducer>;
 
 
 export function* rootSaga() {
-    yield all([loginSaga()]);
+    yield all(
+        [
+            loginSaga()
+        ]
+    );
 }
-
-export default rootReducer;

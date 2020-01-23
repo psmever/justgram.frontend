@@ -2,7 +2,8 @@ import React, { FormEvent } from 'react';
 
 type LoginFormProps = {
     onChangeUserEmail: ( user_email: string ) => void;
-    onChangeUserPassword: ( user_email: string ) => void;
+    onChangeUserPassword: ( user_password: string ) => void;
+    // effectMessage: ( effect_message: string | null) => void;
     onSubmit: ( event: FormEvent<HTMLFormElement> ) => void;
 };
 
