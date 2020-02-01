@@ -1,10 +1,4 @@
 
-export interface apiResponseInterface {
-    state: boolean;
-    message?: string;
-    data?: object;
-}
-
 /**
  * API 결과 타입 정의
  */
