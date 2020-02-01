@@ -1,18 +1,12 @@
-import { defaultAxios } from "./RootAxios";
+import GlobalService from 'lib/GlobalService';
+import { APIResponse } from 'modules/interface';
 
-export interface apiRequestInterface {
-    token_type: string;
-    expires_in: bigint;
-    access_token: string;
-    refresh_token: string;
 
-    email: string;
-    password: string;
-    state: boolean;
-    message: string;
-    data: object;
-}
-
-export const doLogin = async (payload: object) => {
-    return await defaultAxios.post<apiRequestInterface>('/api/justgram/v1/login', payload );
+/**
+ * 로그인 시도
+ * @param email
+ * @param password
+ */
+export function tryLogin(email: string, password: string): Promise<APIResponse> {
+    return GlobalService.init('post', '/api/justgram/v1/login', {email: email, password: password});
 };

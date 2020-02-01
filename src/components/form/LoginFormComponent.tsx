@@ -1,13 +1,13 @@
 import React, { FormEvent } from 'react';
 
-type LoginFormProps = {
+interface LoginFormProps  {
     onChangeUserEmail: ( user_email: string ) => void;
     onChangeUserPassword: ( user_password: string ) => void;
     // effectMessage: ( effect_message: string | null) => void;
     onSubmit: ( event: FormEvent<HTMLFormElement> ) => void;
 };
 
-function LoginForm( { onChangeUserEmail, onChangeUserPassword, onSubmit }: LoginFormProps ) {
+function LoginFormComponent( { onChangeUserEmail, onChangeUserPassword, onSubmit }: LoginFormProps ) {
     return (
         <form action={`/feed`} method="post" className="login__form" onSubmit={ onSubmit }>
             <input
@@ -29,4 +29,4 @@ function LoginForm( { onChangeUserEmail, onChangeUserPassword, onSubmit }: Login
     );
 }
 
-export default LoginForm;
+export default LoginFormComponent;

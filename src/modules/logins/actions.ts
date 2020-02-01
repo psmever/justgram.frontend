@@ -1,6 +1,5 @@
 import { createAsyncAction } from 'typesafe-actions';
-import { apiRequestInterface } from 'lib/API';
-// import { AxiosError } from 'axios';
+import { APIResponse } from 'modules/interface';
 
 export const LOGIN_START = 'login/LOGIN_START';
 export const LOGIN_SUCCESS = 'login/LOGIN_SUCCESS';
@@ -10,10 +9,4 @@ export const tryLoginAsync = createAsyncAction(
     LOGIN_START,
     LOGIN_SUCCESS,
     LOGIN_ERROR
-)<object, apiRequestInterface, Error>();
-
-
-
-
-
-
+)<APIResponse, object, Error>();
