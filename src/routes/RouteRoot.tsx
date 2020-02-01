@@ -17,8 +17,10 @@ const RouteRoot = () => {
             <Route path="/login" exact={ true } component={ LoginPage } />
             <Route path="/feed" exact={ true } component={ FeedPage } />
             <Route path="/explode" exact={ true } component={ ExplodePage } />
+
             <Route path="/profile" exact={ true } component={ ProfilePage } />
-            <Route path="/editprofile" exact={ true } component={ EditProfilePage } />
+            <Route path="/profile/edit" exact={ true } component={ EditProfilePage } />
+
             <Route path="/main" exact={ true } component={ FeedPage } />
             <Route path="/default" exact={ true } component={ DefaultPage } />
             <Route path="/test" exact={ true } component={ TestPage } />
