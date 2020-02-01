@@ -1,20 +1,26 @@
-import { tryLoginAsync, LOGIN_REQUEST } from "./actions";
-import { doLogin, apiRequestInterface} from "lib/API";
-import { call, put, takeEvery } from "redux-saga/effects";
+import { tryLoginAsync, LOGIN_START } from "./actions";
+import { put, takeEvery } from "redux-saga/effects";
 
+/**
+ * 로그인 사가.
+ * @param actions
+ * @constructor
+ */
 function* LoginSaga(actions: ReturnType<typeof tryLoginAsync.request>) {
-
     try {
-        const login: apiRequestInterface = yield call(doLogin, 'psmever@gmail.com','1212');
-        console.debug(login);
-        yield put(tryLoginAsync.success(login));
+        if(actions.payload.state === true) {
+            yield put(tryLoginAsync.success(actions.payload.data));
+        } else {
+            yield put(tryLoginAsync.failure(new Error('로그인에 실패 했습니다.')));
+        }
     } catch (e) {
         yield put(tryLoginAsync.failure(e));
+
     }
 }
 
 export function* loginSaga() {
-    yield takeEvery(LOGIN_REQUEST, LoginSaga);
+    yield takeEvery(LOGIN_START, LoginSaga);
 }
 
 

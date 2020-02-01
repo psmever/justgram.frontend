@@ -1,21 +1,11 @@
 import * as actions from './actions';
 import { ActionType } from 'typesafe-actions';
-import { apiRequestInterface } from 'lib/API';
+import { loginSagaInterface } from 'modules/interface';
 
 export type LoginAction = ActionType<typeof actions>;
 
-export type LoginState = {
-    login: {
-        request: boolean;
-        data: apiRequestInterface | null;
-        error: Error | null;
-    };
-};
-
-
-
-
-
-
-
-
+// export type LoginState = {
+//     login_status: loginSagaInterface;
+// };
+//
+export type LoginState = loginSagaInterface

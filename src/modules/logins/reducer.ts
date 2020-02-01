@@ -1,45 +1,30 @@
 import { createReducer } from 'typesafe-actions';
 import { LoginState, LoginAction} from './types';
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR} from './actions';
-
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_ERROR} from './actions';
 
 const initialState: LoginState = {
-    login: {
-        request: false,
-        data: null,
-        error: null,
-    }
+    state: null
 };
 
 const loginReducer = createReducer<LoginState, LoginAction>(initialState, {
-    [LOGIN_REQUEST]: state => ({
+    [LOGIN_START]: state => ({
         ...state,
-        login: {
-            request: true,
-            data: null,
-            error: null,
-
-        }
+        state: null,
     }),
-    [LOGIN_SUCCESS]: (state, action) => ({
+    [LOGIN_SUCCESS]: (state, action: any) => ({
         ...state,
-        login: {
-            request: false,
-            data: action.payload,
-            error: null,
-        }
+        state: true,
+        token_type: action.payload.token_type,
+        expires_in: action.payload.expires_in,
+        access_token: action.payload.access_token,
+        refresh_token: action.payload.refresh_token
     }),
-    [LOGIN_ERROR]: (state, action) => ({
+    [LOGIN_ERROR]: (state, action: any) => ({
         ...state,
-        login: {
-            request: false,
-            data: null,
-            error: action.payload
-
-        }
+        state: false,
+        message: action.payload.message
     })
 });
-
 
 export default loginReducer;
 
