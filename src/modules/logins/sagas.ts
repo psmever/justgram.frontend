@@ -15,7 +15,6 @@ function* LoginSaga(actions: ReturnType<typeof tryLoginAsync.request>) {
         }
     } catch (e) {
         yield put(tryLoginAsync.failure(e));
-
     }
 }
 

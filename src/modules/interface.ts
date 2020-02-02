@@ -3,7 +3,7 @@
  * API 결과 타입 정의
  */
 export interface APIResponse {
-    state?: boolean | null;
+    state?: boolean | string | null;
     data?: any | null;
     message?: string | null;
 };
