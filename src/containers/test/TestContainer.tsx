@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
+// import Swal from 'sweetalert2';
+// import withReactContent from 'sweetalert2-react-content';
 
 import GlobalAlert  from 'lib/GlobalAlert';
 
@@ -10,7 +10,7 @@ import { TestButtonComponent } from 'components';
 
 function TestContainer() {
 
-    const SwalAlert = withReactContent(Swal);;
+    // const SwalAlert = withReactContent(Swal);;
 
     const handleButtonClick = () => {
         console.debug("handleButtonClick");

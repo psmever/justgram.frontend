@@ -1,13 +1,11 @@
 import React from 'react';
 import { LoginFormComponent } from "components";
 import useLogin from 'hooks/useLogin';
-import { useHistory } from "react-router-dom";
 import GlobalAlert  from 'lib/GlobalAlert';
 
 
 export default function LoginContainer() {
 
-    const history = useHistory();
     const { login_state, handleChangePassword, handleChangeEmail, handleSubmit } = useLogin();
 
 
