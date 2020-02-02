@@ -1,12 +1,12 @@
 import { FormEvent, useState } from 'react';
 import { tryLogin } from 'lib/API';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { tryLoginAsync } from 'modules/logins';
-import { useHistory } from "react-router-dom";
+import { RootState } from 'modules';
 
 export default function useLogin() {
 
-    const history = useHistory();
+    const login_state = useSelector((state: RootState) => state.login_state);
 
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
@@ -27,14 +27,13 @@ export default function useLogin() {
 
         if(tryResult.state === true) {
             dispatch(tryLoginAsync.success(tryResult.data));
-
-            history.push('/feed');
         } else {
             dispatch(tryLoginAsync.failure(new Error(typeof tryResult.message === "string" ? tryResult.message : '로그인에 실패 했습니다.')));
         }
     };
 
     return {
+        login_state,
         handleChangeEmail,
         handleChangePassword,
         handleSubmit,
