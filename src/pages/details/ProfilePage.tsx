@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import { Link } from 'react-router-dom';
 import {
     DefaultNavComponent,
     FooterComponent
@@ -17,7 +17,11 @@ function ProfilePage() {
                 <header className="profile__header">
                     <div className="profile__column"><img src={ image_avatar } alt="avatar"/></div>
                     <div className="profile__column">
-                    <div className="profile__title"><h3 className="profile__username">serranoarevalo</h3><a href="edit-profile.html">Edit profile</a><i className="fa fa-cog fa-lg"></i></div>
+                    <div className="profile__title">
+                        <h3 className="profile__username">serranoarevalo</h3>
+                        <Link to="/profile/edit">Edit profile</Link>
+                        <i className="fa fa-cog fa-lg"></i>
+                    </div>
                         <ul className="profile__stats">
                             <li className="profile__stat"><span className="stat__number">333</span> posts</li>
                             <li className="profile__stat"><span className="stat__number">1234</span> followers</li>
