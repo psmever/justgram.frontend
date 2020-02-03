@@ -39,7 +39,6 @@ class GlobalAlert {
         });;
     };
 
-
     error = (alertOption: alertTypeInterface): void => {
         this.SwalAlert.fire({
             icon: "error",

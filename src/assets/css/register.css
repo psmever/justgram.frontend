@@ -1,0 +1,140 @@
+#register {
+    width: 100%;
+    max-width: 800px;
+    margin: 45px auto;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  #register .register__column {
+    width: 60%;
+  }
+
+  .register__column .register__phone {
+    max-width: 100%;
+  }
+
+  .register__column .register__box {
+    background-color: white;
+    border: 1px solid #e6e6e6;
+  }
+
+  .register__column .register__box--transparent {
+    background: none;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 35px;
+  }
+
+  .register__column .register__appstores {
+    margin-top: 20px;
+  }
+
+  .register__appstores .register__appstore {
+    height: 40px;
+  }
+
+  #register .register__box {
+    padding: 30px 0;
+    text-align: center;
+  }
+
+  #register .register__box:first-child {
+    margin-bottom: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .register__column .register__logo {
+    height: 50px;
+  }
+
+  .register__form input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 7px;
+    font-size: 14px;
+    border: 0;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    background: #fafafa;
+  }
+
+  .register__form input2 {
+    position: absolute;
+    width: 255px;
+    height: 35px;
+    left: 355px;
+    top: 139px;
+    background: #FAFAFA;
+    border: 1px solid #E6E6E6;
+    box-sizing: border-box;
+    border-radius: 3px;
+  }
+
+  .register__form input:focus {
+    outline: none;
+    border: 1px solid #a9a9a9;
+  }
+
+  .register__form input:first-child {
+    margin-bottom: 5px;
+  }
+
+  .register__form input[type="submit"] {
+    background-color: #3f99ed;
+    border: 0;
+    padding: 5px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: 600;
+  }
+
+  #register .register__divider {
+    display: block;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #999;
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+  }
+
+  #register .register__link {
+    display: block;
+    text-decoration: none;
+    color: #003569;
+  }
+
+  #register .register__link--small {
+    margin-top: 30px;
+  }
+
+  .register__box a {
+    text-decoration: none;
+    color: var(--fd-blue);
+  }
+
+  #register .register__divider:before {
+    content: "";
+    height: 1px;
+    background-color: rgba(153, 153, 153, 0.5);
+    width: 40%;
+    position: absolute;
+    left: 0;
+    top: 10px;
+  }
+
+  #register .register__divider:after {
+    content: "";
+    height: 1px;
+    background-color: rgba(153, 153, 153, 0.5);
+    width: 40%;
+    position: absolute;
+    right: 0;
+    top: 10px;
+  }

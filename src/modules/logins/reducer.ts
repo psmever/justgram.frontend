@@ -1,30 +1,38 @@
-import { createReducer } from 'typesafe-actions';
-import { LoginState, LoginAction} from './types';
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_ERROR} from './actions';
+import { LoginState } from './types';
+import { ActionType } from 'modules/models';
+import createReducer from 'modules/createReducer';
+import { Action, loginSagaInterface, userLoginInterface } from 'modules/interface';
 
 const initialState: LoginState = {
-    state: null
+    state: 'yet'
 };
 
-const loginReducer = createReducer<LoginState, LoginAction>(initialState, {
-    [LOGIN_START]: state => ({
-        ...state,
-        state: null,
-    }),
-    [LOGIN_SUCCESS]: (state, action: any) => ({
-        ...state,
-        state: true,
-        token_type: action.payload.token_type,
-        expires_in: action.payload.expires_in,
-        access_token: action.payload.access_token,
-        refresh_token: action.payload.refresh_token
-    }),
-    [LOGIN_ERROR]: (state, action: any) => ({
-        ...state,
-        state: false,
-        message: action.payload.message
-    })
+export const loginReducer = createReducer<loginSagaInterface>(initialState, {
+    [ActionType.LOGIN_REQUEST](state: loginSagaInterface, action: Action<userLoginInterface>) {
+        return {
+            ...state,
+            state: 'yet'
+        };
+    },
+    [ActionType.LOGIN_SUCCESS](state: loginSagaInterface, action: Action<loginSagaInterface>) {
+        return {
+            ...state,
+            state: 'success',
+            token_type: action.payload.token_type,
+            expires_in: action.payload.expires_in,
+            access_token: action.payload.access_token,
+            refresh_token: action.payload.refresh_token
+        }
+    },
+    [ActionType.LOGIN_ERROR](state: loginSagaInterface, action: Action<loginSagaInterface>) {
+        return {
+            ...state,
+            state: 'failure',
+            message: action.payload
+        }
+    },
+    [ActionType.LOGIN_RESET](state: loginSagaInterface) {
+        return initialState;
+    }
 });
-
 export default loginReducer;
-

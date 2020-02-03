@@ -1,21 +1,59 @@
+import { ActionType } from './models';
+/**
+ * 기본 널 타입.
+ */
+type Nullable<T> = T | undefined | null;
+type SagaStatus = 'yet' | 'success' | 'failure' | 'reset';
+
+type APIResponseSubInfoType = {
+    uuid?: string
+}
+
+/**
+ * 회원 가입 결과 서브 타입 정의
+ */
+type APIResponseSubDataInfoType = {
+    message?: Nullable<string>,
+    info?: Nullable<object>
+}
 
 /**
  * API 결과 타입 정의
  */
 export interface APIResponse {
-    state?: boolean | string | null;
-    data?: any | null;
+    state?: Nullable<boolean>;
+    data?: Nullable<APIResponseSubDataInfoType>;
+    info?: Nullable<APIResponseSubInfoType>;
     message?: string | null;
 };
 
 /**
+ * 회원 가입 타입 정의
+ */
+export interface registerInsterface {
+    name: string,
+    email: string,
+    password: string,
+    confirm_password: string
+}
+
+export interface userLoginInterface {
+    email: string,
+    password: string
+}
+/**
  * 리덕스 로그인 state
  */
 export interface loginSagaInterface {
-    state: boolean | null;
+    state: SagaStatus;
     token_type?: string | null | any;
     expires_in?: number | null | any;
     access_token?: string | null| any;
     refresh_token?: string | null| any;
     message?: string| null
 };
+
+export interface Action<T> {
+    type: ActionType;
+    payload: T;
+}

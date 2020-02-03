@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 
 import {
     LoginPage,
+    RegisterPage,
     FeedPage,
     ExplodePage,
     ProfilePage,
@@ -15,6 +16,7 @@ const RouteRoot = () => {
     return (
         <Switch>
             <Route path="/login" exact={ true } component={ LoginPage } />
+            <Route path="/register" exact={ true } component={ RegisterPage } />
             <Route path="/feed" exact={ true } component={ FeedPage } />
             <Route path="/explode" exact={ true } component={ ExplodePage } />
 

@@ -17,6 +17,7 @@ import "assets/css/feed.css";
 import "assets/css/profile.css";
 import "assets/css/edit-profile.css";
 import "assets/css/mobile.css";
+import "assets/css/register.css";
 
 
 const history = createBrowserHistory()
