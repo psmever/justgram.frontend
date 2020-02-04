@@ -2,13 +2,19 @@ import * as React from 'react';
 import { LoginContainer } from 'containers';
 import { FooterComponent } from 'components';
 
+import useLogin from 'hooks/useLogin';
+
 import image_phoneImage from 'assets/images/phoneImage.png';
 import image_loginLogo from 'assets/images/loginLogo.png';
 import image_ios from 'assets/images/ios.png';
 import image_android from 'assets/images/android.png';
 import { Link } from 'react-router-dom';
 
+
 export default function LoginPage() {
+
+    const {  loginState, email, password, handleChangePassword, handleChangeEmail, handleSubmit, handleLoginInfoReset } = useLogin();
+
     return (
         <>
             <main id="login">
@@ -17,13 +23,24 @@ export default function LoginPage() {
                     <div className="login__box">
                         <img src={ image_loginLogo } className="login__logo" alt="loginlogo"/>
 
-                        <LoginContainer />
+                        <LoginContainer
+                            loginState={loginState}
+                            email={email}
+                            password={password}
+                            handleChangePassword={handleChangePassword}
+                            handleChangeEmail={handleChangeEmail}
+                            handleSubmit={handleSubmit}
+                            handleLoginInfoReset={handleLoginInfoReset}
+                        />
 
                         <span className="login__divider">or</span>
                         <a href={`/login`} className="login__link"><i className="fa fa-money"></i>Log in with Facebook</a>
                         <a href={`/login`} className="login__link login__link--small">Forgot password</a>
                     </div>
-                    <div className="login__box"><span>Don't have an account?</span> <Link to="/register">Sign up</Link></div>
+                    <div className="login__box">
+                            <span>Don't have an account?</span>
+                            <Link to="/register">Sign up</Link>
+                    </div>
                     <div className="login__box--transparent">
                         <span>Get the app.</span>
                         <div className="login__appstores">
