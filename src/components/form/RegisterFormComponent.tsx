@@ -1,24 +1,31 @@
 import React, { FormEvent } from 'react';
 
 interface RegisterFormProps {
-    onChangeName: ( real_name: string ) => void;
-    onChangeEmail: ( email: string ) => void;
-    onChangePassword: ( password: string ) => void;
-    onChangeConfirmPassword: ( password: string ) => void;
-    onSubmit: ( event: FormEvent<HTMLFormElement>) => void;
-
+    handleChangeName: ( real_name: string ) => void;
+    handleChangeEmail: ( email: string ) => void;
+    handleChangePassword: ( password: string ) => void;
+    handleChangeConfirmPassword: ( password: string ) => void;
+    handleSubmit: ( event: FormEvent<HTMLFormElement>) => void;
 }
 
-function RegisterFormComponent({ onChangeName, onChangeEmail, onChangePassword, onChangeConfirmPassword, onSubmit }: RegisterFormProps) {
+function RegisterFormComponent({
+
+    handleChangeName,
+    handleChangeEmail,
+    handleChangePassword,
+    handleChangeConfirmPassword,
+    handleSubmit,
+
+}: RegisterFormProps) {
     return (
-        <form method="post" className="register__form">
+        <form className="register__form" onSubmit={ handleSubmit }>
             <div className="form__row">
                 <input
                     id="email"
                     type="text"
                     className="form__input2"
                     placeholder="your email"
-                    onChange={ e => onChangeEmail(e.target.value)}
+                    onChange={ e => handleChangeEmail(e.target.value)}
                 />
             </div>
             <div className="form__row">
@@ -27,7 +34,7 @@ function RegisterFormComponent({ onChangeName, onChangeEmail, onChangePassword, 
                     type="text"
                     className="form__input2"
                     placeholder="your full name"
-                    onChange={ e => onChangeName(e.target.value)}
+                    onChange={ e => handleChangeName(e.target.value)}
                 />
             </div>
             <div className="form__row">
@@ -36,7 +43,7 @@ function RegisterFormComponent({ onChangeName, onChangeEmail, onChangePassword, 
                     type="password"
                     className="form__input2"
                     placeholder="password"
-                    onChange={ e => onChangePassword(e.target.value)}
+                    onChange={ e => handleChangePassword(e.target.value)}
                 />
             </div>
             <div className="form__row">
@@ -45,10 +52,10 @@ function RegisterFormComponent({ onChangeName, onChangeEmail, onChangePassword, 
                     type="password"
                     className="form__input2"
                     placeholder="password confim"
-                    onChange={ e => onChangeConfirmPassword(e.target.value)}
+                    onChange={ e => handleChangeConfirmPassword(e.target.value)}
                 />
             </div>
-            <input type="submit" value="submit" onClick={()=> onSubmit}/>
+            <input type="submit" value="submit"/>
         </form>
     );
 }

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { RegisterFormComponent } from 'components';
+
 import useRegister from 'hooks/useRegister';
+import GlobalAlert from 'lib/GlobalAlert';
 
 export default function RegisterContainer() {
 
@@ -13,18 +15,28 @@ export default function RegisterContainer() {
         handleChangeEmail
     } = useRegister();
 
-    if(registerResult.state) {
-        console.debug(registerResult);
-    }
+
+    useEffect(() => {
+        if(registerResult.state === true) {
+            GlobalAlert.thenHistoryPush({
+                text: registerResult.data?.message,
+                push_router: '/'
+            });
+        } else if(registerResult.state === false) {
+            GlobalAlert.error({
+                text: registerResult.message
+            });
+        }
+    })
 
     return (
         <>
             <RegisterFormComponent
-            onChangeEmail={ handleChangeEmail }
-            onChangeName={ handleChangeName }
-            onChangePassword={ handleChangePassword }
-            onChangeConfirmPassword={ handleChangeConfirmPassword }
-            onSubmit={ handleSubmit }
+                handleChangeEmail={ handleChangeEmail }
+                handleChangeName={ handleChangeName }
+                handleChangePassword={ handleChangePassword }
+                handleChangeConfirmPassword={ handleChangeConfirmPassword }
+                handleSubmit={ handleSubmit }
              />
         </>
     );

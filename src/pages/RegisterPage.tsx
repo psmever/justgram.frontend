@@ -6,6 +6,7 @@ import { FooterComponent } from 'components';
 import image_loginLogo from 'assets/images/loginLogo.png';
 
 export default function RegisterPage() {
+
     return (
         <>
 
