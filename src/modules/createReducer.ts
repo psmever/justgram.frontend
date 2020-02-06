@@ -1,5 +1,5 @@
 import { Reducer } from "redux";
-import { Action } from "./interface";
+import { Action } from "./types";
 
 export default function createReducer<S>( initialState: S, handlers: any ): Reducer<S> {
 	const r = (state: S = initialState, action: Action<S>): S => {

@@ -1,20 +1,20 @@
 import { LoginState } from './types';
 import { ActionType } from 'modules/models';
 import createReducer from 'modules/createReducer';
-import { Action, loginSagaInterface, userLoginInterface } from 'modules/interface';
+import { Action, loginSagaResponseType, userLoginRequestType } from 'modules/types';
 
 const initialState: LoginState = {
     state: 'yet'
 };
 
-export const loginReducer = createReducer<loginSagaInterface>(initialState, {
-    [ActionType.LOGIN_REQUEST](state: loginSagaInterface, action: Action<userLoginInterface>) {
+export const loginReducer = createReducer<loginSagaResponseType>(initialState, {
+    [ActionType.LOGIN_REQUEST](state: loginSagaResponseType, action: Action<userLoginRequestType>) {
         return {
             ...state,
             state: 'yet'
         };
     },
-    [ActionType.LOGIN_SUCCESS](state: loginSagaInterface, action: Action<loginSagaInterface>) {
+    [ActionType.LOGIN_SUCCESS](state: loginSagaResponseType, action: Action<loginSagaResponseType>) {
         return {
             ...state,
             state: 'success',
@@ -24,14 +24,14 @@ export const loginReducer = createReducer<loginSagaInterface>(initialState, {
             refresh_token: action.payload.refresh_token
         }
     },
-    [ActionType.LOGIN_ERROR](state: loginSagaInterface, action: Action<loginSagaInterface>) {
+    [ActionType.LOGIN_ERROR](state: loginSagaResponseType, action: Action<loginSagaResponseType>) {
         return {
             ...state,
             state: 'failure',
             message: action.payload
         }
     },
-    [ActionType.LOGIN_RESET](state: loginSagaInterface) {
+    [ActionType.LOGIN_RESET](state: loginSagaResponseType) {
         return initialState;
     }
 });

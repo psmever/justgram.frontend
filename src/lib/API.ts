@@ -1,8 +1,8 @@
 import GlobalService from 'lib/GlobalService';
 import {
-    APIResponse,
-    registerInsterface,
- } from 'modules/interface';
+    APIResponseType,
+    registerRequestType,
+ } from 'modules/types';
 
 
 /**
@@ -10,7 +10,7 @@ import {
  * @param email
  * @param password
  */
-export function tryLogin(email: string, password: string): Promise<APIResponse> {
+export function tryLogin(email: string, password: string): Promise<APIResponseType> {
     return GlobalService.init('post', '/api/justgram/v1/login', {email: email, password: password});
 };
 
@@ -18,9 +18,9 @@ export function tryLogin(email: string, password: string): Promise<APIResponse> 
  *
  * @param payload 회원 가입.
  */
-export function tryRegister<T>(payload: registerInsterface): Promise<APIResponse> {
+export function tryRegister<T>(payload: registerRequestType): Promise<APIResponseType> {
     return GlobalService.init('post', '/api/justgram/v1/register', {
-        name: payload.name,
+        username: payload.username,
         email: payload.email,
         password: payload.password,
         confirm_password: payload.confirm_password

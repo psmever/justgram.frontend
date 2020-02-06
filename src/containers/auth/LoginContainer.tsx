@@ -1,10 +1,10 @@
 import React, { useEffect, FormEvent } from 'react';
 import { LoginFormComponent } from "components";
 import GlobalAlert  from 'lib/GlobalAlert';
-import { loginSagaInterface } from 'modules/interface';
+import { loginSagaResponseType } from 'modules/types';
 
 interface LoginContainerProps  {
-    loginState? : loginSagaInterface;
+    loginState? : loginSagaResponseType;
     email: string;
     password: string;
     handleChangePassword: ( user_email: string ) => void;

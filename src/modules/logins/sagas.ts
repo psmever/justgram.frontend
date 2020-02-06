@@ -1,7 +1,7 @@
 // import { tryLoginAsync, LOGIN_START } from "./actions";
 import { put, takeLatest, fork, call } from "redux-saga/effects";
 // import loginActions, { LOGIN_SUCCESS }from './actions';
-import { userLoginInterface } from 'modules/interface';
+import { userLoginRequestType } from 'modules/types';
 import { tryLogin } from 'lib/API';
 import { ActionType } from 'modules/models';
 /**
@@ -9,7 +9,7 @@ import { ActionType } from 'modules/models';
  * @param actions
  * @constructor
  */
-function* loginSaga({ payload }: {payload: userLoginInterface}) {
+function* loginSaga({ payload }: {payload: userLoginRequestType}) {
     const response = yield call(tryLogin, payload.email, payload.password);
 
     if(response.state === true) {

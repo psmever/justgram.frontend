@@ -3,7 +3,7 @@ import axios ,{
     AxiosPromise
 } from 'axios';
 
-import { APIResponse } from 'modules/interface';
+import { APIResponseType } from 'modules/types';
 
 class GlobalService{
 
@@ -59,20 +59,20 @@ class GlobalService{
         throw new Error(message);
     };
 
-    init = (method : string, url: string, params: object): Promise<APIResponse | Error> => {
+    init = (method : string, url: string, params: object): Promise<APIResponseType> => {
 
         switch(method) {
             case 'get': {
-                return this.promise<APIResponse>(this.axiosinstance.get(url, params));
+                return this.promise<APIResponseType>(this.axiosinstance.get(url, params));
             }
             case 'post': {
-                return this.promise<APIResponse>(this.axiosinstance.post(url, params));
+                return this.promise<APIResponseType>(this.axiosinstance.post(url, params));
             }
             case 'put': {
-                return this.promise<APIResponse>(this.axiosinstance.put(url, params));
+                return this.promise<APIResponseType>(this.axiosinstance.put(url, params));
             }
             case 'delete': {
-                return this.promise<APIResponse>(this.axiosinstance.put(url, params));
+                return this.promise<APIResponseType>(this.axiosinstance.put(url, params));
             }
             default:
                 return this.error("Should never get here");

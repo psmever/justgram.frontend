@@ -10,41 +10,47 @@ type APIResponseSubInfoType = {
 }
 
 /**
- * 회원 가입 결과 서브 타입 정의
+ * 회원 가입 응답 서브 타입 정의
  */
 type APIResponseSubDataInfoType = {
     message?: Nullable<string>,
     info?: Nullable<object>
 }
 
+type APIResponseSubMessageType = {
+    name?: Array<string>,
+    email?: Array<string>,
+    password?: Array<string>,
+    confirm_password?: Array<string>,
+}
+
 /**
- * API 결과 타입 정의
+ * API 응답 타입 정의
  */
-export interface APIResponse {
+export type APIResponseType = {
     state?: Nullable<boolean>;
     data?: Nullable<APIResponseSubDataInfoType>;
     info?: Nullable<APIResponseSubInfoType>;
-    message?: string | null;
 };
 
 /**
  * 회원 가입 타입 정의
  */
-export interface registerInsterface {
-    name: string,
+export type registerRequestType = {
+    username: string,
     email: string,
     password: string,
     confirm_password: string
 }
 
-export interface userLoginInterface {
+export type userLoginRequestType = {
     email: string,
     password: string
 }
 /**
  * 리덕스 로그인 state
  */
-export interface loginSagaInterface {
+export type loginSagaResponseType = {
     state: SagaStatus;
     token_type?: string | null | any;
     expires_in?: number | null | any;
@@ -53,7 +59,7 @@ export interface loginSagaInterface {
     message?: string| null
 };
 
-export interface Action<T> {
+export type Action<T> = {
     type: ActionType;
     payload: T;
 }
