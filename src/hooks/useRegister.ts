@@ -1,20 +1,20 @@
 import { FormEvent, useState } from "react";
 import { tryRegister } from 'lib/API';
-import { APIResponse } from 'modules/interface';
+import { APIResponseType } from 'modules/types';
 
 export default function useRegister() {
 
-    const [ registerResult , setRegisterResult] = useState<APIResponse>({
+    const [ registerResult , setRegisterResult] = useState<APIResponseType>({
         state: null,
         data: null,
     });
-    const [ name, setName] = useState('');
+    const [ username, setUserName] = useState('');
     const [ email, setEmail] = useState('');
     const [ password, setPassword ] = useState('');
     const [ confirmpassword, setConfirmpassword] = useState('');
 
-    const handleChangeName = ( name: string) => {
-        setName(name);
+    const handleChangeUserName = ( username: string) => {
+        setUserName(username);
     }
 
     const handleChangeEmail = ( email: string ) => {
@@ -33,17 +33,15 @@ export default function useRegister() {
         event.preventDefault();
 
         const tryResult = await tryRegister({
-            name: name,
+            username: username,
             email: email,
             password: password,
             confirm_password: confirmpassword
         });
 
-        console.debug(tryResult.state, tryResult);
-
-        if(tryResult.state === true) {
+        if(tryResult.state === true || tryResult.state === false){
             setRegisterResult({
-                state: (tryResult.state) ? tryResult.state : null,
+                state: tryResult.state,
                 data: tryResult.data
             });
         }
@@ -55,10 +53,8 @@ export default function useRegister() {
         registerResult,
         handleChangePassword,
         handleChangeConfirmPassword,
-        handleChangeName,
+        handleChangeUserName,
         handleSubmit,
         handleChangeEmail
     };
-
-
 }

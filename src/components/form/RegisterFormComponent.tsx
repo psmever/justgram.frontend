@@ -1,7 +1,7 @@
 import React, { FormEvent } from 'react';
 
 interface RegisterFormProps {
-    handleChangeName: ( real_name: string ) => void;
+    handleChangeUserName: ( username: string ) => void;
     handleChangeEmail: ( email: string ) => void;
     handleChangePassword: ( password: string ) => void;
     handleChangeConfirmPassword: ( password: string ) => void;
@@ -10,7 +10,7 @@ interface RegisterFormProps {
 
 function RegisterFormComponent({
 
-    handleChangeName,
+    handleChangeUserName,
     handleChangeEmail,
     handleChangePassword,
     handleChangeConfirmPassword,
@@ -30,15 +30,6 @@ function RegisterFormComponent({
             </div>
             <div className="form__row">
                 <input
-                    name="name"
-                    type="text"
-                    className="form__input2"
-                    placeholder="your full name"
-                    onChange={ e => handleChangeName(e.target.value)}
-                />
-            </div>
-            <div className="form__row">
-                <input
                     id="password"
                     type="password"
                     className="form__input2"
@@ -53,6 +44,15 @@ function RegisterFormComponent({
                     className="form__input2"
                     placeholder="password confim"
                     onChange={ e => handleChangeConfirmPassword(e.target.value)}
+                />
+            </div>
+            <div className="form__row">
+                <input
+                    name="username"
+                    type="text"
+                    className="form__input2"
+                    placeholder="your user name"
+                    onChange={ e => handleChangeUserName(e.target.value)}
                 />
             </div>
             <input type="submit" value="submit"/>

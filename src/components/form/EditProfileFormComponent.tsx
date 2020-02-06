@@ -4,12 +4,12 @@ function EditProfileFormComponent() {
     return (
         <form action="" className="edit-profile__form">
             <div className="form__row">
-                <label htmlFor="full-name" className="form__label">Name:</label>
-                <input id="full-name" type="text" className="form__input" />
-            </div>
-            <div className="form__row">
                 <label htmlFor="user-name" className="form__label">Username:</label>
                 <input id="user-name" type="text" className="form__input" />
+            </div>
+            <div className="form__row">
+                <label htmlFor="full-name" className="form__label">Name:</label>
+                <input id="full-name" type="text" className="form__input" />
             </div>
             <div className="form__row">
                 <label htmlFor="website" className="form__label">Website:</label>
