@@ -21,7 +21,8 @@ export const loginReducer = createReducer<loginSagaResponseType>(initialState, {
             token_type: action.payload.token_type,
             expires_in: action.payload.expires_in,
             access_token: action.payload.access_token,
-            refresh_token: action.payload.refresh_token
+            refresh_token: action.payload.refresh_token,
+            user_name: action.payload.user_name
         }
     },
     [ActionType.LOGIN_ERROR](state: loginSagaResponseType, action: Action<loginSagaResponseType>) {

@@ -2,6 +2,7 @@ import * as React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 import {
+    LoadingPage,
     LoginPage,
     RegisterPage,
     FeedPage,
@@ -15,6 +16,7 @@ import {
 const RouteRoot = () => {
     return (
         <Switch>
+            <Route path="/" exact={ true } component={ LoadingPage } />
             <Route path="/login" exact={ true } component={ LoginPage } />
             <Route path="/register" exact={ true } component={ RegisterPage } />
             <Route path="/feed" exact={ true } component={ FeedPage } />

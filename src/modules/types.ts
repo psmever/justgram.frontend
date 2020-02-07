@@ -46,11 +46,12 @@ export type userLoginRequestType = {
  */
 export type loginSagaResponseType = {
     state: SagaStatus;
-    token_type?: string | null | any;
-    expires_in?: number | null | any;
-    access_token?: string | null| any;
-    refresh_token?: string | null| any;
-    message?: string| null
+    token_type?: Nullable<string>;
+    expires_in?: Nullable<number>;
+    access_token?: Nullable<string>;
+    refresh_token?: Nullable<string>;
+    message?: Nullable<string>;
+    user_name?: Nullable<string>;
 };
 
 export type Action<T> = {

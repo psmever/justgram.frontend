@@ -1,6 +1,7 @@
 export { default as DefaultPage } from './DefaultPage';
 export { default as TestPage } from './TestPage';
 
+export {default as LoadingPage } from './LoadingPage'
 export { default as LoginPage } from './LoginPage';
 export { default as RegisterPage } from './RegisterPage';
 

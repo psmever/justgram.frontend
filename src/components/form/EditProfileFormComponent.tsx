@@ -1,31 +1,67 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 
-function EditProfileFormComponent() {
+interface EditProfileFormProps {
+    username: string;
+    handleChangeName: (name: string) => void;
+    handleChangeWebSite: (website: string) => void;
+    handleChangeBio: (bio: string) => void;
+    handleChangePhoneNumber: (phonenumber: string) => void;
+    handleSubmit: ( event: FormEvent<HTMLFormElement>) => void;
+}
+
+function EditProfileFormComponent({
+    username,
+    handleChangeName,
+    handleChangeWebSite,
+    handleChangeBio,
+    handleChangePhoneNumber,
+    handleSubmit
+}: EditProfileFormProps) {
     return (
-        <form action="" className="edit-profile__form">
+        <form className="edit-profile__form" onSubmit={ handleSubmit }>
             <div className="form__row">
                 <label htmlFor="user-name" className="form__label">Username:</label>
-                <input id="user-name" type="text" className="form__input" />
+                <input
+                    id="username"
+                    type="text"
+                    className="form__input"
+                    disabled
+                    value={username}
+                />
             </div>
             <div className="form__row">
                 <label htmlFor="full-name" className="form__label">Name:</label>
-                <input id="full-name" type="text" className="form__input" />
+                <input
+                    id="name"
+                    type="text"
+                    className="form__input"
+                    onChange={ e => handleChangeName(e.target.value)}
+                />
             </div>
             <div className="form__row">
                 <label htmlFor="website" className="form__label">Website:</label>
-                <input id="website" type="url" className="form__input" />
+                <input
+                    id="website"
+                    type="url"
+                    className="form__input"
+                    onChange={ e => handleChangeWebSite(e.target.value)}
+                />
             </div>
             <div className="form__row">
                 <label htmlFor="bio" className="form__label">Bio:</label>
-                <textarea id="bio"></textarea>
-            </div>
-            <div className="form__row">
-                <label htmlFor="email" className="form__label">Email:</label>
-                <input id="email" type="email" className="form__input" />
+                <textarea
+                    id="bio"
+                    onChange={e => handleChangeBio(e.target.value)}
+                ></textarea>
             </div>
             <div className="form__row">
                 <label htmlFor="phone" className="form__label">Phone Number:</label>
-                <input id="phone" type="tel" className="form__input" />
+                <input
+                    id="phonenumber"
+                    type="tel"
+                    className="form__input"
+                    onChange={ e => handleChangePhoneNumber(e.target.value)}
+                />
             </div>
             <div className="form__row">
                 <label htmlFor="gender" className="form__label">Gender:</label>
