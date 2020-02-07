@@ -17,13 +17,6 @@ type APIResponseSubDataInfoType = {
     info?: Nullable<object>
 }
 
-type APIResponseSubMessageType = {
-    name?: Array<string>,
-    email?: Array<string>,
-    password?: Array<string>,
-    confirm_password?: Array<string>,
-}
-
 /**
  * API 응답 타입 정의
  */
@@ -31,6 +24,7 @@ export type APIResponseType = {
     state?: Nullable<boolean>;
     data?: Nullable<APIResponseSubDataInfoType>;
     info?: Nullable<APIResponseSubInfoType>;
+    message?: Nullable<string>;
 };
 
 /**

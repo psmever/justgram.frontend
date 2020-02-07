@@ -42,7 +42,7 @@ export default function useRegister() {
         if(tryResult.state === true || tryResult.state === false){
             setRegisterResult({
                 state: tryResult.state,
-                data: tryResult.data
+                message: tryResult.message
             });
         }
 

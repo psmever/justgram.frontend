@@ -5,6 +5,7 @@ import axios ,{
 
 import { APIResponseType } from 'modules/types';
 
+
 class GlobalService{
 
     axiosinstance: AxiosInstance;
@@ -31,15 +32,26 @@ class GlobalService{
                     resolve({
                         state: true,
                         data: response.data,
-                        message: "정상 전송 하였습니다."
+                        message: (response.data.message) ? response.data.message : "정상 전송 하였습니다."
                     });
                 })
                 .catch(error => {
                     if (error.response) {
-                        resolve({
-                            state: false,
-                            message: (error.response.data.message) ? error.response.data.message : "처리중 문제가 발생했습니다."
-                        });
+                        const errorMessage = error.response.data.error_message;
+
+                        if(typeof errorMessage === 'object') {
+                            // console.debug(errorMessage.toString());
+                            // 어떻게 할것 인지?
+
+                        } else {
+                            resolve({
+                                state: false,
+                                message: (error.response.data.error_message) ? error.response.data.error_message : "처리중 문제가 발생했습니다."
+                            });
+                        }
+
+
+
                     } else if (error.request) {
                         resolve({
                             status: 444,

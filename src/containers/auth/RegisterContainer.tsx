@@ -15,18 +15,19 @@ export default function RegisterContainer() {
         handleChangeEmail
     } = useRegister();
 
+
+
     useEffect(() => {
 
         if(registerResult.state === true) {
             GlobalAlert.thenHistoryPush({
-                text: registerResult.data?.message,
+                text: registerResult.message,
                 push_router: '/'
             });
         } else if(registerResult.state === false) {
-            // GlobalAlert.error({
-            //     text:
-            // });
-            console.debug(registerResult);
+            GlobalAlert.error({
+                text: registerResult.message
+            });
         }
     }, [registerResult])
 
