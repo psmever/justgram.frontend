@@ -4,4 +4,9 @@ export enum ActionType {
     LOGIN_SUCCESS = 'login/LOGIN_SUCCESS',
     LOGIN_ERROR = 'login/LOGIN_ERROR',
     LOGIN_RESET = 'login/LOGIN_RESET',
+
+    // Root Data
+    GET_ROOTDATA_LOADING = 'root/GET_ROOTDATA_LOADING',
+    GET_ROOTDATA_SUCCESS = 'root/GET_ROOTDATA_SUCCESS',
+    GET_ROOTDATA_ERROR = 'root/GET_ROOTDATA_ERROR',
 }

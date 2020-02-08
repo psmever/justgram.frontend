@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { RegisterFormComponent } from 'components';
+import { RegisterFormComponent } from 'resources/components';
 
 import useRegister from 'hooks/useRegister';
 import GlobalAlert from 'lib/GlobalAlert';

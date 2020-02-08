@@ -1,5 +1,7 @@
 export {default as TestButtonComponent} from './TestButtonComponent';
 
+export {default as TestComponent} from './TestComponent';
+
 export { default as FooterComponent } from './common/FooterComponent';
 export { default as DefaultNavComponent } from './common/DefaultNavComponent';
 

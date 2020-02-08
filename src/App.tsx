@@ -1,10 +1,12 @@
 import * as React from "react";
+
+import { createBrowserHistory } from 'history';
+import configureStore from './configureStore';
 import { Route, Router } from "react-router-dom";
 import { Provider } from 'react-redux';
-import History from "./routes/History";
-import RouteRoot from "./routes/RouteRoot";
-import { createBrowserHistory } from 'history'
-import configureStore from './configureStore'
+import RouteSwitch from "./routes/RouteSwitch";
+
+
 
 import "assets/css/reset.css";
 import "assets/css/variables.css";
@@ -18,22 +20,22 @@ import "assets/css/profile.css";
 import "assets/css/edit-profile.css";
 import "assets/css/mobile.css";
 import "assets/css/register.css";
+import "assets/css/loading.css";
 
 
-const history = createBrowserHistory()
+const history = createBrowserHistory();
 
 declare var window: any;
-const initialState = window.INITIAL_REDUX_STATE
-const store = configureStore(history, initialState)
-
-
+const initialState = window.INITIAL_REDUX_STATE;
+const store = configureStore(history, initialState);
 
 const App = () => {
 
+
     return (
         <Provider store={ store }>
-            <Router history={ History }>
-                <Route component={ RouteRoot }/>
+            <Router history={ history }>
+                <Route component={ RouteSwitch }/>
             </Router>
         </Provider>
     );

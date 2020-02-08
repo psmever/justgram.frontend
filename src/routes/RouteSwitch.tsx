@@ -2,7 +2,7 @@ import * as React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 import {
-    LoadingPage,
+    // LoadingPage,
     LoginPage,
     RegisterPage,
     FeedPage,
@@ -11,12 +11,16 @@ import {
     EditProfilePage,
     DefaultPage,
     TestPage,
-} from 'pages';
+} from "resources/pages";
 
 const RouteRoot = () => {
+
+
+
     return (
+
         <Switch>
-            <Route path="/" exact={ true } component={ LoadingPage } />
+            <Route path="/" exact={ true } component={ LoginPage } />
             <Route path="/login" exact={ true } component={ LoginPage } />
             <Route path="/register" exact={ true } component={ RegisterPage } />
             <Route path="/feed" exact={ true } component={ FeedPage } />
