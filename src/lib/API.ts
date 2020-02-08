@@ -10,6 +10,15 @@ import {
  * @param email
  * @param password
  */
+export function getSiteData(): Promise<APIResponseType> {
+    return GlobalService.init('get', '/api/justgram/v1/system/sitedata', {});
+};
+
+/**
+ * 로그인 시도
+ * @param email
+ * @param password
+ */
 export function tryLogin(email: string, password: string): Promise<APIResponseType> {
     return GlobalService.init('post', '/api/justgram/v1/login', {email: email, password: password});
 };

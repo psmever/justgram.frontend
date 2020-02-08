@@ -1,6 +1,9 @@
 export { default as DefaultContainer } from './default/DefaultContainer';
 export { default as TestContainer } from './test/TestContainer';
 
+
+export { default as Rootcontainer } from './Rootcontainer';
+
 export { default as LoginContainer } from './auth/LoginContainer';
 export { default as RegisterContainer } from './auth/RegisterContainer';
 

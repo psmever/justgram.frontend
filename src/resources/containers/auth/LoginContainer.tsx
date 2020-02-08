@@ -1,5 +1,5 @@
 import React, { useEffect, FormEvent } from 'react';
-import { LoginFormComponent } from "components";
+import { LoginFormComponent } from "resources/components";
 import GlobalAlert  from 'lib/GlobalAlert';
 import { loginSagaResponseType } from 'modules/types';
 

@@ -54,6 +54,14 @@ export type loginSagaResponseType = {
     user_name?: Nullable<string>;
 };
 
+
+export type sitedataSagaResponseType = {
+    state: SagaStatus;
+    code_list?: string[];
+
+};
+
+
 export type Action<T> = {
     type: ActionType;
     payload: T;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { RegisterContainer } from 'containers';
-import { FooterComponent } from 'components';
+import { RegisterContainer } from 'resources/containers';
+import { FooterComponent } from 'resources/components';
 
 import image_loginLogo from 'assets/images/loginLogo.png';
 

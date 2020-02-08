@@ -6,7 +6,7 @@ import * as React from 'react';
 import GlobalAlert  from 'lib/GlobalAlert';
 
 
-import { TestButtonComponent } from 'components';
+import { TestButtonComponent } from 'resources/components';
 
 function TestContainer() {
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { EditProfileFormComponent } from "components";
+import { EditProfileFormComponent } from "resources/components";
 import useEditProfile from 'hooks/useEditProfile';
 
 function EditProfileFormContainer() {
