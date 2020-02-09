@@ -7,7 +7,7 @@ function DefaultNavComponent() {
         <div>
             <nav className="navigation">
                 <div className="navigation__column">
-                    <Link to="/feed"><img src={image_logo} alt="logo"/></Link>
+                    <Link to="/"><img src={image_logo} alt="logo"/></Link>
                 </div>
                 <div className="navigation__column">
                     <i className="fa fa-search"></i>
