@@ -10,7 +10,7 @@ import { ProcessStringStatus } from "modules/types";
 import GlobalAlert from "lib/GlobalAlert";
 import { getRootDataAction } from "modules/sitedatas";
 
-export default function useSystem() {
+export default function useBase() {
     /**
      * 진행중 표시용.
      */
