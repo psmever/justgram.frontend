@@ -13,7 +13,7 @@ import {
     TestPage,
 } from "resources/pages";
 
-const RouterRoot = () => {
+const RouterSwitch = () => {
     return (
         <Switch>
             <Route path="/" exact={ true } component={ LoginPage } />
@@ -33,4 +33,4 @@ const RouterRoot = () => {
     );
 };
 
-export default RouterRoot;
+export default RouterSwitch;
