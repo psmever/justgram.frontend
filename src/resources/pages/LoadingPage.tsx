@@ -1,24 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Spinner from 'react-spinner-material';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { getRootDataAction } from 'modules/sitedatas';
 
-
+/**
+ * 런치 스크린용 로딩 페이지.
+ */
 export default function LoadingPage() {
-
-    // const dispatch = useDispatch();
-
-    useEffect(() => {
-        // dispatch(getRootDataAction());
-    });
-
     return (
-        <>
-            <main id="loading">
-                <div className="loading__spinner">
-                    <Spinner size={60} spinnerColor={"#FF1493"} spinnerWidth={2} visible={true} />
-                </div>
-            </main>
-        </>
+        <Spinner size={30} spinnerColor={"#FF1493"} spinnerWidth={2} visible={true} />
     );
 }
