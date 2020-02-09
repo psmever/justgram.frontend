@@ -37,13 +37,13 @@ export const storageManager = {
     }
 };
 
-
-
+// 쿠키삭제.
 export function removeCookie(cname: string): void {
 	let expires = "expires=Thu, 01 Jan 1970 00:00:00 UTC;"
 	document.cookie = cname + "=;" + expires + ";path=/";
 }
 
+// 쿠키저장.
 export function setCookie(cname: string, cvalue: string, hours: number = 1): void {
 	let d = new Date();
 	d.setTime(d.getTime() + hours * 60 * 60 * 1000); // (exdays * 24 * 60 * 60 * 1000));
@@ -51,6 +51,7 @@ export function setCookie(cname: string, cvalue: string, hours: number = 1): voi
 	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+// 쿠키정보 읽어 오기.
 export function getCookie(cname: string): string | null {
 	let name = cname + "=";
 	let ca = document.cookie.split(";");
@@ -68,15 +69,7 @@ export function getCookie(cname: string): string | null {
 	return "";
 }
 
-export function checkCookie(): string | null {
-	let user = getCookie("token");
-	if (user !== "") {
-		return user;
-	} else {
-		return null;
-	}
-}
-
+// 로그인 정보 쿠키에 저장.
 export function setLoginCookie(payload: any): void {
     setCookie("login_state", "true");
     setCookie("token_expires_in", payload.expires_in);
