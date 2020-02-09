@@ -13,12 +13,8 @@ import {
     TestPage,
 } from "resources/pages";
 
-const RouteRoot = () => {
-
-
-
+const RouterRoot = () => {
     return (
-
         <Switch>
             <Route path="/" exact={ true } component={ LoginPage } />
             <Route path="/login" exact={ true } component={ LoginPage } />
@@ -37,4 +33,4 @@ const RouteRoot = () => {
     );
 };
 
-export default RouteRoot;
+export default RouterRoot;
