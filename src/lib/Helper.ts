@@ -72,8 +72,8 @@ export function getCookie(cname: string): string | null {
 // 로그인 정보 쿠키에 저장.
 export function setLoginCookie(payload: any): void {
     setCookie("login_state", "true");
-    setCookie("token_expires_in", payload.expires_in);
-    setCookie("token_access_token", payload.access_token);
-    setCookie("token_refresh_token", payload.refresh_token);
-    setCookie("token_user_name", payload.user_name);
+    setCookie("login_expires_in", payload.expires_in);
+    setCookie("login_access_token", payload.access_token);
+    setCookie("login_refresh_token", payload.refresh_token);
+    setCookie("login_user_name", payload.user_name);
 }
