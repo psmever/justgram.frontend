@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { LoginContainer } from 'resources/containers';
 import { FooterComponent } from 'resources/components';
+import { Link } from 'react-router-dom';
+import history from 'routes/History';
 
 import useLogin from 'hooks/useLogin';
 
@@ -8,12 +10,16 @@ import image_phoneImage from 'assets/images/phoneImage.png';
 import image_loginLogo from 'assets/images/loginLogo.png';
 import image_ios from 'assets/images/ios.png';
 import image_android from 'assets/images/android.png';
-import { Link } from 'react-router-dom';
+
 
 
 export default function LoginPage() {
 
     const {  loginState, email, password, handleChangePassword, handleChangeEmail, handleSubmit, handleLoginInfoReset } = useLogin();
+
+    if(loginState.state === "success") {
+        history.push("/feed");
+    }
 
     return (
         <>
@@ -22,17 +28,17 @@ export default function LoginPage() {
                 <div className="login__column">
                     <div className="login__box">
                         <img src={ image_loginLogo } className="login__logo" alt="loginlogo"/>
-
-                        <LoginContainer
-                            loginState={loginState}
-                            email={email}
-                            password={password}
-                            handleChangePassword={handleChangePassword}
-                            handleChangeEmail={handleChangeEmail}
-                            handleSubmit={handleSubmit}
-                            handleLoginInfoReset={handleLoginInfoReset}
-                        />
-
+                        {loginState.state !== "success" &&
+                            <LoginContainer
+                                loginState={loginState}
+                                email={email}
+                                password={password}
+                                handleChangePassword={handleChangePassword}
+                                handleChangeEmail={handleChangeEmail}
+                                handleSubmit={handleSubmit}
+                                handleLoginInfoReset={handleLoginInfoReset}
+                            />
+                        }
                         <span className="login__divider">or</span>
                         <a href={`/login`} className="login__link"><i className="fa fa-money"></i>Log in with Facebook</a>
                         <a href={`/login`} className="login__link login__link--small">Forgot password</a>
