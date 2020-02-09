@@ -31,8 +31,7 @@ class GlobalService{
                 .then(response => {
                     resolve({
                         state: true,
-                        data: response.data,
-                        message: (response.data.message) ? response.data.message : "정상 전송 하였습니다."
+                        data: response.data
                     });
                 })
                 .catch(error => {
@@ -42,16 +41,12 @@ class GlobalService{
                         if(typeof errorMessage === 'object') {
                             // console.debug(errorMessage.toString());
                             // 어떻게 할것 인지?
-
                         } else {
                             resolve({
                                 state: false,
                                 message: (error.response.data.error_message) ? error.response.data.error_message : "처리중 문제가 발생했습니다."
                             });
                         }
-
-
-
                     } else if (error.request) {
                         resolve({
                             status: 444,
