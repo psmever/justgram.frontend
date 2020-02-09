@@ -2,7 +2,7 @@ import React, {useEffect, useMemo, useState } from "react";
 import { Router, Route} from "react-router-dom";
 import Switch from "./Switch";
 import {LoadingPage } from "resources/pages";
-import useSystem from "hooks/useSystem";
+import useBase from "hooks/useBase";
 
 interface RootProps  {
     Routerhistory: any
@@ -16,7 +16,7 @@ const Root = ({
         checkProgress,
         sitedataState,
         checkStart,
-    } = useSystem(); // 시스템 체크 용 훅 연결.
+    } = useBase(); // 시스템 체크 용 훅 연결.
 
     const CheckProgress = useMemo(() => checkProgress, [checkProgress]); // 진행률.
     const [ isLoading, setIsLoading] = useState(true); // 실제 로팅 페이지 보여 줄껀지에 사용할 스테이트
