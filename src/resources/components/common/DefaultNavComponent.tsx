@@ -1,13 +1,27 @@
-import * as React from 'react';
+import React, {useMemo } from 'react';
 import { Link } from 'react-router-dom';
+
+import { useSelector } from 'react-redux';
+import { RootState } from 'modules';
+
+
 import image_logo from 'assets/images/logo.png';
 
 function DefaultNavComponent() {
+
+    // 로그인 상태가 정상일떄 홈 링크 변경. 로그인 페이지로 보내지 않기 위해.
+    const login_state = useSelector((state: RootState) => state.login_state.state);
+    const loginState = useMemo(() => login_state, [login_state]);
+
+    const homeLink = (loginState === "success") ? "/feed" : "/";
+    const profileLink = (loginState === "success") ? "/profile" : "/";
+
     return (
+
         <div>
             <nav className="navigation">
                 <div className="navigation__column">
-                    <Link to="/"><img src={image_logo} alt="logo"/></Link>
+                    <Link to={homeLink}><img src={image_logo} alt="logo"/></Link>
                 </div>
                 <div className="navigation__column">
                     <i className="fa fa-search"></i>
@@ -22,7 +36,7 @@ function DefaultNavComponent() {
                             <Link to="/explode" className="navigation__link"><i className="fa fa-heart-o fa-lg"></i></Link>
                         </li>
                         <li className="navigation__list-item">
-                            <Link to="/profile" className="navigation__link"><i className="fa fa-user-o fa-lg"></i></Link>
+                            <Link to={profileLink} className="navigation__link"><i className="fa fa-user-o fa-lg"></i></Link>
                         </li>
                     </ul>
                 </div>
