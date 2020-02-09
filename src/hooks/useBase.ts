@@ -1,7 +1,7 @@
 import { useState, useMemo} from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'modules';
-
+import { getCookie } from "lib/Helper";
 import {
     checkServer,
     checkNotice
@@ -9,6 +9,7 @@ import {
 import { ProcessStringStatus } from "modules/types";
 import GlobalAlert from "lib/GlobalAlert";
 import { getRootDataAction } from "modules/sitedatas";
+import { loginLocalinfoToStore } from "modules/logins";
 
 export default function useBase() {
     /**
@@ -54,6 +55,29 @@ export default function useBase() {
     }
 
     /**
+     * 로그인 정보가 없을떄 쿠키 로그인 체크후 로그인 사가 연결.
+     */
+    const initialLocalLoginInfo = async () => {
+        const login_state = getCookie("login_state");
+        const login_expires_in = getCookie("login_expires_in");
+        const login_access_token = getCookie("login_access_token");
+        const login_refresh_token = getCookie("login_refresh_token");
+        const login_user_name = getCookie("login_user_name");
+
+        if(login_state === "true") {
+            dispatch(loginLocalinfoToStore({
+                state: "yet",
+                expires_in: Number(login_expires_in),
+                access_token: login_access_token,
+                refresh_token: login_refresh_token,
+                user_name: login_user_name,
+            }));
+        }
+
+
+    }
+
+    /**
      * 전체 체크 시작 함수 콜 및 진행 사항 스테이트 셋
      */
     const initialCheckStart = async () => {
@@ -67,6 +91,7 @@ export default function useBase() {
                 text: "처리 도중 문제가 발생했습니다."
             });
         }
+        await initialLocalLoginInfo();
     }
 
     /**
