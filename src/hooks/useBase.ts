@@ -73,8 +73,6 @@ export default function useBase() {
                 user_name: login_user_name,
             }));
         }
-
-
     }
 
     /**
@@ -87,11 +85,14 @@ export default function useBase() {
             await initialGetSiteData();
         } else {
             // TODO: 처리 횟수 제한 걸렸을떄???
+
             GlobalAlert.default({
                 text: "처리 도중 문제가 발생했습니다."
             });
+
         }
         await initialLocalLoginInfo();
+        setCheckProgress("end");
     }
 
     /**
@@ -100,7 +101,7 @@ export default function useBase() {
     const checkStart = () => {
         setCheckProgress("processing");
         initialCheckStart();
-        setCheckProgress("end");
+        // setCheckProgress("end");
     }
 
     return {
