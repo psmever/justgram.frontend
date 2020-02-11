@@ -31,3 +31,12 @@ export const loginLocalinfoToStore = (payload: loginSagaResponseType) => {
         payload
     }
 }
+
+/**
+ * 로그인 정보 초기화(사용못함 무한루프돔.)
+ */
+export const initialLoginInfo = () => {
+    return {
+        type:ActionType.LOGIN_RESET
+    }
+}

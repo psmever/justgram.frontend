@@ -13,16 +13,24 @@ import image_android from 'assets/images/android.png';
 
 
 
-export default function LoginPage() {
+function LoginPage() {
 
-    const {  loginState, email, password, handleChangePassword, handleChangeEmail, handleSubmit, handleLoginInfoReset } = useLogin();
+    const {
+        loginState,
+        email,
+        password,
+        handleChangePassword,
+        handleChangeEmail,
+        handleSubmit,
+        handleLoginInfoReset
+    } = useLogin();
 
     if(loginState.state === "success") {
         history.push("/feed");
     }
 
     return (
-        <>
+        <div>
             <main id="login">
                 <div className="login__column"><img src={ image_phoneImage } className="login__phone" alt="phoneimage"/></div>
                 <div className="login__column">
@@ -58,6 +66,8 @@ export default function LoginPage() {
             </main>
 
             <FooterComponent />
-        </>
+        </div>
     );
 }
+
+export default LoginPage;

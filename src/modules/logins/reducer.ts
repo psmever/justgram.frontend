@@ -33,7 +33,10 @@ export const loginReducer = createReducer<loginSagaResponseType>(initialState, {
         }
     },
     [ActionType.LOGIN_RESET](state: loginSagaResponseType) {
-        return initialState;
+        return {
+            ...state,
+            state: 'yet'
+        };
     }
 });
 export default loginReducer;
