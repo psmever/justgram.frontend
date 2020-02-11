@@ -29,7 +29,8 @@ const Root = ({
 
     // 체크가 모두 끝나고 리덕스 스토어 까지 완료 되었으면 로딩페이지 숨김용 스테이트 업데이트
     useEffect(() => {
-        if(checkProgress === "end" && sitedataState === "success") {
+        if(checkProgress === "end" || sitedataState === "success") {
+
             setIsLoading(false);
         }
     }, [checkProgress, sitedataState]);
