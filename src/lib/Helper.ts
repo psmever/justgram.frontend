@@ -76,4 +76,5 @@ export function setLoginCookie(payload: any): void {
     setCookie("login_access_token", payload.access_token);
     setCookie("login_refresh_token", payload.refresh_token);
     setCookie("login_user_name", payload.user_name);
+    setCookie("login_profile_active", payload.profile_active);
 }

@@ -63,6 +63,8 @@ export default function useBase() {
         const login_access_token = getCookie("login_access_token");
         const login_refresh_token = getCookie("login_refresh_token");
         const login_user_name = getCookie("login_user_name");
+        const login_profile_active = getCookie("login_profile_active");
+
 
         if(login_state === "true") {
             dispatch(loginLocalinfoToStore({
@@ -71,6 +73,7 @@ export default function useBase() {
                 access_token: login_access_token,
                 refresh_token: login_refresh_token,
                 user_name: login_user_name,
+                profile_active: login_profile_active,
             }));
         }
     }

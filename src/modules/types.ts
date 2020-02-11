@@ -66,6 +66,7 @@ export type loginSagaResponseType = {
     refresh_token?: Nullable<string>;
     message?: Nullable<string>;
     user_name?: Nullable<string>;
+    profile_active?: Nullable<string>;
 };
 
 /**
