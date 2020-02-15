@@ -1,27 +1,17 @@
-import React, { useEffect, FormEvent } from 'react';
+import React, { useEffect } from 'react';
 import { LoginFormComponent } from "resources/components";
 import GlobalAlert  from 'lib/GlobalAlert';
-import { loginSagaResponseType } from 'modules/types';
+import useLogin from "hooks/useLogin";
+export default function LoginContainer() {
 
-interface LoginContainerProps  {
-    loginState? : loginSagaResponseType;
-    email: string;
-    password: string;
-    handleChangePassword: ( user_email: string ) => void;
-    handleChangeEmail: ( user_password: string ) => void;
-    handleSubmit: ( event: FormEvent<HTMLFormElement> ) => void;
-    handleLoginInfoReset: () => void;
-};
-
-export default function LoginContainer({
-    loginState,
-    email,
-    password,
-    handleChangePassword,
-    handleChangeEmail,
-    handleSubmit,
-    handleLoginInfoReset,
-}: LoginContainerProps ) {
+    const {
+        loginState,
+        email,
+        password,
+        handleChangePassword,
+        handleChangeEmail,
+        handleSubmit
+    } = useLogin();
 
     const loginStatus = loginState?.state;
 
@@ -32,22 +22,21 @@ export default function LoginContainer({
                 break;
             }
             case "success" : {
-                GlobalAlert.thenHistoryPush({
-                    text: '로그인에 성공 했습니다.',
-                    push_router: '/feed'
+                GlobalAlert.thenLocationReload({
+                    text: '로그인에 성공 했습니다.'
                 });
                 break;
             }
             case "failure" : {
                 GlobalAlert.error({
-                    text: loginState?.message
+                    text: "로그인에 성공하지 못했습니다."
                 });
 
-                handleLoginInfoReset();
+                // handleLoginInfoReset();
                 break;
             }
         }
-    })
+    }, [loginStatus])
 
     return (
         <>

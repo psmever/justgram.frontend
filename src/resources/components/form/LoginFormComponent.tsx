@@ -11,7 +11,7 @@ interface LoginFormProps  {
 
 function LoginFormComponent( { inputEmail, inputPassword, onChangeUserEmail, onChangeUserPassword, onSubmit }: LoginFormProps ) {
     return (
-        <form action={`/feed`} method="post" className="login__form" onSubmit={ onSubmit }>
+        <form method="post" className="login__form" onSubmit={ onSubmit }>
             <input
                 type="text"
                 name="user_email"
