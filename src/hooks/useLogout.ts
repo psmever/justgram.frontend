@@ -18,7 +18,7 @@ export default function useLogout() {
             removeCookie("login_refresh_token");
             removeCookie("login_user_name");
             // dispatch(initialLoginInfo());
-            history.push('/');
+            window.location.reload();
         } else {
             history.push('/')
         }
