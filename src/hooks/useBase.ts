@@ -10,6 +10,7 @@ import { ProcessStringStatus } from "modules/types";
 import GlobalAlert from "lib/GlobalAlert";
 import { getRootDataAction } from "modules/sitedatas";
 import { loginLocalinfoToStore } from "modules/logins";
+import history from 'routes/History';
 
 export default function useBase() {
     /**
@@ -75,6 +76,8 @@ export default function useBase() {
                 user_name: login_user_name,
                 profile_active: login_profile_active,
             }));
+
+            history.push("/feed");
         }
     }
 
