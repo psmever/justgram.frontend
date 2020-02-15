@@ -5,7 +5,7 @@ import {
     FooterComponent
 } from 'resources/components';
 
-import { EditProfileFormContainer} from 'resources/containers';
+import { EditProfileFormContainer } from 'resources/containers';
 
 import image_avatar from 'assets/images/avatar.jpg';
 
