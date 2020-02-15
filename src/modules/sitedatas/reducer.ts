@@ -7,7 +7,8 @@ import { Action, sitedataSagaResponseType } from 'modules/types';
  * 사이트 기본 리듀서 이니셜 데이터
  */
 const initialState: SiteDataState = {
-    state: 'yet'
+    state: 'yet',
+    code_list: [],
 }
 
 /**
@@ -17,14 +18,15 @@ export const getSiteDataReducer = createReducer<sitedataSagaResponseType>(initia
    [ActionType.GET_ROOTDATA_REQUEST](state: sitedataSagaResponseType){
        return {
            ...state,
-           state: 'yet'
+           state: 'yet',
+           code_list: []
        };
    },
    [ActionType.GET_ROOTDATA_SUCCESS](state: sitedataSagaResponseType,  action: Action<sitedataSagaResponseType>){
         return {
             ...state,
             state: 'success',
-            code: action.payload.code_list,
+            code_list: action.payload.code_list,
 
         };
     },

@@ -1,22 +1,30 @@
 import React, { FormEvent } from 'react';
+import {Nullable, APIResponseSubDataInfoType} from "modules/types";
 
 interface EditProfileFormProps {
-    username: string;
+    userProfile: Nullable<APIResponseSubDataInfoType>
     handleChangeName: (name: string) => void;
     handleChangeWebSite: (website: string) => void;
     handleChangeBio: (bio: string) => void;
     handleChangePhoneNumber: (phonenumber: string) => void;
+    handleChangeGender: ( gender: string ) => void;
     handleSubmit: ( event: FormEvent<HTMLFormElement>) => void;
+    genderCode: [];
 }
 
 function EditProfileFormComponent({
-    username,
+    userProfile,
     handleChangeName,
     handleChangeWebSite,
     handleChangeBio,
     handleChangePhoneNumber,
-    handleSubmit
+    handleChangeGender,
+    handleSubmit,
+    genderCode
 }: EditProfileFormProps) {
+    //TODO: genderCode 3번 바뀜.
+    // console.debug(genderCode);
+    // console.debug(userProfile);
     return (
         <form className="edit-profile__form" onSubmit={ handleSubmit }>
             <div className="form__row">
@@ -26,7 +34,7 @@ function EditProfileFormComponent({
                     type="text"
                     className="form__input"
                     disabled
-                    value={username}
+                    value={userProfile?.user_name}
                 />
             </div>
             <div className="form__row">
@@ -36,6 +44,7 @@ function EditProfileFormComponent({
                     type="text"
                     className="form__input"
                     onChange={ e => handleChangeName(e.target.value)}
+                    value={userProfile?.name}
                 />
             </div>
             <div className="form__row">
@@ -45,6 +54,7 @@ function EditProfileFormComponent({
                     type="url"
                     className="form__input"
                     onChange={ e => handleChangeWebSite(e.target.value)}
+                    value={userProfile?.web_site}
                 />
             </div>
             <div className="form__row">
@@ -52,6 +62,7 @@ function EditProfileFormComponent({
                 <textarea
                     id="bio"
                     onChange={e => handleChangeBio(e.target.value)}
+                    value={userProfile?.bio}
                 ></textarea>
             </div>
             <div className="form__row">
@@ -60,15 +71,23 @@ function EditProfileFormComponent({
                     id="phonenumber"
                     type="tel"
                     className="form__input"
+                    value={userProfile?.phone_number}
                     onChange={ e => handleChangePhoneNumber(e.target.value)}
                 />
             </div>
             <div className="form__row">
                 <label htmlFor="gender" className="form__label">Gender:</label>
-                <select id="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="cant">Can't remember</option>
+                <select id="gender"
+                     onChange={ e => handleChangeGender(e.target.value)}
+                     value={userProfile?.gender}
+                >
+                {genderCode && genderCode.map((item) => {
+                    return (
+                        <option key={item['code_id']} value={item['code_id']}>{item['code_name']}</option>
+                    )
+                })}
+
+
                 </select>
             </div>
             <input type="submit" value="Submit"/>

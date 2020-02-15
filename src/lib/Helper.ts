@@ -78,3 +78,11 @@ export function setLoginCookie(payload: any): void {
     setCookie("login_user_name", payload.user_name);
     setCookie("login_profile_active", payload.profile_active);
 }
+
+export const isEmpty = function(value: any){
+    if( value === "" || value === null || value === undefined || ( value !== null && typeof value === "object" && !Object.keys(value).length ) ){
+      return true
+    }else{
+      return false
+    }
+  };

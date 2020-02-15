@@ -5,24 +5,27 @@ import useEditProfile from 'hooks/useEditProfile';
 function EditProfileFormContainer() {
 
     const {
+        profileData,
         handleChangeBio,
         handleChangeName,
         handleChangePhoneNumber,
         handleChangeWebSite,
-        handleSubmit
+        handleChangeGender,
+        handleSubmit,
+        genderCode
     } = useEditProfile();
 
     return (
-        <>
             <EditProfileFormComponent
-                username="test"
+                userProfile={profileData}
                 handleChangeName={handleChangeName}
                 handleChangeWebSite={handleChangeWebSite}
                 handleChangeBio={handleChangeBio}
                 handleChangePhoneNumber={handleChangePhoneNumber}
+                handleChangeGender={handleChangeGender}
                 handleSubmit={handleSubmit}
+                genderCode={genderCode}
             />
-        </>
     );
 }
 

@@ -38,6 +38,9 @@ function DefaultNavComponent() {
                         <li className="navigation__list-item">
                             <Link to={profileLink} className="navigation__link"><i className="fa fa-user-o fa-lg"></i></Link>
                         </li>
+                        <li className="navigation__list-item">
+                            <Link to="/logout" className="navigation__link"><i className="fa fa-user-o fa-lg"></i></Link>
+                        </li>
                     </ul>
                 </div>
             </nav>

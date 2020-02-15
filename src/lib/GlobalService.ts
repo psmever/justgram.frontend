@@ -2,6 +2,7 @@ import axios ,{
     AxiosInstance,
     AxiosPromise
 } from 'axios';
+import { getCookie } from "lib/Helper";
 
 import { APIResponseType } from 'modules/types';
 
@@ -18,7 +19,8 @@ class GlobalService{
             headers: {
                 "Request-Client-Type": "A02001",
                 "Accept": "application/json",
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization" : "Bearer " + getCookie("login_access_token")
             }
         });
 

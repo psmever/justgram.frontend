@@ -36,7 +36,15 @@ class GlobalAlert {
             text: alertOption.text,
         }).then(() => {
             history.push(push_target);
-        });;
+        });
+    };
+
+    thenLocationReload = (alertOption: alertTypeInterface): void => {
+        this.SwalAlert.fire({
+            text: alertOption.text,
+        }).then(() => {
+            window.location.reload();
+        });
     };
 
     error = (alertOption: alertTypeInterface): void => {
