@@ -3,7 +3,7 @@ import * as React from 'react';
 import {
     DefaultNavComponent,
     FooterComponent
-} from 'resources/components';
+} from 'components';
 
 import image_avatar from 'assets/images/avatar.jpg';
 

@@ -47,8 +47,6 @@ export default function useRegister() {
         }
 
     }
-
-
     return {
         registerResult,
         handleChangePassword,

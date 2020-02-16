@@ -1,6 +1,5 @@
 import React, {useEffect, useState } from "react";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
-import {LoadingPage } from "resources/pages";
 import useBase from "hooks/useBase";
 import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
@@ -16,7 +15,13 @@ import {
     EditProfilePage,
     DefaultPage,
     TestPage,
-} from "resources/pages";
+    LoadingPage,
+} from "components";
+
+
+import {
+    RegisterContainer
+} from "containers";
 
 interface RootProps  {
     Routerhistory: any
@@ -68,7 +73,7 @@ const Root = ({
                     <Route path="/" exact={ true } component={ LoginPage } />
                     <Route path="/login" exact={ true } component={ LoginPage } />
                     <Route path="/logout" exact={ true } component={ LogoutPage } />
-                    <Route path="/register" exact={ true } component={ RegisterPage } />
+                    <Route path="/register" exact={ true } component={ RegisterContainer } />
                     <Route path="/feed" exact={ true } component={ FeedPage } />
                     <Route path="/explode" exact={ true } component={ ExplodePage } />
 
