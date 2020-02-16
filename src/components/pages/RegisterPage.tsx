@@ -12,7 +12,6 @@ import image_loginLogo from 'assets/images/loginLogo.png';
 export default function RegisterPage() {
 
     const {
-        registerResult,
         handleChangePassword,
         handleChangeConfirmPassword,
         handleChangeUserName,
