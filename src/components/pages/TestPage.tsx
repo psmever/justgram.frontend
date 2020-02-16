@@ -1,10 +1,10 @@
 import React, {Fragment} from 'react';
 import {
     Rootcontainer
-} from 'resources/containers';
+} from 'containers';
 import {
     TestComponent
-} from 'resources/components';
+} from 'components';
 
 function TestPage() {
 

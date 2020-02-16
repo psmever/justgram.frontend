@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { RegisterFormComponent } from 'resources/components';
+import { RegisterPage } from 'components';
 
 import useRegister from 'hooks/useRegister';
 import GlobalAlert from 'lib/GlobalAlert';
@@ -7,15 +7,8 @@ import GlobalAlert from 'lib/GlobalAlert';
 export default function RegisterContainer() {
 
     const {
-        registerResult,
-        handleChangePassword,
-        handleChangeConfirmPassword,
-        handleChangeUserName,
-        handleSubmit,
-        handleChangeEmail
+        registerResult
     } = useRegister();
-
-
 
     useEffect(() => {
 
@@ -33,12 +26,8 @@ export default function RegisterContainer() {
 
     return (
         <>
-            <RegisterFormComponent
-                handleChangeEmail={ handleChangeEmail }
-                handleChangeUserName={ handleChangeUserName }
-                handleChangePassword={ handleChangePassword }
-                handleChangeConfirmPassword={ handleChangeConfirmPassword }
-                handleSubmit={ handleSubmit }
+            <RegisterPage
+
              />
         </>
     );

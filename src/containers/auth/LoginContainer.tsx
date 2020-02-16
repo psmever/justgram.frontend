@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { LoginFormComponent } from "resources/components";
+import { LoginFormComponent } from "components";
 import GlobalAlert  from 'lib/GlobalAlert';
 import useLogin from "hooks/useLogin";
 export default function LoginContainer() {

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {
     DefaultNavComponent,
     FooterComponent
-} from 'resources/components';
+} from 'components';
 
 import image_avatar from 'assets/images/avatar.jpg';
 import image_feedPhoto from 'assets/images/feedPhoto.jpg';

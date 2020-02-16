@@ -3,9 +3,9 @@ import * as React from 'react';
 import {
     DefaultNavComponent,
     FooterComponent
-} from 'resources/components';
+} from 'components';
 
-import { EditProfileFormContainer } from 'resources/containers';
+import { EditProfileFormContainer } from 'containers';
 
 import image_avatar from 'assets/images/avatar.jpg';
 

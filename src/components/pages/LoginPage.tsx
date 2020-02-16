@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { LoginContainer } from 'resources/containers';
-import { FooterComponent } from 'resources/components';
+import { LoginContainer } from 'containers';
+import { FooterComponent } from 'components';
 import { Link } from 'react-router-dom';
 
 import image_phoneImage from 'assets/images/phoneImage.png';

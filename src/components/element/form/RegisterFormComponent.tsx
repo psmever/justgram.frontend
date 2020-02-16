@@ -9,19 +9,17 @@ interface RegisterFormProps {
 }
 
 function RegisterFormComponent({
-
     handleChangeUserName,
     handleChangeEmail,
     handleChangePassword,
     handleChangeConfirmPassword,
-    handleSubmit,
-
+    handleSubmit
 }: RegisterFormProps) {
     return (
         <form className="register__form" onSubmit={ handleSubmit }>
             <div className="form__row">
                 <input
-                    id="email"
+                    name="email"
                     type="text"
                     className="form__input2"
                     placeholder="your email"
@@ -30,7 +28,7 @@ function RegisterFormComponent({
             </div>
             <div className="form__row">
                 <input
-                    id="password"
+                    name="password"
                     type="password"
                     className="form__input2"
                     placeholder="password"
@@ -39,7 +37,7 @@ function RegisterFormComponent({
             </div>
             <div className="form__row">
                 <input
-                    id="confirm_password"
+                    name="confirm_password"
                     type="password"
                     className="form__input2"
                     placeholder="password confim"
