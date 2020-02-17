@@ -6,48 +6,68 @@ export default function useRegister() {
 
     const [ registerResult , setRegisterResult] = useState<APIResponseType>({
         state: null,
-        data: null,
+        message: null,
     });
-    const [ username, setUserName] = useState('');
-    const [ email, setEmail] = useState('');
-    const [ password, setPassword ] = useState('');
-    const [ confirmpassword, setConfirmpassword] = useState('');
+
+    const [registerData, setRegisterData] = useState<Partial<{email: string,password: string,confirm_password: string,username: string}>>({
+        email: '',
+        password: '',
+        confirm_password: '',
+        username: ''
+    });
 
     const handleChangeUserName = ( username: string) => {
-        setUserName(username);
+        setRegisterData({
+            ...registerData,
+            username: username
+        });
     }
 
     const handleChangeEmail = ( email: string ) => {
-        setEmail(email);
+        setRegisterData({
+            ...registerData,
+            email: email
+        });
     }
 
     const handleChangePassword = ( password: string) => {
-        setPassword(password);
+        setRegisterData({
+            ...registerData,
+            password: password
+        });
     }
 
     const handleChangeConfirmPassword = ( password: string) => {
-        setConfirmpassword(password);
+        setRegisterData({
+            ...registerData,
+            confirm_password: password
+        });
     }
 
     const handleSubmit = async ( event: FormEvent<HTMLFormElement> ) => {
         event.preventDefault();
+        console.debug(registerData);
 
         const tryResult = await tryRegister({
-            username: username,
-            email: email,
-            password: password,
-            confirm_password: confirmpassword
+            username: registerData.username,
+            email: registerData.email,
+            password: registerData.password,
+            confirm_password: registerData.confirm_password
         });
+
+        console.debug(tryResult);
 
         if(tryResult.state === true || tryResult.state === false){
             setRegisterResult({
                 state: tryResult.state,
-                message: tryResult.message
+                message: (tryResult.message) ? tryResult.message : tryResult.data!.message
             });
         }
-
     }
+
+
     return {
+        registerData,
         registerResult,
         handleChangePassword,
         handleChangeConfirmPassword,

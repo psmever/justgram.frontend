@@ -13,15 +13,7 @@ export default function useEditPRofile() {
     // const [userProfile, setUserProfile] = useState<Partial<{user_name: string, name: string, web_site: string, bio: string, gender: string}>>();
     const [genderCode, setGenderCode] = useState();
 
-    const [profileData, setProfileData] = useState<Partial<{user_name: string, name: string, web_site: string, bio: string, phone_number: string, gender: string}>>({
-        user_name: '',
-        name: '',
-        web_site: '',
-        bio: '',
-        phone_number: '',
-        gender: ''
-    });
-    const [userProfile, setUserProfile] = useState<Nullable<APIResponseSubDataInfoType>>({
+    const [profileData, setProfileData] = useState<Partial<{user_name: string, name: string, web_site: string, bio: string, phone_number: string, gender: string}> | APIResponseSubDataInfoType | undefined>({
         user_name: '',
         name: '',
         web_site: '',
@@ -68,13 +60,6 @@ export default function useEditPRofile() {
 
     const handleSubmit = async ( event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        // console.debug({
-        //     name: name,
-        //     web_site: website,
-        //     bio: bio,
-        //     phone_number: phonenumber,
-        //     gender: gender
-        // });
         const updateResult = await updateProfile({
             name: profileData?.name,
             web_site: profileData?.web_site,
@@ -101,21 +86,12 @@ export default function useEditPRofile() {
     useEffect(() => {
         const getProfileData = async () => {
             const result = await getUserProfile();
-            setUserProfile(result.data);
+            if(result.state === true) {
+                setProfileData(result.data);
+            }
         }
         getProfileData();
     },[]);
-
-    useEffect(() => {
-        setProfileData({
-            user_name: userProfile?.user_name,
-            bio: userProfile?.bio,
-            name: userProfile?.name,
-            web_site: userProfile?.web_site,
-            phone_number: userProfile?.phone_number,
-            gender: userProfile?.gender
-        });
-    }, [userProfile])
 
     return {
         profileData,
@@ -127,6 +103,4 @@ export default function useEditPRofile() {
         handleSubmit,
         genderCode
     };
-
-
 }

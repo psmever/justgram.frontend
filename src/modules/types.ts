@@ -38,7 +38,7 @@ export type ProcessBooleanState = true | false;
  */
 export type APIResponseType = {
     state?: Nullable<boolean>;
-    data?: Nullable<APIResponseSubDataInfoType>;
+    data?: APIResponseSubDataInfoType;
     info?: Nullable<APIResponseSubInfoType>;
     message?: Nullable<string>;
 };
@@ -47,10 +47,10 @@ export type APIResponseType = {
  * 회원 가입 타입 정의
  */
 export type registerRequestType = {
-    username: string,
-    email: string,
-    password: string,
-    confirm_password: string
+    username: string | undefined,
+    email: string | undefined,
+    password: string | undefined,
+    confirm_password: string | undefined,
 }
 
 export type updateProfileRequestType = {

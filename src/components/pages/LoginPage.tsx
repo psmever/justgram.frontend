@@ -1,7 +1,10 @@
-import * as React from 'react';
-import { LoginContainer } from 'containers';
-import { FooterComponent } from 'components';
+import React, {useEffect} from 'react';
+
+import { LoginFormComponent, FooterComponent } from 'components';
 import { Link } from 'react-router-dom';
+import GlobalAlert  from 'lib/GlobalAlert';
+import useLogin from "hooks/useLogin";
+
 
 import image_phoneImage from 'assets/images/phoneImage.png';
 import image_loginLogo from 'assets/images/loginLogo.png';
@@ -9,6 +12,40 @@ import image_ios from 'assets/images/ios.png';
 import image_android from 'assets/images/android.png';
 
 function LoginPage() {
+
+    const {
+        loginState,
+        email,
+        password,
+        handleChangePassword,
+        handleChangeEmail,
+        handleSubmit
+    } = useLogin();
+
+    const loginStatus = loginState?.state;
+
+    useEffect(() => {
+        switch (loginStatus) {
+            case "yet" : {
+
+                break;
+            }
+            case "success" : {
+                GlobalAlert.thenLocationReload({
+                    text: '로그인에 성공 했습니다.'
+                });
+                break;
+            }
+            case "failure" : {
+                GlobalAlert.error({
+                    text: "로그인에 성공하지 못했습니다."
+                });
+
+                // handleLoginInfoReset();
+                break;
+            }
+        }
+    }, [loginStatus])
 
     return (
         <div>
@@ -18,7 +55,13 @@ function LoginPage() {
                     <div className="login__box">
                         <img src={ image_loginLogo } className="login__logo" alt="loginlogo"/>
 
-                        <LoginContainer />
+                        <LoginFormComponent
+                            onChangeUserEmail={ handleChangeEmail }
+                            onChangeUserPassword={ handleChangePassword }
+                            onSubmit={ handleSubmit }
+                            inputEmail={email}
+                            inputPassword={password}
+                         />
 
                         <span className="login__divider">or</span>
                         <a href={`/login`} className="login__link"><i className="fa fa-money"></i>Log in with Facebook</a>

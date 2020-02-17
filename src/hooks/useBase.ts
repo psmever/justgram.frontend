@@ -66,7 +66,6 @@ export default function useBase() {
         const login_user_name = getCookie("login_user_name");
         const login_profile_active = getCookie("login_profile_active");
 
-
         if(login_state === "true") {
             dispatch(loginLocalinfoToStore({
                 state: "yet",

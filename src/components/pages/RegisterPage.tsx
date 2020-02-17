@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, {useEffect} from 'react';
+import GlobalAlert from 'lib/GlobalAlert';
 
 import {
     FooterComponent,
@@ -12,6 +13,8 @@ import image_loginLogo from 'assets/images/loginLogo.png';
 export default function RegisterPage() {
 
     const {
+        registerData,
+        registerResult,
         handleChangePassword,
         handleChangeConfirmPassword,
         handleChangeUserName,
@@ -19,12 +22,33 @@ export default function RegisterPage() {
         handleChangeEmail
     } = useRegister();
 
+    useEffect(() => {
+        console.debug(registerData);
+    }, [registerData])
+
+
+    useEffect(() => {
+
+        if(registerResult.state === true) {
+            GlobalAlert.thenHistoryPush({
+                text: registerResult.message,
+                push_router: '/'
+            });
+        } else if(registerResult.state === false) {
+            GlobalAlert.error({
+                text: registerResult.message
+            });
+        }
+    }, [registerResult])
+
+
     return (
         <>
             <main id="register">
                 <div className="register__column">
                     <div className="register__box">
                         <img src={ image_loginLogo } className="register__logo" alt="register_logo"/>
+
                         <RegisterFormComponent
                             handleChangeUserName={handleChangeUserName}
                             handleChangeEmail={handleChangeEmail}
@@ -32,6 +56,7 @@ export default function RegisterPage() {
                             handleChangeConfirmPassword={handleChangeConfirmPassword}
                             handleSubmit={handleSubmit}
                         />
+
                     </div>
                 </div>
             </main>
