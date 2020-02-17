@@ -18,11 +18,6 @@ import {
     LoadingPage,
 } from "components";
 
-
-import {
-    RegisterContainer
-} from "containers";
-
 interface RootProps  {
     Routerhistory: any
 };
@@ -73,7 +68,7 @@ const Root = ({
                     <Route path="/" exact={ true } component={ LoginPage } />
                     <Route path="/login" exact={ true } component={ LoginPage } />
                     <Route path="/logout" exact={ true } component={ LogoutPage } />
-                    <Route path="/register" exact={ true } component={ RegisterContainer } />
+                    <Route path="/register" exact={ true } component={ RegisterPage } />
                     <Route path="/feed" exact={ true } component={ FeedPage } />
                     <Route path="/explode" exact={ true } component={ ExplodePage } />
 

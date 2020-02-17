@@ -5,11 +5,27 @@ import {
     FooterComponent
 } from 'components';
 
-import { EditProfileFormContainer } from 'containers';
+import useEditProfile from 'hooks/useEditProfile';
+
+import { EditProfileFormComponent } from 'components';
 
 import image_avatar from 'assets/images/avatar.jpg';
 
 function EditProfilePage() {
+
+    const {
+        profileData,
+        handleChangeBio,
+        handleChangeName,
+        handleChangePhoneNumber,
+        handleChangeWebSite,
+        handleChangeGender,
+        handleSubmit,
+        genderCode
+    } = useEditProfile();
+
+
+
     return (
         <div>
 
@@ -22,10 +38,19 @@ function EditProfilePage() {
                         <div className="edit-profile__avatar-container">
                             <img src={ image_avatar } className="edit-profile__avatar" alt="avatar"/>
                         </div>
-                        <h4 className="edit-profile__username">serranoarevalo</h4>
+                        <h4 className="edit-profile__username">{ profileData?.user_name }</h4>
                     </header>
 
-                    <EditProfileFormContainer />
+                    <EditProfileFormComponent
+                        userProfile={profileData}
+                        handleChangeName={handleChangeName}
+                        handleChangeWebSite={handleChangeWebSite}
+                        handleChangeBio={handleChangeBio}
+                        handleChangePhoneNumber={handleChangePhoneNumber}
+                        handleChangeGender={handleChangeGender}
+                        handleSubmit={handleSubmit}
+                        genderCode={genderCode}
+                    />
 
                 </div>
             </main>

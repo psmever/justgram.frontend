@@ -1,8 +1,5 @@
 import React, {Fragment} from 'react';
 import {
-    Rootcontainer
-} from 'containers';
-import {
     TestComponent
 } from 'components';
 
@@ -15,9 +12,7 @@ function TestPage() {
             </div>
 
             <div>
-                <Rootcontainer>
                     <TestComponent/>
-                </Rootcontainer>
             </div>
         </Fragment>
     );
