@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
 import { updateProfile, getUserProfile } from "lib/API";
 import GlobalAlert from "lib/GlobalAlert";
-import {Nullable, APIResponseSubDataInfoType} from "modules/types";
+import { APIResponseSubDataInfoType } from "modules/types";
 
 export default function useEditPRofile() {
 
