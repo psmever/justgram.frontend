@@ -77,6 +77,7 @@ export function setLoginCookie(payload: any): void {
     setCookie("login_refresh_token", payload.refresh_token);
     setCookie("login_user_name", payload.user_name);
     setCookie("login_profile_active", payload.profile_active);
+    setCookie("login_profile_image_url", payload.profile_image_url);
 }
 
 export const isEmpty = function(value: any){

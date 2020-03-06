@@ -1,8 +1,9 @@
-import GlobalService from 'lib/GlobalService';
+import GlobalService, {  uploadProfileImage }  from 'lib/GlobalService';
 import {
     APIResponseType,
     registerRequestType,
     updateProfileRequestType,
+    APICloudinaryResponseType,
 } from 'modules/types';
 
 /**
@@ -55,7 +56,7 @@ export function tryRegister<T>(payload: registerRequestType): Promise<APIRespons
  * @param payload
  */
 export function getUserProfile(): Promise<APIResponseType> {
-    return GlobalService.init('get', '/api/justgram/v1/user/profile/me', {});
+    return GlobalService.init('get', '/api/justgram/v1/profile', {});
 }
 
 /**
@@ -63,12 +64,20 @@ export function getUserProfile(): Promise<APIResponseType> {
  * @param payload
  */
 export function updateProfile<T>(payload: updateProfileRequestType): Promise<APIResponseType> {
-    return GlobalService.init('post', '/api/justgram/v1/user/profile/update', {
+    return GlobalService.init('put', '/api/justgram/v1/profile', {
         name: payload.name,
         web_site: payload.web_site,
         bio: payload.bio,
         phone_number: payload.phone_number,
         gender: payload.gender
     });
+}
 
+export function tryProfileImageUpload(profileImage : string | Blob): Promise<APICloudinaryResponseType> {
+    const imageFormData = new FormData();
+    imageFormData.append('api_key', "679515818162781");
+    imageFormData.append('upload_preset', "justgram_image");
+    imageFormData.append('file', profileImage);
+
+    return uploadProfileImage(imageFormData);
 }

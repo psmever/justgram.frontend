@@ -2,40 +2,29 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import {
     DefaultNavComponent,
-    FooterComponent
+    FooterComponent,
+    ProfilePageHeaderComponent
 } from 'components';
 
-import image_avatar from 'assets/images/avatar.jpg';
+import { getCookie } from "lib/Helper";
+
+
 import image_feedPhoto from 'assets/images/feedPhoto.jpg';
 
 function ProfilePage() {
+
+    const avatar_image = getCookie("login_profile_image_url");
+
     return (
         <div>
+
             <DefaultNavComponent/>
 
             <main id="profile">
-                <header className="profile__header">
-                    <div className="profile__column"><img src={ image_avatar } alt="avatar"/></div>
-                    <div className="profile__column">
-                    <div className="profile__title">
-                        <h3 className="profile__username">serranoarevalo</h3>
-                        <Link to="/profile/edit">Edit profile</Link>
-                        <i className="fa fa-cog fa-lg"></i>
-                    </div>
-                        <ul className="profile__stats">
-                            <li className="profile__stat"><span className="stat__number">333</span> posts</li>
-                            <li className="profile__stat"><span className="stat__number">1234</span> followers</li>
-                            <li className="profile__stat"><span className="stat__number">36</span> following</li>
-                        </ul>
-                        <p className="profile__bio">
-                            <span className="profile__full-name">NicolÃ¡s Serrano ArÃ©valo</span>
-                            Doing whatever and eating Pho Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Ducimus suscipit praesentium eveniet quibusdam ipsam omnis fugit. Tempore voluptates ratione recusandae
-                            natus illo perspiciatis suscipit, odio consequuntur quasi obcaecati minus! Omnis.
-                            <a href={`/profile`}>serranoarevalo.com</a>
-                        </p>
-                    </div>
-                </header>
+                <ProfilePageHeaderComponent
+                    avatar_image={avatar_image}
+                />
+
                 <section className="profile__photos">
                     <div className="profile__photo">
                         <img src={ image_feedPhoto } alt="feedphoto"/>

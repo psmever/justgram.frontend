@@ -3,6 +3,7 @@ import { ActionType } from 'modules/models';
 import createReducer from 'modules/createReducer';
 import { Action, loginSagaResponseType, userLoginRequestType } from 'modules/types';
 
+
 const initialState: LoginState = {
     state: 'yet'
 };
@@ -24,6 +25,7 @@ export const loginReducer = createReducer<loginSagaResponseType>(initialState, {
             refresh_token: action.payload.refresh_token,
             user_name: action.payload.user_name,
             profile_active: action.payload.profile_active,
+            profile_image_url: action.payload.profile_image_url,
         }
     },
     [ActionType.LOGIN_ERROR](state: loginSagaResponseType, action: Action<loginSagaResponseType>) {
