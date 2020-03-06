@@ -15,6 +15,7 @@ import {
     EditProfilePage,
     DefaultPage,
     TestPage,
+    TestPage2,
     LoadingPage,
 } from "components";
 
@@ -53,6 +54,7 @@ const Root = ({
         if(profile_active === "N") {
             history.push('/profile/edit');
         }
+
     }, [checkProgress, sitedataState, profile_active]);
 
     if(isLoading) {
@@ -78,6 +80,7 @@ const Root = ({
                     <Route path="/main" exact={ true } component={ FeedPage } />
                     <Route path="/default" exact={ true } component={ DefaultPage } />
                     <Route path="/test" exact={ true } component={ TestPage } />
+                    <Route path="/test2" exact={ true } component={ TestPage2 } />
                     <Redirect path="*" to="/login" />
                 </Switch>
             </Router>

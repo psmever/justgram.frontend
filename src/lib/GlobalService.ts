@@ -4,10 +4,10 @@ import axios ,{
 } from 'axios';
 import { getCookie } from "lib/Helper";
 
-import { APIResponseType } from 'modules/types';
+import { APIResponseType, APICloudinaryResponseType } from 'modules/types';
 
 
-class GlobalService{
+class GlobalService {
 
     axiosinstance: AxiosInstance;
 
@@ -17,10 +17,12 @@ class GlobalService{
             baseURL: process.env.REACT_APP_API_URL,
             timeout: 20000,
             headers: {
+                "Access-Control-Allow-Origin": "*",
                 "Request-Client-Type": "A02001",
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "Authorization" : "Bearer " + getCookie("login_access_token")
+                "Authorization" : "Bearer " + getCookie("login_access_token"),
+
             }
         });
 
@@ -91,3 +93,21 @@ class GlobalService{
 };
 
 export default new GlobalService();
+
+export const uploadProfileImage = async (profileImage: FormData ): Promise<APICloudinaryResponseType> => {
+    try {
+        const response = await axios.post( "https://api.cloudinary.com/v1_1/smcdnimg/image/upload", profileImage );
+        // console.log('👉 uploadProfileImage data:', response.data);
+        return {
+            state: true,
+            data: response.data,
+            message: '정상 처리 했습니다.'
+        };
+    } catch (e) {
+        return {
+            state: false,
+            error: e,
+            message: '처리중 문제가 발생했습니다.'
+        };
+    }
+}

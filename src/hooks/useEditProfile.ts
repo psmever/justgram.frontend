@@ -58,7 +58,7 @@ export default function useEditPRofile() {
         });
     }
 
-    const handleSubmit = async ( event: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async ( event: FormEvent<HTMLFormElement> ) => {
         event.preventDefault();
         const updateResult = await updateProfile({
             name: profileData?.name,

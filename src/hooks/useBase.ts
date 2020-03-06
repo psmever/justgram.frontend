@@ -76,7 +76,9 @@ export default function useBase() {
                 profile_active: login_profile_active,
             }));
 
-            history.push("/feed");
+            //TODO: 로그인 완료후..??
+            // history.push("/feed");
+            history.push("/profile/edit");
         }
     }
 

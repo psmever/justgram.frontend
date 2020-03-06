@@ -3,6 +3,7 @@ import { userLoginRequestType } from 'modules/types';
 import { tryLogin } from 'lib/API';
 import { setLoginCookie } from 'lib/Helper';
 import { ActionType } from 'modules/models';
+import default_avata from 'assets/images/default_profile.jpg';
 
 /**
  * 로그인 사가.
@@ -15,6 +16,9 @@ function* loginSaga({ payload }: {payload: userLoginRequestType}) {
     if(response.state === true) {
         yield put({ type: ActionType.LOGIN_SUCCESS, payload: response.data });
         // storageManager.set("login_info", response.data); // 로그인 정보 로컬 스토리지에 저장.
+        if(response.data.profile_image_url === null) {
+            response.data.profile_image_url = default_avata;
+        }
         setLoginCookie(response.data); // 쿠키에 저장.
     } else {
         yield put({ type: ActionType.LOGIN_ERROR, payload: response.message });

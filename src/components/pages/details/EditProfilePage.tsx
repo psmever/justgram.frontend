@@ -7,7 +7,7 @@ import {
 
 import useEditProfile from 'hooks/useEditProfile';
 
-import { EditProfileFormComponent } from 'components';
+import { EditProfileFormComponent, ProfileImageComponent } from 'components';
 
 import image_avatar from 'assets/images/avatar.jpg';
 
@@ -35,9 +35,14 @@ function EditProfilePage() {
                 <div className="edit-profile__container">
 
                     <header className="edit-profile__header">
-                        <div className="edit-profile__avatar-container">
+                        {/* <div className="edit-profile__avatar-container">
                             <img src={ image_avatar } className="edit-profile__avatar" alt="avatar"/>
+                        </div> */}
+
+                        <div className="edit-profile__avatar-container">
+                            <ProfileImageComponent/>
                         </div>
+
                         <h4 className="edit-profile__username">{ profileData?.user_name }</h4>
                     </header>
 
