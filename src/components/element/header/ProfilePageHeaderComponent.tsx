@@ -1,5 +1,4 @@
 import React from 'react';
-import image_avatar from 'assets/images/avatar.jpg';
 import { Link } from 'react-router-dom';
 
 interface ProfilePageHeaderComponentProps  {

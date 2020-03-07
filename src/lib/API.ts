@@ -4,6 +4,7 @@ import {
     registerRequestType,
     updateProfileRequestType,
     APICloudinaryResponseType,
+    CloudinaryResponseSubDataInfoType,
 } from 'modules/types';
 
 /**
@@ -72,7 +73,10 @@ export function updateProfile<T>(payload: updateProfileRequestType): Promise<API
         gender: payload.gender
     });
 }
-
+/**
+ * 프로필 이미지 업로드< Cloudinary >.
+ * @param profileImage
+ */
 export function tryProfileImageUpload(profileImage : string | Blob): Promise<APICloudinaryResponseType> {
     const imageFormData = new FormData();
     imageFormData.append('api_key', "679515818162781");
@@ -80,4 +84,8 @@ export function tryProfileImageUpload(profileImage : string | Blob): Promise<API
     imageFormData.append('file', profileImage);
 
     return uploadProfileImage(imageFormData);
+}
+
+export function putUserProfileImage(payload : CloudinaryResponseSubDataInfoType): Promise<APIResponseType> {
+    return GlobalService.init('put', '/api/justgram/v1/profile/image', payload);
 }

@@ -9,8 +9,6 @@ import useEditProfile from 'hooks/useEditProfile';
 
 import { EditProfileFormComponent, ProfileImageComponent } from 'components';
 
-import image_avatar from 'assets/images/avatar.jpg';
-
 function EditProfilePage() {
 
     const {
