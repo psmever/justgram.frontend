@@ -120,26 +120,6 @@ export type Action<T> = {
     payload: T;
 }
 
-/*
-    public_id: "justgram_image/o9avb0xticvedbj0sw2a"
-    version: 1582724588
-    signature: "cf8aa90825483247bacffca3a864da8c9b05d8b0"
-    width: 512
-    height: 342
-    format: "jpg"
-    resource_type: "image"
-    created_at: "2020-02-26T13:43:08Z"
-    tags: []
-    bytes: 44891
-    type: "upload"
-    etag: "d98ce8fb59d10bd3a0b5fbc9aa0dc50e"
-    placeholder: false
-    url: "http://res.cloudinary.com/smcdnimg/image/upload/v1582724588/justgram_image/o9avb0xticvedbj0sw2a.jpg"
-    secure_url: "https://res.cloudinary.com/smcdnimg/image/upload/v1582724588/justgram_image/o9avb0xticvedbj0sw2a.jpg"
-    access_mode: "public"
-    original_filename: "unnamed"
-*/
-
 export type CloudinaryResponseSubDataInfoType = {
     public_id: string;
     version: number;

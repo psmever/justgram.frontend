@@ -1,7 +1,4 @@
-import React, {Fragment} from 'react';
-import {
-    TestComponent
-} from 'components';
+import React from 'react';
 
 const CountButton = React.memo(function CountButton({ onClick, count }) {
     return <button onClick={onClick}>{count}</button>;
