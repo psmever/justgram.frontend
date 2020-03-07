@@ -77,8 +77,12 @@ export default function useBase() {
             }));
 
             //TODO: 로그인 완료후..??
-            // history.push("/feed");
-            history.push("/profile/edit");
+            if(login_profile_active === "Y") {
+                history.push("/feed");
+            } else {
+                history.push("/profile/edit");
+            }
+
         }
     }
 
