@@ -5,6 +5,7 @@ import {
     updateProfileRequestType,
     APICloudinaryResponseType,
     CloudinaryResponseSubDataInfoType,
+    getProfileDataActionRequestType,
 } from 'modules/types';
 
 /**
@@ -86,6 +87,19 @@ export function tryProfileImageUpload(profileImage : string | Blob): Promise<API
     return uploadProfileImage(imageFormData);
 }
 
+/**
+ * 사용자 업로드 프로필 이미지 API 전달.
+ * @param payload
+ */
 export function putUserProfileImage(payload : CloudinaryResponseSubDataInfoType): Promise<APIResponseType> {
     return GlobalService.init('put', '/api/justgram/v1/profile/image', payload);
+}
+
+/**
+ * 사용자 프로필 가지고 오기.
+ * @param payload user_name
+ */
+export function getUserProfilePageData(payload: getProfileDataActionRequestType) {
+    return GlobalService.init('get', `/api/justgram/v1/user/${payload.user_name}/profile`, {});
+
 }

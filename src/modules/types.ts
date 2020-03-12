@@ -43,7 +43,6 @@ export type APIResponseType = {
     message?: Nullable<string>;
 };
 
-
 /**
  * API 기본 응답 타입 정의
  */
@@ -53,8 +52,6 @@ export type APICloudinaryResponseType = {
     message?: Nullable<string>;
     error?: Error;
 };
-
-
 
 /**
  * 회원 가입 타입 정의
@@ -66,6 +63,9 @@ export type registerRequestType = {
     confirm_password: string | undefined,
 }
 
+/**
+ * 사용자 프로필 업데이트 완료 리턴 타입.
+ */
 export type updateProfileRequestType = {
     name: string | undefined,
     web_site: Nullable<string>,
@@ -103,6 +103,7 @@ export type loginSagaResponseType = {
 export type getSiteDataType = {
     code_list: string
 }
+
 /**
  * 리덕스 사가 사이트 기본 정보 타입.
  */
@@ -120,6 +121,9 @@ export type Action<T> = {
     payload: T;
 }
 
+/**
+ * Cloudinary 이미지 업로드 리턴 타입.
+ */
 export type CloudinaryResponseSubDataInfoType = {
     public_id: string;
     version: number;
@@ -139,3 +143,37 @@ export type CloudinaryResponseSubDataInfoType = {
     access_mode: string;
     original_filename: string;
 }
+
+/**
+ * 사용자 프로필 정보 리퀘스트 타입.
+ * 사용자 아이디.
+ */
+export type getProfileDataActionRequestType = {
+    user_name: string;
+}
+
+/**
+ * 사용자 프로필 정보 리스판스 타입.
+ */
+export type getUserProfileDataResponseType = {
+    state: SagaStatus;
+    user_uuid?: string;
+    user_name?: string;
+    email?: string;
+    profile_image?: {
+        url: string;
+        secure_url: string;
+    };
+    count_info?: {
+        posts: number;
+        followers: number;
+        following: number;
+    };
+    profile?: {
+        name: string,
+        web_site: string,
+        bio: string,
+        gender: string,
+    };
+    posts?: [];
+};

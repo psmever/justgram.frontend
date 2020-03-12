@@ -9,7 +9,7 @@ interface EditProfileFormProps {
     handleChangePhoneNumber: (phonenumber: string) => void;
     handleChangeGender: ( gender: string ) => void;
     handleSubmit: ( event: FormEvent<HTMLFormElement>) => void;
-    genderCode: [];
+    genderCode: [] | undefined;
 }
 
 function EditProfileFormComponent({

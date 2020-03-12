@@ -1,18 +1,32 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import {
     DefaultNavComponent,
     FooterComponent,
     ProfilePageHeaderComponent
 } from 'components';
+import useUserProfileData from 'hooks/useUserProfileData';
 
-import { getCookie } from "lib/Helper";
 
 
 import image_feedPhoto from 'assets/images/feedPhoto.jpg';
 
 function ProfilePage() {
+    const {
+        getUserProfileData,
+        profile_state
+    } = useUserProfileData();
 
-    const avatar_image = getCookie("login_profile_image_url");
+    useEffect(() => {
+        getUserProfileData();
+    // TODO::경고 제거.
+    // eslint-disable-next-line react-hooks/exhaustive-deps,
+    },[])
+
+    useEffect(() => {
+        if(profile_state.state === "success") {
+            console.debug(profile_state);
+        }
+    }, [profile_state]);
 
     return (
         <div>
@@ -21,7 +35,11 @@ function ProfilePage() {
 
             <main id="profile">
                 <ProfilePageHeaderComponent
-                    avatar_image={avatar_image}
+                    avatar_image={profile_state.profile_image?.secure_url}
+                    username={profile_state.profile?.name}
+                    count_info={profile_state.count_info}
+                    bio={profile_state.profile?.bio}
+                    web_site={profile_state.profile?.web_site}
                 />
 
                 <section className="profile__photos">
