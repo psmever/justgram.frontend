@@ -4,7 +4,6 @@ import {
     FooterComponent,
     ProfilePageHeaderComponent
 } from 'components';
-// import { getCookie } from "lib/Helper";
 import useUserProfileData from 'hooks/useUserProfileData';
 
 
@@ -12,9 +11,6 @@ import useUserProfileData from 'hooks/useUserProfileData';
 import image_feedPhoto from 'assets/images/feedPhoto.jpg';
 
 function ProfilePage() {
-    // const avatar_image = getCookie("login_profile_image_url");
-
-
     const {
         getUserProfileData,
         profile_state
@@ -22,6 +18,8 @@ function ProfilePage() {
 
     useEffect(() => {
         getUserProfileData();
+    // TODO::경고 제거.
+    // eslint-disable-next-line react-hooks/exhaustive-deps,
     },[])
 
     useEffect(() => {
