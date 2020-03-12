@@ -143,3 +143,37 @@ export type CloudinaryResponseSubDataInfoType = {
     access_mode: string;
     original_filename: string;
 }
+
+/**
+ * 사용자 프로필 정보 리퀘스트 타입.
+ * 사용자 아이디.
+ */
+export type getProfileDataActionRequestType = {
+    user_name: string;
+}
+
+/**
+ * 사용자 프로필 정보 리스판스 타입.
+ */
+export type getUserProfileDataResponseType = {
+    state: SagaStatus;
+    user_uuid?: string;
+    user_name?: string;
+    email?: string;
+    profile_image?: {
+        url: string;
+        secure_url: string;
+    };
+    count_info?: {
+        posts: number;
+        followers: number;
+        following: number;
+    };
+    profile?: {
+        name: string,
+        web_site: string,
+        bio: string,
+        gender: string,
+    };
+    posts?: [];
+};
