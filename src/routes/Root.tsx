@@ -76,6 +76,7 @@ const Root = ({
                     <Route path="/post" exact={ true } component={ PostPage } />
                     <Route path="/explode" exact={ true } component={ ExplodePage } />
 
+                    <Route path="/:id/profile" exact={ true } component={ ProfilePage } />
                     <Route path="/profile" exact={ true } component={ ProfilePage } />
                     <Route path="/profile/edit" exact={ true } component={ EditProfilePage } />
 

@@ -9,10 +9,12 @@ export default function useUserProfileData() {
     const profile_state = useSelector((state: RootState) => state.profilepage_state);
     const dispatch = useDispatch();
 
-    const getUserProfileData = async () => {
-        dispatch(getProfileDataAction({
-            user_name: 'psmever'
-        }))
+    const getUserProfileData = async (user_name: string | undefined) => {
+        if(user_name) {
+            dispatch(getProfileDataAction({
+                user_name: user_name
+            }))
+        }
     }
 
     return {

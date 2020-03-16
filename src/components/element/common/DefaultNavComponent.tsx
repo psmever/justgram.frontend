@@ -1,4 +1,4 @@
-import React, {useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
@@ -11,10 +11,11 @@ function DefaultNavComponent() {
 
     // 로그인 상태가 정상일떄 홈 링크 변경. 로그인 페이지로 보내지 않기 위해.
     const login_state = useSelector((state: RootState) => state.login_state.state);
+    const login_user_name = useSelector((state: RootState) => state.login_state.user_name);
     const loginState = useMemo(() => login_state, [login_state]);
 
     const homeLink = (loginState === "success") ? "/feed" : "/";
-    const profileLink = (loginState === "success") ? "/profile" : "/";
+    const profileLink = (loginState === "success") ? `/${login_user_name}/profile` : "/";
 
     return (
 
