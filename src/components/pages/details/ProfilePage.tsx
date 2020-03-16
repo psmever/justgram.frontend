@@ -5,26 +5,29 @@ import {
     ProfilePageHeaderComponent
 } from 'components';
 import useUserProfileData from 'hooks/useUserProfileData';
-
-
+import { useParams } from 'react-router-dom';
 
 import image_feedPhoto from 'assets/images/feedPhoto.jpg';
 
+interface RouteParams {
+    id: string
+}
+
 function ProfilePage() {
+    const params = useParams<RouteParams>();
     const {
         getUserProfileData,
         profile_state
     } = useUserProfileData();
 
     useEffect(() => {
-        getUserProfileData();
+        getUserProfileData(params.id);
     // TODO::경고 제거.
     // eslint-disable-next-line react-hooks/exhaustive-deps,
     },[])
 
     useEffect(() => {
         if(profile_state.state === "success") {
-            console.debug(profile_state);
         }
     }, [profile_state]);
 

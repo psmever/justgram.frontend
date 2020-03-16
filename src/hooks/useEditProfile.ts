@@ -4,13 +4,12 @@ import { RootState } from 'modules';
 import { updateProfile, getUserProfile } from "lib/API";
 import GlobalAlert from "lib/GlobalAlert";
 import { APIResponseSubDataInfoType } from "modules/types";
+import history from 'routes/History';
 
 export default function useEditPRofile() {
 
     const siteCodedata = useSelector((state: RootState) => state.sitedata.code_list );
-
-    // const [state, setState] = useState<Partial<{email: string, password: string}>>();
-    // const [userProfile, setUserProfile] = useState<Partial<{user_name: string, name: string, web_site: string, bio: string, gender: string}>>();
+    const login_state = useSelector((state: RootState) => state.login_state.state );
     const [genderCode, setGenderCode] = useState();
 
     const [profileData, setProfileData] = useState<Partial<{user_name: string, name: string, web_site: string, bio: string, phone_number: string, gender: string}> | APIResponseSubDataInfoType | undefined>({
@@ -78,16 +77,21 @@ export default function useEditPRofile() {
 
     useEffect(() => {
         setGenderCode(siteCodedata['A21']);
-        // return () => {
-        //     setGenderCode([]);
-        // };
     }, [siteCodedata]);
 
     useEffect(() => {
+        if(login_state === "yet") {
+            history.push("/");
+        }
+
         const getProfileData = async () => {
             const result = await getUserProfile();
             if(result.state === true) {
                 setProfileData(result.data);
+            } else {
+                GlobalAlert.thenLocationReload({
+                    text: "프로필 정보를 가지고 오지 못했습니다."
+                });
             }
         }
         getProfileData();
