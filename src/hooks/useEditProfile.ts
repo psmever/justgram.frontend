@@ -95,7 +95,7 @@ export default function useEditPRofile() {
             }
         }
         getProfileData();
-    },[]);
+    }, [login_state]);
 
     return {
         profileData,
