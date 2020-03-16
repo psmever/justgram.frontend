@@ -58,13 +58,14 @@ function ProfileImageComponent() {
         <div>
             <label htmlFor="upload-button">
             {profileImage.image ? <img src={profileImage.image} alt="profile_image"/> : (
-            <>
-                <span className="fa-stack fa-2x mt-3 mb-2">
-                    <i className="fas fa-circle fa-stack-2x" />
-                    <i className="fas fa-store fa-stack-1x fa-inverse" />
-                </span>
-                <div>Upload your photo</div>
-            </>)}
+                <>
+                    <span className="fa-stack fa-2x mt-3 mb-2">
+                        <i className="fas fa-circle fa-stack-2x" />
+                        <i className="fas fa-store fa-stack-1x fa-inverse" />
+                    </span>
+                    <div>Upload your photo</div>
+                </>
+            )}
             </label>
             <input type="file" id="upload-button" style={{ display: 'none' }} onChange={(e) => handleChange(e)} />
         </div>

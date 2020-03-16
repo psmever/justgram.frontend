@@ -10,11 +10,9 @@ export default function useUserProfileData() {
     const dispatch = useDispatch();
 
     const getUserProfileData = async () => {
-        if(profile_state.state === 'yet' || profile_state.state === 'failure') {
-            dispatch(getProfileDataAction({
-                user_name: 'psmever'
-            }))
-        }
+        dispatch(getProfileDataAction({
+            user_name: 'psmever'
+        }))
     }
 
     return {

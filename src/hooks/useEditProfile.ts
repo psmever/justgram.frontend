@@ -78,9 +78,9 @@ export default function useEditPRofile() {
 
     useEffect(() => {
         setGenderCode(siteCodedata['A21']);
-        return () => {
-            setGenderCode({})
-        };
+        // return () => {
+        //     setGenderCode([]);
+        // };
     }, [siteCodedata]);
 
     useEffect(() => {

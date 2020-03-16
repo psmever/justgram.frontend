@@ -58,7 +58,7 @@ export function tryRegister<T>(payload: registerRequestType): Promise<APIRespons
  * @param payload
  */
 export function getUserProfile(): Promise<APIResponseType> {
-    return GlobalService.init('get', '/api/justgram/v1/profile', {});
+    return GlobalService.init('get', '/api/justgram/v1/my/profile', {});
 }
 
 /**
@@ -66,7 +66,7 @@ export function getUserProfile(): Promise<APIResponseType> {
  * @param payload
  */
 export function updateProfile<T>(payload: updateProfileRequestType): Promise<APIResponseType> {
-    return GlobalService.init('put', '/api/justgram/v1/profile', {
+    return GlobalService.init('put', '/api/justgram/v1/my/profile', {
         name: payload.name,
         web_site: payload.web_site,
         bio: payload.bio,
@@ -92,7 +92,7 @@ export function tryProfileImageUpload(profileImage : string | Blob): Promise<API
  * @param payload
  */
 export function putUserProfileImage(payload : CloudinaryResponseSubDataInfoType): Promise<APIResponseType> {
-    return GlobalService.init('put', '/api/justgram/v1/profile/image', payload);
+    return GlobalService.init('put', '/api/justgram/v1/my/profile/image', payload);
 }
 
 /**
