@@ -23,6 +23,15 @@ function PostPage() {
                                 <textarea className="writer__textarea" defaultValue="글을 등록해 주세요."></textarea>
                             </div>
 
+                            <div className="form__row">
+                                <input
+                                    name="hash_tag"
+                                    type="text"
+                                    className="form__input2"
+                                    placeholder="해시테그 를 입력해 주세요."
+                                />
+                            </div>
+
                             <input type="submit" value="등록" />
                         </form>
                     </div>
