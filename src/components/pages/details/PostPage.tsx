@@ -6,8 +6,6 @@ import {
     PostImageUploadComponent
 } from 'components';
 
-import image_loginLogo from 'assets/images/loginLogo.png';
-
 function PostPage() {
     return (
         <div>
