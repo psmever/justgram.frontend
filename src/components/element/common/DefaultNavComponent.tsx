@@ -30,16 +30,13 @@ function DefaultNavComponent() {
                 <div className="navigation__column">
                     <ul className="navigations__links">
                         <li className="navigation__list-item">
-                            <Link to="/explode" href={`/explode`} className="navigation__link"><i className="fa fa-compass fa-lg"></i></Link>
+                            <Link to="/post" href={`/post`} className="navigation__link"><i className="fa fa-edit fa-lg"></i></Link>
                         </li>
                         <li className="navigation__list-item">
                             <Link to="/explode" className="navigation__link"><i className="fa fa-heart-o fa-lg"></i></Link>
                         </li>
                         <li className="navigation__list-item">
                             <Link to={profileLink} className="navigation__link"><i className="fa fa-user-o fa-lg"></i></Link>
-                        </li>
-                        <li className="navigation__list-item">
-                            <Link to="/logout" className="navigation__link"><i className="fa fa-user-o fa-lg"></i></Link>
                         </li>
                     </ul>
                 </div>

@@ -18,6 +18,7 @@ import "assets/css/profile.css";
 import "assets/css/edit-profile.css";
 import "assets/css/mobile.css";
 import "assets/css/register.css";
+import "assets/css/post.css";
 
 const history = createBrowserHistory();
 

@@ -17,6 +17,7 @@ import {
     TestPage,
     TestPage2,
     LoadingPage,
+    PostPage
 } from "components";
 
 interface RootProps  {
@@ -72,6 +73,7 @@ const Root = ({
                     <Route path="/logout" exact={ true } component={ LogoutPage } />
                     <Route path="/register" exact={ true } component={ RegisterPage } />
                     <Route path="/feed" exact={ true } component={ FeedPage } />
+                    <Route path="/post" exact={ true } component={ PostPage } />
                     <Route path="/explode" exact={ true } component={ ExplodePage } />
 
                     <Route path="/profile" exact={ true } component={ ProfilePage } />
