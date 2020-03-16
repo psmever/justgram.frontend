@@ -94,9 +94,35 @@ class GlobalService {
 
 export default new GlobalService();
 
+/**
+ * Cloudinary 프로필 이미지 업로드.
+ * @param profileImage
+ */
 export const uploadProfileImage = async (profileImage: FormData ): Promise<APICloudinaryResponseType> => {
     try {
         const response = await axios.post( "https://api.cloudinary.com/v1_1/smcdnimg/image/upload", profileImage );
+        // console.log('👉 uploadProfileImage data:', response.data);
+        return {
+            state: true,
+            data: response.data,
+            message: '정상 처리 했습니다.'
+        };
+    } catch (e) {
+        return {
+            state: false,
+            error: e,
+            message: '처리중 문제가 발생했습니다.'
+        };
+    }
+}
+
+/**
+ * Cloudinary 포스트 이미지 업로드.
+ * @param postimage
+ */
+export const uploadPostImage = async (postimage: FormData ): Promise<APICloudinaryResponseType> => {
+    try {
+        const response = await axios.post( "https://api.cloudinary.com/v1_1/smcdnimg/image/upload", postimage );
         // console.log('👉 uploadProfileImage data:', response.data);
         return {
             state: true,

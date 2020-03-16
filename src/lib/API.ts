@@ -81,8 +81,21 @@ export function updateProfile<T>(payload: updateProfileRequestType): Promise<API
 export function tryProfileImageUpload(profileImage : string | Blob): Promise<APICloudinaryResponseType> {
     const imageFormData = new FormData();
     imageFormData.append('api_key', "679515818162781");
-    imageFormData.append('upload_preset', "justgram_image");
+    imageFormData.append('upload_preset', "justgram_profile");
     imageFormData.append('file', profileImage);
+
+    return uploadProfileImage(imageFormData);
+}
+
+/**
+ * post 이미지 업로드 API.
+ * @param postimage
+ */
+export function tryPostImageUpload(postimage : string | Blob): Promise<APICloudinaryResponseType> {
+    const imageFormData = new FormData();
+    imageFormData.append('api_key', "679515818162781");
+    imageFormData.append('upload_preset', "justgram_image");
+    imageFormData.append('file', postimage);
 
     return uploadProfileImage(imageFormData);
 }

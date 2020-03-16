@@ -26,6 +26,7 @@ export { default as DefaultNavComponent } from './element/common/DefaultNavCompo
 export { default as LoginFormComponent } from './element/form/LoginFormComponent';
 export { default as RegisterFormComponent } from './element/form/RegisterFormComponent';
 export { default as EditProfileFormComponent } from './element/form/EditProfileFormComponent';
+export { default as PostFormComponent } from './element/form/PostFormComponent';
 
 
 export { default as ProfileImageComponent } from "./element/image/ProfileImageComponent";
