@@ -3,7 +3,7 @@ import { ActionType } from "./models";
  * 기본 널 타입.
  */
 export type Nullable<T> = T | undefined | null;
-export type SagaStatus = "yet" | "success" | "failure" | "reset";
+export type SagaStatus = "yet" | "request" | "success" | "failure" | "reset";
 
 
 type APIResponseSubInfoType = {
@@ -41,6 +41,31 @@ export type APIResponseType = {
     data?: APIResponseSubDataInfoType;
     info?: Nullable<APIResponseSubInfoType>;
     message?: Nullable<string>;
+    post_id?: number,
+    user_uuid?: string,
+    contents?: string,
+    user_info?: {
+        user_id?: number,
+        user_name?: string,
+        user_email?: string,
+    },
+    tags?: string[],
+    image?: {
+        image_id?: number,
+        cloudinary?: {
+            cloudinary_id?: number,
+            url?: string,
+            secure_url?: string,
+        }
+    },
+    post_datetime?: {
+        create_at?: string,
+        create_at_string?: string,
+        create_time_string?: string,
+        update_at?: string,
+        update_at_string?: string,
+        update_time_string?: string,
+    }
 };
 
 /**
@@ -145,7 +170,7 @@ export type CloudinaryResponseSubDataInfoType = {
 }
 
 /**
- * 사용자 프로필 정보 리퀘스트 타입.
+ * 사용자 프로필 정보 Request 타입.
  * 사용자 아이디.
  */
 export type getProfileDataActionRequestType = {
@@ -153,7 +178,7 @@ export type getProfileDataActionRequestType = {
 }
 
 /**
- * 사용자 프로필 정보 리스판스 타입.
+ * 사용자 프로필 정보 Response 타입.
  */
 export type getUserProfileDataResponseType = {
     state: SagaStatus;
@@ -177,3 +202,56 @@ export type getUserProfileDataResponseType = {
     };
     posts?: [];
 };
+
+/**
+ * post 페이지 스테이트.
+ */
+export type PostsStateType = {
+    post_write: {
+        state: SagaStatus,
+        tags: string[],
+        postimage: any,
+        contents: string,
+    },
+    post_list: {
+        state: SagaStatus,
+        list: []
+    }
+}
+
+/**
+ * post 리퀘스트 타입
+ */
+export type PostRequestType = {
+    upload_image: string;
+    tags: string,
+    contents: string
+}
+
+export type PostListResponseType = {
+    post_id: number,
+    user_uuid: string,
+    contents: string,
+    user_info: {
+        user_id: number,
+        user_name: string,
+        user_email: string,
+    },
+    tags: string[],
+    image: {
+        image_id: number,
+        cloudinary: {
+            cloudinary_id: number,
+            url: string,
+            secure_url: string,
+        }
+    },
+    post_datetime: {
+        create_at: string,
+        create_at_string: string,
+        create_time_string: string,
+        update_at: string,
+        update_at_string: string,
+        update_time_string: string,
+    }
+}

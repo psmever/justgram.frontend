@@ -9,7 +9,9 @@ import {
 import { ProcessStringStatus } from "modules/types";
 import GlobalAlert from "lib/GlobalAlert";
 import { getRootDataAction } from "modules/sitedatas";
+import { getPostListAction } from "modules/posts";
 import { loginLocalinfoToStore } from "modules/logins";
+
 import history from 'routes/History';
 
 export default function useBase() {
@@ -54,6 +56,15 @@ export default function useBase() {
             dispatch(getRootDataAction());
         }
     }
+
+
+    const initialGetPostList = async () => {
+        if(sitedataState === "yet") {
+            dispatch(getPostListAction());
+        }
+    }
+
+
 
     /**
      * 로그인 정보가 없을떄 쿠키 로그인 체크후 로그인 사가 연결.
@@ -103,6 +114,7 @@ export default function useBase() {
 
         }
         await initialLocalLoginInfo();
+        await initialGetPostList();
         setCheckProgress("end");
     }
 

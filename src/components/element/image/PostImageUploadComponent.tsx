@@ -1,6 +1,7 @@
 import React, {ChangeEvent, useCallback, useState, useRef, useEffect} from 'react';
 import { tryPostImageUpload } from "lib/API";
 import { CloudinaryResponseSubDataInfoType } from "modules/types";
+import usePost from "hooks/usePost";
 
 type postImageType = {
     image: string | null,
@@ -8,6 +9,10 @@ type postImageType = {
 };
 
 function PostImageUploadComponent() {
+
+    const {
+        __setPostImage
+    } = usePost();
 
     const [postImage, setPostImage] = useState<postImageType>({image: '', file: ''});
     const [uploadData, setUploadData] = useState<CloudinaryResponseSubDataInfoType>();
@@ -33,7 +38,7 @@ function PostImageUploadComponent() {
 
     useEffect(() =>  {
         if(uploadResult) {
-            console.debug(uploadResult);
+            __setPostImage(uploadResult);
         }
     // TODO: 경고 처리..
     // eslint-disable-next-line react-hooks/exhaustive-deps,
@@ -63,7 +68,7 @@ function PostImageUploadComponent() {
         <div>
             <div>{postImage.image ? <img className="image_preview" src={postImage.image} alt="post_image"/> : <></>}</div>
             <label htmlFor="upload-button">
-                <div className="form__filebox">Click Upload photo</div>
+                <div className="form__filebox">업로드할 이미지를 선택해주세요.</div>
             </label>
             <input type="file" id="upload-button" style={{ display: 'none' }} onChange={(e) => _handleChange(e)}/>
         </div>
