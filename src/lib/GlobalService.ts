@@ -4,7 +4,7 @@ import axios ,{
 } from 'axios';
 import { getCookie } from "lib/Helper";
 
-import { APIResponseType, APICloudinaryResponseType } from 'modules/types';
+import { APIResponseType, APICloudinaryResponseType, PostListResponseType } from 'modules/types';
 
 
 class GlobalService {

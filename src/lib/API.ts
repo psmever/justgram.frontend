@@ -6,6 +6,8 @@ import {
     APICloudinaryResponseType,
     CloudinaryResponseSubDataInfoType,
     getProfileDataActionRequestType,
+    PostRequestType,
+    PostListResponseType,
 } from 'modules/types';
 
 /**
@@ -74,6 +76,7 @@ export function updateProfile<T>(payload: updateProfileRequestType): Promise<API
         gender: payload.gender
     });
 }
+
 /**
  * 프로필 이미지 업로드< Cloudinary >.
  * @param profileImage
@@ -98,6 +101,22 @@ export function tryPostImageUpload(postimage : string | Blob): Promise<APICloudi
     imageFormData.append('file', postimage);
 
     return uploadProfileImage(imageFormData);
+}
+
+/**
+ * Post Data Request
+ * @param payload
+ */
+export function attemptPostDataRequest(payload: PostRequestType): Promise<APIResponseType> {
+    return GlobalService.init('post', `/api/justgram/v1/post`, {
+        upload_image: payload.upload_image,
+        tags: payload.tags,
+        contents: payload.contents
+    });
+}
+
+export function attemptGetPostListRequest(): Promise<APIResponseType> {
+    return GlobalService.init('get', `/api/justgram/v1/post`, {});
 }
 
 /**
