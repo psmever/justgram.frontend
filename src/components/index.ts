@@ -34,4 +34,4 @@ export { default as PostImageUploadComponent } from "./element/image/PostImageUp
 
 export { default as ProfilePageHeaderComponent } from "./element/header/ProfilePageHeaderComponent";
 
-
+export { default as PhotoComponent } from "./element/feed/PhotoComponent";
