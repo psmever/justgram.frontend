@@ -7,7 +7,7 @@ import {
     CloudinaryResponseSubDataInfoType,
     getProfileDataActionRequestType,
     PostRequestType,
-    PostListResponseType,
+    PostsCommentRequestType,
 } from 'modules/types';
 
 /**
@@ -115,6 +115,9 @@ export function attemptPostDataRequest(payload: PostRequestType): Promise<APIRes
     });
 }
 
+/**
+ * 포스트 리스트 가지고 오기.
+ */
 export function attemptGetPostListRequest(): Promise<APIResponseType> {
     return GlobalService.init('get', `/api/justgram/v1/post`, {});
 }
@@ -134,4 +137,12 @@ export function putUserProfileImage(payload : CloudinaryResponseSubDataInfoType)
 export function getUserProfilePageData(payload: getProfileDataActionRequestType) {
     return GlobalService.init('get', `/api/justgram/v1/user/${payload.user_name}/profile`, {});
 
+}
+
+/**
+ * 포트스 댓글 등록.
+ * @param payload
+ */
+export function attemptPostCommentRequest(payload: PostsCommentRequestType): Promise<APIResponseType> {
+    return GlobalService.init('post', `/api/justgram/v1/post/comment`, payload);
 }

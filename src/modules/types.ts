@@ -216,6 +216,9 @@ export type PostsStateType = {
     post_list: {
         state: SagaStatus,
         list: []
+    },
+    post_comment_request: {
+        state: SagaStatus,
     }
 }
 
@@ -228,6 +231,11 @@ export type PostRequestType = {
     contents: string
 }
 
+export type PostsCommentRequestType = {
+    post_id: number,
+    contents: string
+}
+
 export type PostListResponseType = {
     post_id: number,
     user_uuid: string,
@@ -236,8 +244,12 @@ export type PostListResponseType = {
         user_id: number,
         user_name: string,
         user_email: string,
+        user_profile_image: string,
     },
-    tags: string[],
+    tags: {
+        list: string[],
+        string: string,
+    },
     image: {
         image_id: number,
         cloudinary: {
@@ -253,5 +265,16 @@ export type PostListResponseType = {
         update_at: string,
         update_at_string: string,
         update_time_string: string,
+    },
+    comments: PostListCommentType[]
+}
+
+export type PostListCommentType = {
+    comment_id: number,
+    user_uuid: string,
+    contents: string,
+    created_at: string,
+    user: {
+        user_name: string
     }
 }
