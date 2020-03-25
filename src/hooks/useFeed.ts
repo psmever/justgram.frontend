@@ -33,7 +33,7 @@ export default function useFeed() {
         if(post_comment_request_state === 'success') {
             dispatch(getPostListAction());
         }
-    }, [post_comment_request_state])
+    })
 
     return {
         __post_state,

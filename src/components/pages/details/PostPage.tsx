@@ -20,8 +20,6 @@ function PostPage() {
 
 
     useEffect(() =>  {
-        console.debug(__post_state);
-
         if(__post_state === "failure") {
             GlobalAlert.error({
                 text: "처리중 문제가 발생했습니다. 잠시후 다시 시도해 주세요."
