@@ -13,7 +13,10 @@ const initialState: PostsState = {
     post_list: {
         state: 'yet',
         list: []
-    }
+    },
+    post_comment_request: {
+        state: 'yet'
+    },
 }
 
 export const postsReducer = createReducer(initialState, {
@@ -96,11 +99,36 @@ export const postsReducer = createReducer(initialState, {
         return {
             ...state,
             post_list : {
-                state: 'request',
+                state: 'success',
                 list: action.payload
             }
         }
+    },
+    [ActionType.POST_COMMENT_DATA_REQUEST](state:PostsStateType) {
+        return {
+            ...state,
+            post_comment_request: {
+                state: 'request'
+            }
+        }
+    },
+    [ActionType.POST_COMMENT_DATA_SUCCESS](state:PostsStateType, action:Action<APIResponseType>) {
+        return {
+            ...state,
+            post_comment_request: {
+                state: 'success',
+            }
+        }
+    },
+    [ActionType.POST_COMMENT_DATA_ERROR](state:PostsStateType, action:Action<APIResponseType>) {
+        return {
+            ...state,
+            post_comment_request : {
+                state: 'yet'
+            }
+        }
     }
+
 });
 
 export default postsReducer;

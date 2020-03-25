@@ -8,6 +8,7 @@ import {
     getProfileDataActionRequestType,
     PostRequestType,
     PostListResponseType,
+    PostsCommentRequestType,
 } from 'modules/types';
 
 /**
@@ -134,4 +135,8 @@ export function putUserProfileImage(payload : CloudinaryResponseSubDataInfoType)
 export function getUserProfilePageData(payload: getProfileDataActionRequestType) {
     return GlobalService.init('get', `/api/justgram/v1/user/${payload.user_name}/profile`, {});
 
+}
+
+export function attemptPostCommentRequest(payload: PostsCommentRequestType): Promise<APIResponseType> {
+    return GlobalService.init('post', `/api/justgram/v1/post/comment`, payload);
 }

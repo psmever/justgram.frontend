@@ -24,7 +24,7 @@ function PostPage() {
 
         if(__post_state === "failure") {
             GlobalAlert.error({
-                text: "철리중 문제가 발생했습니다. 잠시후 다시 시도해 주세요."
+                text: "처리중 문제가 발생했습니다. 잠시후 다시 시도해 주세요."
             });
         } else if(__post_state === "success") {
             GlobalAlert.thenHistoryPush({

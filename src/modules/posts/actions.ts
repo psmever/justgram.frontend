@@ -1,5 +1,5 @@
 import { ActionType } from 'modules/models';
-import {CloudinaryResponseSubDataInfoType} from 'modules/types';
+import {CloudinaryResponseSubDataInfoType, PostsCommentRequestType} from 'modules/types';
 
 export const setPostTagsAction = (payload: string) => {
     return {
@@ -32,5 +32,12 @@ export const postRequestAction = (payload: any) => {
 export const getPostListAction = () => {
     return {
         type: ActionType.GET_POST_LIST_REQUEST
+    }
+}
+
+export const requestPostCommentAction = (payload: PostsCommentRequestType) => {
+    return {
+        type: ActionType.POST_COMMENT_DATA_REQUEST,
+        payload
     }
 }
