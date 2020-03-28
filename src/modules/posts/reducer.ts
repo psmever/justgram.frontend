@@ -124,7 +124,7 @@ export const postsReducer = createReducer(initialState, {
         return {
             ...state,
             post_comment_request : {
-                state: 'yet'
+                state: 'failure'
             }
         }
     }

@@ -31,7 +31,8 @@ export default function useFeed() {
 
     useEffect(() => {
         if(post_comment_request_state === 'success') {
-            dispatch(getPostListAction());
+            // TODO: 루한루프 돌아서 임시로 막아놈.
+            // dispatch(getPostListAction());
         }
     })
 
