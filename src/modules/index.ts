@@ -12,6 +12,9 @@ import getProfileDataSaga from './profilepage/sagas';
 import posts, { PostsState } from './posts';
 import postStateSaga from './posts/sagas';
 
+import follows, { FollowsState } from './follows';
+import followsSaga from './follows/sagas';
+
 
 export interface RootState {
     router: RouterState
@@ -19,6 +22,7 @@ export interface RootState {
     login_state: LoginState
     profilepage_state : GetProfileDataState
     posts_state : PostsState
+    follows_state : FollowsState
 }
 
 export const createRootReducer = (history: History) => combineReducers({
@@ -26,7 +30,8 @@ export const createRootReducer = (history: History) => combineReducers({
     sitedata: sitedatas,
     login_state: logins,
     profilepage_state : profilepages,
-    posts_state : posts
+    posts_state : posts,
+    follows_state : follows,
 });
 
 export function* rootSaga() {
@@ -35,7 +40,8 @@ export function* rootSaga() {
             ...loginSaga,
             ...getSiteDataSaga,
             ...getProfileDataSaga,
-            ...postStateSaga
+            ...postStateSaga,
+            ...followsSaga,
         ]
     );
 }

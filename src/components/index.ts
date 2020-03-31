@@ -14,6 +14,9 @@ export { default as ExplodePage } from './pages/details/ExplodePage';
 export { default as ProfilePage } from './pages/details/ProfilePage';
 export { default as EditProfilePage } from './pages/details/EditProfilePage';
 
+export { default as FollowingPage } from './pages/details/FollowingPage';
+export { default as FollowersPage } from './pages/details/FollowersPage';
+
 
 // 컴포넌트.
 export { default as TestButtonComponent } from './element/TestButtonComponent';
@@ -31,8 +34,12 @@ export { default as PostFormComponent } from './element/form/PostFormComponent';
 
 export { default as ProfileImageComponent } from "./element/image/ProfileImageComponent";
 export { default as PostImageUploadComponent } from "./element/image/PostImageUploadComponent";
+export { default as ProfilePostListComponent } from "./element/image/ProfilePostListComponent";
 
 export { default as ProfilePageHeaderComponent } from "./element/header/ProfilePageHeaderComponent";
 
 export { default as PhotoComponent } from "./element/feed/PhotoComponent";
 export { default as CommentComponent } from "./element/feed/CommentComponent";
+
+export { default as ExplodeListElement } from './element/explode/ExplodeListElement';
+export { default as FollowListElement } from './element/explode/FollowListElement';

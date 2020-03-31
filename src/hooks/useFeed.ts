@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "modules";
-import { requestPostCommentAction, getPostListAction  } from "modules/posts";
+import { requestPostCommentAction } from "modules/posts";
 import { PostsCommentRequestType } from "modules/types";
 
 

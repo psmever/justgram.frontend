@@ -13,7 +13,6 @@ import image_loginLogo from 'assets/images/loginLogo.png';
 export default function RegisterPage() {
 
     const {
-        registerData,
         registerResult,
         handleChangePassword,
         handleChangeConfirmPassword,
@@ -21,11 +20,6 @@ export default function RegisterPage() {
         handleSubmit,
         handleChangeEmail
     } = useRegister();
-
-    useEffect(() => {
-        console.debug(registerData);
-    }, [registerData])
-
 
     useEffect(() => {
 

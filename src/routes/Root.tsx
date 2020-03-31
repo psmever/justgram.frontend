@@ -17,7 +17,9 @@ import {
     TestPage,
     TestPage2,
     LoadingPage,
-    PostPage
+    PostPage,
+    FollowersPage,
+    FollowingPage
 } from "components";
 
 interface RootProps  {
@@ -76,9 +78,11 @@ const Root = ({
                     <Route path="/post" exact={ true } component={ PostPage } />
                     <Route path="/explode" exact={ true } component={ ExplodePage } />
 
-                    <Route path="/:id/profile" exact={ true } component={ ProfilePage } />
-                    <Route path="/profile" exact={ true } component={ ProfilePage } />
+                    <Route path="/:user_name/profile" exact={ true } component={ ProfilePage } />
                     <Route path="/profile/edit" exact={ true } component={ EditProfilePage } />
+
+                    <Route path="/:user_name/followers" exact={ true } component={ FollowersPage } />
+                    <Route path="/:user_name/following" exact={ true } component={ FollowingPage } />
 
                     <Route path="/main" exact={ true } component={ FeedPage } />
                     <Route path="/default" exact={ true } component={ DefaultPage } />

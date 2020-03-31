@@ -83,7 +83,7 @@ class GlobalService {
                 return this.promise<APIResponseType>(this.axiosinstance.put(url, params));
             }
             case 'delete': {
-                return this.promise<APIResponseType>(this.axiosinstance.put(url, params));
+                return this.promise<APIResponseType>(this.axiosinstance.delete(url, params));
             }
             default:
                 return this.error("Should never get here");

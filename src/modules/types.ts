@@ -20,11 +20,32 @@ export type APIResponseSubDataInfoType = {
     notice?: Nullable<string>;
     code_list?: string[],
     user_name?: string,
+    user_profile_name?: string,
     name?: string,
     web_site?: string,
     bio?: string,
     phone_number?: string,
     gender?: string,
+    user_id?: number,
+    user_uuid?: number,
+    email?: string,
+    following_list?: FollowingListType[],
+    followers_list?: FollowingListType[],
+}
+
+export type followingAPIResponseType = {
+    user_id: number,
+    user_uuid: string,
+    user_name: string,
+    email: string,
+    following_list: FollowingListType[]
+}
+export type followersAPIResponseType = {
+    user_id: number,
+    user_uuid: string,
+    user_name: string,
+    email: string,
+    followers_list: FollowersListType[]
 }
 
 /**
@@ -180,6 +201,18 @@ export type getProfileDataActionRequestType = {
 /**
  * 사용자 프로필 정보 Response 타입.
  */
+export type getUserProfileDataResponsePostType = {
+    post_id: number,
+    image: {
+        id: number,
+        url: string,
+        secure_url: string,
+    },
+    count: {
+        comment_count: number,
+        heart_count: number
+    }
+}
 export type getUserProfileDataResponseType = {
     state: SagaStatus;
     user_uuid?: string;
@@ -200,7 +233,7 @@ export type getUserProfileDataResponseType = {
         bio: string,
         gender: string,
     };
-    posts?: [];
+    posts?: getUserProfileDataResponsePostType[]
 };
 
 /**
@@ -218,6 +251,51 @@ export type PostsStateType = {
         list: []
     },
     post_comment_request: {
+        state: SagaStatus,
+    }
+}
+
+export type UserFollowListRequestType = {
+    user_name : string
+}
+
+export type UserFollowRequestType = {
+    target_user_id : number
+}
+
+export type FollowersListType = {
+    user_id: number,
+    created_at: string,
+    user_name: string,
+    user_profile_name: string,
+    user_uuid: string,
+    profile_image: string,
+    mefollowing: boolean
+}
+
+export type FollowingListType = {
+    user_id: number,
+    created_at: string,
+    user_name: string,
+    user_uuid: string,
+    user_profile_name: string,
+    profile_image: string,
+    targetfollowing: boolean
+}
+
+export type FollowsStateType = {
+    followers: {
+        state: SagaStatus,
+        list: FollowersListType[],
+    },
+    following: {
+        state: SagaStatus,
+        list: FollowingListType[],
+    },
+    follow: {
+        state: SagaStatus,
+    }
+    unfollow: {
         state: SagaStatus,
     }
 }
