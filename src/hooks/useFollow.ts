@@ -28,14 +28,12 @@ export default function useExplores() {
     }
 
     const __handleClickUnFollowButton = (user_id: number) => {
-        console.debug('__handleClickUnFollowButton');
         dispatch(requestUserUnFollowAction({
             target_user_id: user_id
         }));
     }
 
     const __handleClickFollowButton = (user_id: number) => {
-        console.debug('__handleClickFollowButton');
         dispatch(requestUserFollowAction({
             target_user_id: user_id
         }));

@@ -23,8 +23,6 @@ function EditProfileFormComponent({
     genderCode
 }: EditProfileFormProps) {
     //TODO: genderCode 3번 바뀜.
-    // console.debug(genderCode);
-    // console.debug(userProfile);
     return (
         <form className="edit-profile__form" onSubmit={ handleSubmit }>
             <div className="form__row">

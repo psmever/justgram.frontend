@@ -15,9 +15,6 @@ function RegisterFormComponent({
     handleChangeConfirmPassword,
     handleSubmit
 }: RegisterFormProps) {
-
-    console.debug("RegisterFormComponent");
-
     return (
         <form className="register__form" onSubmit={ handleSubmit }>
             <div className="form__row">

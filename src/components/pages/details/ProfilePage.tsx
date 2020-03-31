@@ -29,8 +29,6 @@ function ProfilePage() {
 
     useEffect(() => {
         if(profile_state.state === "success") {
-
-            // console.debug(profile_state.posts);
         }
     }, [profile_state]);
 

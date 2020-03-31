@@ -26,7 +26,6 @@ function FollowListElement( {list_type, user_id, profile_image, user_name, user_
                     (function(){
                         switch(list_type) {
                             case "followers" :
-                                console.debug(followstate);
                                 if(followstate) {
                                     return <div className="explore__user-column"><button onClick={() => clickUnFollowButton(user_id)}>unFollow</button></div>
                                 } else {

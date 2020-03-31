@@ -162,11 +162,9 @@ export function attemptGetFollowingListRequest(payload: UserFollowListRequestTyp
 }
 
 export function attempRequestUserFollow(payload: UserFollowRequestType): Promise<APIResponseType> {
-    console.debug(payload);
     return GlobalService.init('post', '/api/justgram/v1/user/follow', payload);
 }
 
 export function attempRequestUserUnFollow(payload: UserFollowRequestType): Promise<APIResponseType> {
-    console.debug(payload);
     return GlobalService.init('delete', '/api/justgram/v1/user/follow', {data: payload});
 }

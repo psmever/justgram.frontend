@@ -46,16 +46,12 @@ export default function useRegister() {
 
     const handleSubmit = async ( event: FormEvent<HTMLFormElement> ) => {
         event.preventDefault();
-        console.debug(registerData);
-
         const tryResult = await tryRegister({
             username: registerData.username,
             email: registerData.email,
             password: registerData.password,
             confirm_password: registerData.confirm_password
         });
-
-        console.debug(tryResult);
 
         if(tryResult.state === true || tryResult.state === false){
             setRegisterResult({
