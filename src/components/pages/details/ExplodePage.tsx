@@ -1,57 +1,34 @@
-import * as React from 'react';
+import React from 'react';
 
 import {
     DefaultNavComponent,
-    FooterComponent
+    FooterComponent,
 } from 'components';
 
-import image_avatar from 'assets/images/avatar.jpg';
 
 function ExplodePage() {
+
     return (
         <div>
             <DefaultNavComponent/>
-
-
             <main id="explore">
                 <ul className="explore__users">
-                    <li className="explore__user">
-                        <div className="explore__user-column">
-                            <img src={ image_avatar } className="explore__avatar" alt="avatar"/>
-                            <div className="explore__info">
-                                <span className="explore__username">inthetiger</span>
-                                <span className="explore__full-name">Lynn Park</span>
-                            </div>
-                        </div>
-                        <div className="explore__user-column"><button>Follow</button></div>
-                    </li>
-                    <li className="explore__user">
-                        <div className="explore__user-column">
-                            <img src={ image_avatar }  className="explore__avatar" alt="avatar"/>
-                            <div className="explore__info">
-                                <span className="explore__username">inthetiger</span>
-                                <span className="explore__full-name">Lynn Park</span>
-                            </div>
-                        </div>
-                        <div className="explore__user-column"><button>Follow</button></div>
-                    </li>
+                    {/* {list_state === "success" && followList.map((e: any, i: number) =>
+                            <ExplodeListElement
+                                key={i}
+                                user_id={e.user_id}
+                                profile_image = {e.profile_image}
+                                user_name = {e.user_name}
+                                user_profile_name  = {e.user_profile_name}
+                                mefollowing = {e.mefollowing}
+                                clickUnFollowButton = {__handleClickUnFollowButton}
+                                clickFollowButton = {__handleClickUnFollowButton}
+                            />
+                        )
 
-                    <li className="explore__user">
-                        <div className="explore__user-column">
-                            <img src={ image_avatar }  className="explore__avatar" alt="avatar"/>
-                            <div className="explore__info">
-                                <span className="explore__username">inthetiger</span>
-                                <span className="explore__full-name">Lynn Park</span>
-                            </div>
-                        </div>
-                        <div className="explore__user-column"><button>UnFollow</button></div>
-                    </li>
+                    } */}
                 </ul>
             </main>
-
-
-
-
             <FooterComponent/>
         </div>
     );

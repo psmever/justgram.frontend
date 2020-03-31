@@ -8,6 +8,8 @@ import {
     getProfileDataActionRequestType,
     PostRequestType,
     PostsCommentRequestType,
+    UserFollowRequestType,
+    UserFollowListRequestType,
 } from 'modules/types';
 
 /**
@@ -136,7 +138,6 @@ export function putUserProfileImage(payload : CloudinaryResponseSubDataInfoType)
  */
 export function getUserProfilePageData(payload: getProfileDataActionRequestType) {
     return GlobalService.init('get', `/api/justgram/v1/user/${payload.user_name}/profile`, {});
-
 }
 
 /**
@@ -145,4 +146,27 @@ export function getUserProfilePageData(payload: getProfileDataActionRequestType)
  */
 export function attemptPostCommentRequest(payload: PostsCommentRequestType): Promise<APIResponseType> {
     return GlobalService.init('post', `/api/justgram/v1/post/comment`, payload);
+}
+
+
+/**
+ * Follow
+ * @param payload
+ */
+export function attemptGetFollowersListRequest(payload: UserFollowListRequestType): Promise<APIResponseType> {
+    return GlobalService.init('get', `/api/justgram/v1/user/${payload.user_name}/followers`, {});
+}
+
+export function attemptGetFollowingListRequest(payload: UserFollowListRequestType): Promise<APIResponseType> {
+    return GlobalService.init('get', `/api/justgram/v1/user/${payload.user_name}/following`, {});
+}
+
+export function attempRequestUserFollow(payload: UserFollowRequestType): Promise<APIResponseType> {
+    console.debug(payload);
+    return GlobalService.init('post', '/api/justgram/v1/user/follow', payload);
+}
+
+export function attempRequestUserUnFollow(payload: UserFollowRequestType): Promise<APIResponseType> {
+    console.debug(payload);
+    return GlobalService.init('delete', '/api/justgram/v1/user/follow', {data: payload});
 }
