@@ -252,6 +252,12 @@ export type PostsStateType = {
     },
     post_comment_request: {
         state: SagaStatus,
+    },
+    post_add_heart_request: {
+        state: SagaStatus,
+    },
+    post_delete_heart_request: {
+        state: SagaStatus,
     }
 }
 
@@ -318,6 +324,8 @@ export type PostListResponseType = {
     post_id: number,
     user_uuid: string,
     contents: string,
+    myheart: boolean,
+    hearts_count: number,
     user_info: {
         user_id: number,
         user_name: string,
@@ -355,4 +363,8 @@ export type PostListCommentType = {
     user: {
         user_name: string
     }
+}
+
+export type PostHeartRequestType = {
+    post_id: number
 }

@@ -1,5 +1,5 @@
 import { ActionType } from 'modules/models';
-import {CloudinaryResponseSubDataInfoType, PostsCommentRequestType} from 'modules/types';
+import * as _TYPES from 'modules/types';
 
 export const setPostTagsAction = (payload: string) => {
     return {
@@ -8,7 +8,7 @@ export const setPostTagsAction = (payload: string) => {
     };
 }
 
-export const setPostImageAction = (payload: CloudinaryResponseSubDataInfoType) => {
+export const setPostImageAction = (payload: _TYPES.CloudinaryResponseSubDataInfoType) => {
     return {
         type:ActionType.POST_SET_IMAGE_START,
         payload
@@ -35,9 +35,23 @@ export const getPostListAction = () => {
     }
 }
 
-export const requestPostCommentAction = (payload: PostsCommentRequestType) => {
+export const requestPostCommentAction = (payload: _TYPES.PostsCommentRequestType) => {
     return {
         type: ActionType.POST_COMMENT_DATA_REQUEST,
+        payload
+    }
+}
+
+export const requestPostAddHeartAction = (payload: _TYPES.PostHeartRequestType) => {
+    return {
+        type: ActionType.POST_HEART_ADD_REQUEST,
+        payload
+    }
+}
+
+export const requestPostDeleteHeartAction = (payload: _TYPES.PostHeartRequestType) => {
+    return {
+        type: ActionType.POST_HEART_DELETE_REQUEST,
         payload
     }
 }

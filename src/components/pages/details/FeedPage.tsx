@@ -17,7 +17,9 @@ function FeedPage() {
         __post_list,
         __handleChangeComment,
         __handleSaveComment,
-        post_comment_request_state
+        post_comment_request_state,
+        __handleClickAddHeart,
+        __handleClickDeleteHeart,
     } = useFeed();
 
     useEffect(() => {
@@ -45,6 +47,8 @@ function FeedPage() {
                             feeds={e}
                             handleChangeComment={__handleChangeComment}
                             handleSaveComment={__handleSaveComment}
+                            handleClickAddHeart={__handleClickAddHeart}
+                            handleClickDeleteHeart={__handleClickDeleteHeart}
                         />
                         )
                     }

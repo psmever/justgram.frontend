@@ -17,6 +17,12 @@ const initialState: PostsState = {
     post_comment_request: {
         state: 'yet'
     },
+    post_add_heart_request: {
+        state: 'yet'
+    },
+    post_delete_heart_request: {
+        state: 'yet'
+    },
 }
 
 export const postsReducer = createReducer(initialState, {
@@ -124,6 +130,54 @@ export const postsReducer = createReducer(initialState, {
         return {
             ...state,
             post_comment_request : {
+                state: 'failure'
+            }
+        }
+    },
+    [ActionType.POST_HEART_ADD_REQUEST](state:PostsStateType) {
+        return {
+            ...state,
+            post_add_heart_request: {
+                state: 'request'
+            }
+        }
+    },
+    [ActionType.POST_HEART_ADD_SUCCESS](state:PostsStateType, action:Action<APIResponseType>) {
+        return {
+            ...state,
+            post_add_heart_request: {
+                state: 'success',
+            }
+        }
+    },
+    [ActionType.POST_HEART_ADD_ERROR](state:PostsStateType, action:Action<APIResponseType>) {
+        return {
+            ...state,
+            post_add_heart_request : {
+                state: 'failure'
+            }
+        }
+    },
+    [ActionType.POST_HEART_DELETE_REQUEST](state:PostsStateType) {
+        return {
+            ...state,
+            post_delete_heart_request: {
+                state: 'request'
+            }
+        }
+    },
+    [ActionType.POST_HEART_DELETE_SUCCESS](state:PostsStateType, action:Action<APIResponseType>) {
+        return {
+            ...state,
+            post_delete_heart_request: {
+                state: 'success',
+            }
+        }
+    },
+    [ActionType.POST_HEART_DELETE_ERROR](state:PostsStateType, action:Action<APIResponseType>) {
+        return {
+            ...state,
+            post_delete_heart_request : {
                 state: 'failure'
             }
         }

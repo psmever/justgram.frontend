@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "modules";
-import { requestPostCommentAction } from "modules/posts";
+import * as _posts from "modules/posts";
 import { PostsCommentRequestType } from "modules/types";
 
 
@@ -26,7 +26,22 @@ export default function useFeed() {
             post_id : post_id,
             contents : postComment
         }
-        dispatch(requestPostCommentAction(dataObject));
+        dispatch(_posts.requestPostCommentAction(dataObject));
+    }
+
+    const __handleClickAddHeart = (post_id: number) => {
+        console.debug('__handleClickAddHeart',post_id);
+
+        dispatch(_posts.requestPostAddHeartAction({
+            post_id:post_id
+        }));
+    }
+
+    const __handleClickDeleteHeart = (post_id: number) => {
+        console.debug('__handleClickDeleteHeart',post_id);
+        dispatch(_posts.requestPostDeleteHeartAction({
+            post_id:post_id
+        }));
     }
 
     useEffect(() => {
@@ -41,6 +56,8 @@ export default function useFeed() {
         __post_list,
         __handleChangeComment,
         __handleSaveComment,
-        post_comment_request_state
+        post_comment_request_state,
+        __handleClickAddHeart,
+        __handleClickDeleteHeart,
     }
 }
