@@ -54,12 +54,14 @@ class GlobalService {
                     } else if (error.request) {
                         resolve({
                             status: 444,
-                            message: "The request was made but no response was received"
+                            // message: "The request was made but no response was received"
+                            message: "문제가 발생 했습니다. 잠시루 다시 시도해 주세요. (code:444)"
                         });
                     } else {
                         resolve({
                             status: 417,
-                            message: "Something happened in setting up the request that triggered an Error"
+                            // message: "Something happened in setting up the request that triggered an Error"
+                            message: "문제가 발생 했습니다. 잠시루 다시 시도해 주세요. (code:417)"
                         });
                     }
                 });
