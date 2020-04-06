@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {MouseEvent} from 'react';
 import { CommentComponent } from "components";
 import { PostListResponseType, PostListCommentType} from "modules/types";
 
 interface PhotoProps {
     feeds: PostListResponseType
-    handleChangeComment: ( comment_string: string) => void;
-    handleSaveComment: ( post_id: number) => void;
+    handleChangeComment: ( comment_string: string, post_id: number ) => void;
+    handleSaveComment: ( e: MouseEvent, post_id: number) => void;
     handleClickAddHeart: ( post_id: number) => void;
     handleClickDeleteHeart: ( post_id: number) => void;
 }
@@ -50,8 +50,8 @@ function PhotoComponent({ feeds, handleChangeComment, handleSaveComment, handleC
                     </ul>
                     <span className="photo__time-ago">{feeds.post_datetime.create_time_string}</span>
                     <div className="photo__add-comment-container">
-                        <textarea name="comment" placeholder="댓글을 입력해 주세요." onChange={ e => handleChangeComment(e.target.value)}></textarea>
-                        <i className="fa fa-ellipsis-h" onClick={() => handleSaveComment(feeds.post_id)}></i>
+                        <textarea name="comment" id={`post_`+feeds.post_id} placeholder="댓글을 입력해 주세요." onChange={ e => handleChangeComment(e.target.value, feeds.post_id)}></textarea>
+                        <i className="fa fa-ellipsis-h" onClick={(e) => handleSaveComment(e, feeds.post_id)}></i>
                     </div>
                 </div>
             </div>

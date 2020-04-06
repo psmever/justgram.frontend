@@ -95,19 +95,18 @@ export const postsReducer = createReducer(initialState, {
     [ActionType.GET_POST_LIST_REQUEST](state:PostsStateType, action:Action<APIResponseType>) {
         return {
             ...state,
-            post_list : {
+            post_list : Object.assign({}, state.post_list, {
                 state: 'request',
-                list: []
-            }
+            })
         }
     },
     [ActionType.GET_POST_LIST_SUCCESS](state:PostsStateType, action:Action<APIResponseType>) {
         return {
             ...state,
-            post_list : {
-                state: 'success',
-                list: action.payload
-            }
+            post_list : Object.assign({}, state.post_list, {
+                    state: 'success',
+                    list: action.payload
+            })
         }
     },
     [ActionType.POST_COMMENT_DATA_REQUEST](state:PostsStateType) {

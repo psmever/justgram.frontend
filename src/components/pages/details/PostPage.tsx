@@ -14,7 +14,6 @@ function PostPage() {
         __setTags,
         __setPostContents,
         __handleSubmit,
-        __post_state
     } = usePost();
 
 

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-
+import { PostListResponseType } from "modules/types";
 import {
     DefaultNavComponent,
     FooterComponent,
@@ -8,7 +8,6 @@ import {
 } from 'components';
 
 import useFeed from "hooks/useFeed";
-import GlobalAlert from "lib/GlobalAlert";
 
 function FeedPage() {
 
@@ -22,26 +21,13 @@ function FeedPage() {
         __handleClickDeleteHeart,
     } = useFeed();
 
-    useEffect(() => {
-        if(post_comment_request_state === "failure") {
-            GlobalAlert.error({
-                text: "처리중 문제가 발생했습니다. 잠시후 다시 시도해 주세요."
-            });
-        } else if(post_comment_request_state === "success") {
-            // GlobalAlert.thenHistoryPush({
-            //     text: "정상 처리 하였습니다.",
-            //     push_router: '/feed'
-            // });
-        }
-    }, [post_comment_request_state])
-
     return (
 
         <div>
             <DefaultNavComponent/>
                 <div>
                     <main id="feed">
-                    {__post_state === "success" &&  __post_list.map((e: any, i: number) =>
+                    {__post_list.length > 0 &&  __post_list.map((e: PostListResponseType, i: number) =>
                         <PhotoComponent
                             key={i}
                             feeds={e}
