@@ -22,7 +22,7 @@ function PhotoComponent({ feeds, handleChangeComment, handleSaveComment, handleC
                         <span className="photo__location">{feeds.user_info.user_email}</span>
                     </div>
                 </header>
-                <img src={feeds.image.cloudinary.secure_url} alt="feedphoto"/>
+                <div className="photo_feedphoto"><img src={feeds.image.cloudinary.secure_url} alt="feedphoto"/></div>
                 <div className="photo__info">
                     <div className="photo__actions">
                         {

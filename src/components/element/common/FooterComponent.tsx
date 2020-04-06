@@ -3,7 +3,7 @@ import * as React from 'react';
 function FooterComponent() {
     return (
         <footer className="footer">
-            <div className="footer__column">
+            {/* <div className="footer__column">
                 <nav className="footer__nav">
                     <ul className="footer__list">
                         <li className="footer__list-item"><a href={`/`} className="footer__link">About Us</a></li>
@@ -18,9 +18,9 @@ function FooterComponent() {
                         <li className="footer__list-item"><a href={`/`} className="footer__link">Language</a></li>
                     </ul>
                 </nav>
-            </div>
+            </div> */}
             <div className="footer__column">
-                <span className="footer__copyright">Â© 2017 Vietgram</span>
+                <span className="footer__copyright">© 2020 Justgram</span>
             </div>
         </footer>
     );

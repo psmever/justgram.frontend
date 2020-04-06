@@ -28,3 +28,8 @@
   text-decoration: none;
   color: var(--link-color);
 }
+
+.footer .footer__column {
+
+    text-align: center;
+}

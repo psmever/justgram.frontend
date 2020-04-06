@@ -21,7 +21,6 @@ export default function useFeed() {
     }
 
     const __handleSaveComment = (post_id: number) => {
-
         const dataObject: PostsCommentRequestType = {
             post_id : post_id,
             contents : postComment
@@ -30,24 +29,21 @@ export default function useFeed() {
     }
 
     const __handleClickAddHeart = (post_id: number) => {
-        console.debug('__handleClickAddHeart',post_id);
-
         dispatch(_posts.requestPostAddHeartAction({
             post_id:post_id
         }));
     }
 
     const __handleClickDeleteHeart = (post_id: number) => {
-        console.debug('__handleClickDeleteHeart',post_id);
         dispatch(_posts.requestPostDeleteHeartAction({
             post_id:post_id
         }));
     }
 
     useEffect(() => {
-        if(post_comment_request_state === 'success') {
+        if(post_list_state.state === 'yet') {
             // TODO: 루한루프 돌아서 임시로 막아놈.
-            // dispatch(getPostListAction());
+            // dispatch(_posts.getPostListAction());
         }
     })
 
