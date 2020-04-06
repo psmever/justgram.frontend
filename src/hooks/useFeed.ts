@@ -42,7 +42,7 @@ export default function useFeed() {
 
     useEffect(() => {
         if(post_list_state.state === 'yet') {
-            // TODO: 루한루프 돌아서 임시로 막아놈.
+
             // dispatch(_posts.getPostListAction());
         }
     })
