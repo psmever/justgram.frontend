@@ -6,6 +6,8 @@ import Spinner from 'react-spinner-material';
  */
 export default function LoadingPage() {
     return (
-        <Spinner size={30} spinnerColor={"#FF1493"} spinnerWidth={2} visible={true} />
+        <>
+            <Spinner size={30} radius={40} color={"#FF1493"} stroke={2} visible={true} />
+        </>
     );
 }
