@@ -17,6 +17,8 @@ function FeedPage() {
         __handleSaveComment,
         __handleClickAddHeart,
         __handleClickDeleteHeart,
+        heartActionState,
+        post_comment_request_state
     } = useFeed();
 
     return (
@@ -33,6 +35,8 @@ function FeedPage() {
                             handleSaveComment={__handleSaveComment}
                             handleClickAddHeart={__handleClickAddHeart}
                             handleClickDeleteHeart={__handleClickDeleteHeart}
+                            heartactionstate={heartActionState}
+                            saveCommentState={post_comment_request_state}
                         />
                         )
                     }

@@ -1,8 +1,17 @@
-import { useState, useEffect, useMemo, MouseEvent} from "react";
+import { useState, useEffect, useMemo, MouseEvent, useReducer} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "modules";
 import * as _posts from "modules/posts";
 import GlobalAlert from "lib/GlobalAlert";
+import * as commonTypes from "modules/commonTypes";
+
+function commentReducer(state:any, action:any) {
+    // console.debug(state,action);
+    return {
+        ...state,
+        [action.name] : action.post_comment
+    };
+}
 
 export default function useFeed() {
 
@@ -14,39 +23,34 @@ export default function useFeed() {
     const add_heart_request_state = useSelector((state: RootState) => state.posts_state.post_add_heart_request.state);
     const delete_heart_request_state = useSelector((state: RootState) => state.posts_state.post_delete_heart_request.state);
 
-    const [ postComment, setPostComment] = useState<any>({data: []});
+    const [ heartActionState, setHeartActionState] = useState<boolean>(false);
 
     const __post_state = post_list_state.state;
     const __post_list = post_list_state.list;
 
+    const [commentState, commentDispatch] = useReducer(commentReducer, {});
+
     const __handleChangeComment = (comment: string, post_id: number) => {
-        setPostComment({
-            data: [...postComment, {post_id: post_id,comment: comment}]
-          });
+        commentDispatch({name:`post_${post_id}`, post_comment: comment});
     }
 
     const __handleSaveComment = (event: MouseEvent, post_id: number) => {
-        console.debug(event);
-        console.debug(event.target);
-        // const dataObject: PostsCommentRequestType = {
-        //     post_id : post_id,
-        //     contents : postComment
-        // }
-
-        // console.debug(dataObject);
-        // dispatch(_posts.requestPostCommentAction(dataObject));
-        // window.render()
-
-        // console.debug(postComment);
+        const dataObject: commonTypes.PostsCommentRequestType = {
+            post_id : post_id,
+            contents : commentState[`post_${post_id}`]
+        }
+        dispatch(_posts.requestPostCommentAction(dataObject));
     }
 
     const __handleClickAddHeart = (post_id: number) => {
+        setHeartActionState(true);
         dispatch(_posts.requestPostAddHeartAction({
             post_id:post_id
         }));
     }
 
     const __handleClickDeleteHeart = (post_id: number) => {
+        setHeartActionState(true);
         dispatch(_posts.requestPostDeleteHeartAction({
             post_id:post_id
         }));
@@ -54,12 +58,18 @@ export default function useFeed() {
 
 
     const handleHeartAddState = useMemo(() => {
-        if(add_heart_request_state === 'success') return 'success'
+        if(add_heart_request_state === 'success') {
+            setHeartActionState(false);
+            return 'success'
+        }
         return 'yet'
     }, [add_heart_request_state]);
 
     const handleHeartDeleteState = useMemo(() => {
-        if(delete_heart_request_state === 'success') return 'success'
+        if(delete_heart_request_state === 'success') {
+            setHeartActionState(false);
+            return 'success'
+        }
         return 'yet'
     }, [delete_heart_request_state]);
 
@@ -83,9 +93,6 @@ export default function useFeed() {
             });
         } else if(post_comment_request_state === "success") {
             dispatch(_posts.getPostListAction());
-            GlobalAlert.default({
-                text: "등록했습니다."
-            });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [post_comment_request_state])
@@ -98,5 +105,8 @@ export default function useFeed() {
         post_comment_request_state,
         __handleClickAddHeart,
         __handleClickDeleteHeart,
+        handleHeartAddState,
+        handleHeartDeleteState,
+        heartActionState,
     }
 }
