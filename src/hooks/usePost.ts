@@ -49,6 +49,7 @@ export default function usePost() {
         } else if(__post_state === "success") {
 
             _pageLifeState.current = 1;
+            dispatch(_posts.postRequestResetAction());
             dispatch(_posts.getPostListAction());
 
             GlobalAlert.thenHistoryPush({

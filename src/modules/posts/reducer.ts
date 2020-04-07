@@ -86,9 +86,20 @@ export const postsReducer = createReducer(initialState, {
             ...state,
             post_write : {
                 state: 'failure',
-                tags: state.post_write.tags,
-                postimage: state.post_write.postimage,
-                contents: state.post_write.contents
+                tags: [],
+                postimage: [],
+                contents: ''
+            }
+        };
+    },
+    [ActionType.POST_DATA_RESET](state:commonTypes.PostsStateType) {
+        return {
+            ...state,
+            post_write : {
+                state: 'idle',
+                tags: [],
+                postimage: [],
+                contents: ''
             }
         };
     },

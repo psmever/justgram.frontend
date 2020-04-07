@@ -29,6 +29,12 @@ export const postRequestAction = (payload: any) => {
     };
 }
 
+export const postRequestResetAction = () => {
+    return {
+        type:ActionType.POST_DATA_RESET
+    };
+}
+
 export const getPostListAction = () => {
     return {
         type: ActionType.GET_POST_LIST_REQUEST
