@@ -23,7 +23,7 @@ export default function useLogin() {
     const handleSubmit = async ( event: FormEvent<HTMLFormElement> ) => {
         event.preventDefault();
 
-        if(loginState.state === "yet" || loginState.state === "failure") {
+        if(loginState.state === "idle" || loginState.state === "failure") {
             dispatch(userLoginAction({email, password}));
         }
     };

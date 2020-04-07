@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
 import { updateProfile, getUserProfile } from "lib/API";
 import GlobalAlert from "lib/GlobalAlert";
-import { APIResponseSubDataInfoType } from "modules/types";
+import * as commonTypes from "modules/commonTypes";
 import history from 'routes/History';
 
 export default function useEditPRofile() {
@@ -12,7 +12,7 @@ export default function useEditPRofile() {
     const login_state = useSelector((state: RootState) => state.login_state.state );
     const [genderCode, setGenderCode] = useState();
 
-    const [profileData, setProfileData] = useState<Partial<{user_name: string, name: string, web_site: string, bio: string, phone_number: string, gender: string}> | APIResponseSubDataInfoType | undefined>({
+    const [profileData, setProfileData] = useState<Partial<{user_name: string, name: string, web_site: string, bio: string, phone_number: string, gender: string}> | commonTypes.APIResponseSubDataInfoType | undefined>({
         user_name: '',
         name: '',
         web_site: '',
@@ -80,7 +80,7 @@ export default function useEditPRofile() {
     }, [siteCodedata]);
 
     useEffect(() => {
-        if(login_state === "yet") {
+        if(login_state === "idle") {
             history.push(process.env.PUBLIC_URL + "/");
         }
 

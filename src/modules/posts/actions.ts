@@ -1,5 +1,5 @@
 import { ActionType } from 'modules/models';
-import * as _TYPES from 'modules/types';
+import * as _TYPES from 'modules/commonTypes';
 
 export const setPostTagsAction = (payload: string) => {
     return {

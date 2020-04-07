@@ -1,10 +1,10 @@
 import { FormEvent, useState } from "react";
 import { tryRegister } from 'lib/API';
-import { APIResponseType } from 'modules/types';
+import * as commonTypes from 'modules/commonTypes';
 
 export default function useRegister() {
 
-    const [ registerResult , setRegisterResult] = useState<APIResponseType>({
+    const [ registerResult , setRegisterResult] = useState<commonTypes.APIResponseType>({
         state: null,
         message: null,
     });

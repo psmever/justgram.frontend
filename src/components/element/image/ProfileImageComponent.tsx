@@ -1,7 +1,7 @@
 import React, {useState, ChangeEvent, useEffect, useCallback, useRef} from 'react';
 import { tryProfileImageUpload, putUserProfileImage } from "lib/API";
 import { getCookie, setCookie } from "lib/Helper";
-import { CloudinaryResponseSubDataInfoType } from "modules/types";
+import * as commonTypes from "modules/commonTypes";
 
 type profileImageType = {
     image: string | null,
@@ -12,7 +12,7 @@ function ProfileImageComponent() {
 
     const profile_image_url = getCookie("login_profile_image_url");
     const [profileImage, setProfileImage] = useState<profileImageType>({image: profile_image_url, file: ''});
-    const [uploadData, setUploadData] = useState<CloudinaryResponseSubDataInfoType>();
+    const [uploadData, setUploadData] = useState<commonTypes.CloudinaryResponseSubDataInfoType>();
     const isFirstProfileImage = useRef(true);
 
     const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>): void => {
@@ -32,7 +32,7 @@ function ProfileImageComponent() {
         }
     }
 
-    const updateProfileImage = async (payload: CloudinaryResponseSubDataInfoType) => {
+    const updateProfileImage = async (payload: commonTypes.CloudinaryResponseSubDataInfoType) => {
         const result = await putUserProfileImage(payload);
         if(result.state === true) {
             setCookie("login_profile_image_url", payload.secure_url);

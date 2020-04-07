@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useCallback, useState, useRef, useEffect} from 'react';
 import { tryPostImageUpload } from "lib/API";
-import { CloudinaryResponseSubDataInfoType } from "modules/types";
+import * as commonTypes from "modules/commonTypes";
 import usePost from "hooks/usePost";
 
 type postImageType = {
@@ -15,8 +15,8 @@ function PostImageUploadComponent() {
     } = usePost();
 
     const [postImage, setPostImage] = useState<postImageType>({image: '', file: ''});
-    const [uploadData, setUploadData] = useState<CloudinaryResponseSubDataInfoType>();
-    const [uploadResult, setUploadResult] = useState<CloudinaryResponseSubDataInfoType>();
+    const [uploadData, setUploadData] = useState<commonTypes.CloudinaryResponseSubDataInfoType>();
+    const [uploadResult, setUploadResult] = useState<commonTypes.CloudinaryResponseSubDataInfoType>();
     const isFirstPostImage = useRef(true);
 
     const _handleChange = useCallback((event: ChangeEvent<HTMLInputElement>): void => {

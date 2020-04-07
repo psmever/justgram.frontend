@@ -26,7 +26,7 @@ function FollowersPage() {
 
 
     useEffect(() => {
-        if(followers_state.state === 'yet') {
+        if(followers_state.state === 'idle') {
             __handleGetFollowersList(params.user_name);
         }
     });

@@ -1,9 +1,9 @@
 import React, {MouseEvent} from 'react';
 import { CommentComponent } from "components";
-import { PostListResponseType, PostListCommentType} from "modules/types";
+import * as commonTypes from "modules/commonTypes";
 
 interface PhotoProps {
-    feeds: PostListResponseType
+    feeds: commonTypes.PostListResponseType
     handleChangeComment: ( comment_string: string, post_id: number ) => void;
     handleSaveComment: ( e: MouseEvent, post_id: number) => void;
     handleClickAddHeart: ( post_id: number) => void;
@@ -40,7 +40,7 @@ function PhotoComponent({ feeds, handleChangeComment, handleSaveComment, handleC
                     <span className="photo__likes">{feeds.hearts_count} hearts</span>
                     <span className="photo__likes">{feeds.contents.split('\n').map( (it, i) => <div key={'x'+i}>{it}</div> )}</span>
                     <ul className="photo__comments">
-                        {feeds.comments && feeds.comments.map((comment: PostListCommentType, i:number) =>
+                        {feeds.comments && feeds.comments.map((comment: commonTypes.PostListCommentType, i:number) =>
                             <CommentComponent
                                 key={i}
                                 comment={comment}

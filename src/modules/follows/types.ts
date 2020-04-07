@@ -1,7 +1,7 @@
 import * as actios from './actions';
 import { ActionType } from 'typesafe-actions';
-import { FollowsStateType } from 'modules/types';
+import * as commonTypes from 'modules/commonTypes';
 
 export type SetRequestFollowListAction = ActionType<typeof actios>;
 
-export type FollowsState = FollowsStateType;
+export type FollowsState = commonTypes.FollowsStateType;

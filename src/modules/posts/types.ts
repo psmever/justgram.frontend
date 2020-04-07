@@ -1,7 +1,7 @@
 import * as actions from './actions';
 import { ActionType } from 'typesafe-actions';
-import { PostsStateType } from 'modules/types';
+import * as commonTypes from 'modules/commonTypes';
 
 export type SetPostTagAction = ActionType<typeof actions>;
 
-export type PostsState = PostsStateType;
+export type PostsState = commonTypes.PostsStateType;

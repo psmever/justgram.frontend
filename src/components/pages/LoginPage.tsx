@@ -5,11 +5,8 @@ import { Link } from 'react-router-dom';
 import GlobalAlert  from 'lib/GlobalAlert';
 import useLogin from "hooks/useLogin";
 
-
 import image_phoneImage from 'assets/images/phoneImage.png';
 import image_loginLogo from 'assets/images/loginLogo.png';
-import image_ios from 'assets/images/ios.png';
-import image_android from 'assets/images/android.png';
 
 function LoginPage() {
 
@@ -25,8 +22,9 @@ function LoginPage() {
     const loginStatus = loginState?.state;
 
     useEffect(() => {
+        console.debug(loginStatus);
         switch (loginStatus) {
-            case "yet" : {
+            case "idle" : {
 
                 break;
             }
@@ -55,29 +53,28 @@ function LoginPage() {
                     <div className="login__box">
                         <img src={ image_loginLogo } className="login__logo" alt="loginlogo"/>
 
-                        <LoginFormComponent
-                            onChangeUserEmail={ handleChangeEmail }
-                            onChangeUserPassword={ handleChangePassword }
-                            onSubmit={ handleSubmit }
-                            inputEmail={email}
-                            inputPassword={password}
-                         />
+                            <LoginFormComponent
+                                onChangeUserEmail={ handleChangeEmail }
+                                onChangeUserPassword={ handleChangePassword }
+                                onSubmit={ handleSubmit }
+                                inputEmail={ email }
+                                inputPassword={ password }
+                            />
 
-                        <span className="login__divider">or</span>
-                        <a href={`/login`} className="login__link"><i className="fa fa-money"></i>Log in with Facebook</a>
-                        <a href={`/login`} className="login__link login__link--small">Forgot password</a>
+                        {/* <span className="login__divider">or</span> */}
+                        {/* <a href={`/login`} className="login__link login__link--small">Forgot password</a> */}
                     </div>
                     <div className="login__box">
-                            <span>Don't have an account?</span>
-                            <Link to={process.env.PUBLIC_URL + "/register"}>Sign up</Link>
+                            <span>계정이 없으신가요?</span>
+                            <Link to={process.env.PUBLIC_URL + "/register"}>&nbsp;회원 가입</Link>
                     </div>
-                    <div className="login__box--transparent">
+                    {/* <div className="login__box--transparent">
                         <span>Get the app.</span>
                         <div className="login__appstores">
                             <img src={ image_ios } className="login__appstore" alt="Apple appstore logo" title="Apple appstore logo" />
                             <img src={ image_android } className="login__appstore" alt="Android appstore logo" title="Android appstore logo" />
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </main>
 

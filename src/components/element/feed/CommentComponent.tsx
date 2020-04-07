@@ -1,8 +1,8 @@
 import React from 'react';
-import { PostListCommentType } from "modules/types";
+import * as commonTypes from "modules/commonTypes";
 
 interface CommentProps {
-    comment: PostListCommentType
+    comment: commonTypes.PostListCommentType
 }
 
 function CommentComponent({ comment} : CommentProps) {

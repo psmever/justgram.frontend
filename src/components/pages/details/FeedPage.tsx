@@ -1,5 +1,5 @@
 import React from 'react';
-import { PostListResponseType } from "modules/types";
+import * as commonTypes from "modules/commonTypes";
 import {
     DefaultNavComponent,
     FooterComponent,
@@ -25,7 +25,7 @@ function FeedPage() {
             <DefaultNavComponent/>
                 <div>
                     <main id="feed">
-                    {__post_list.length > 0 &&  __post_list.map((e: PostListResponseType, i: number) =>
+                    {__post_list.length > 0 &&  __post_list.map((e: commonTypes.PostListResponseType, i: number) =>
                         <PhotoComponent
                             key={i}
                             feeds={e}

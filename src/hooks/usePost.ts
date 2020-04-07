@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setPostTagsAction, setPostImageAction, setPostContentsAction, postRequestAction } from 'modules/posts';
 import { RootState } from 'modules';
 import * as _posts from "modules/posts";
-import { PostRequestType } from 'modules/types';
+import * as commonTypes from 'modules/commonTypes';
 import GlobalAlert from 'lib/GlobalAlert';
 
 export default function usePost() {
@@ -32,7 +32,7 @@ export default function usePost() {
     const __handleSubmit = async ( event: FormEvent<HTMLFormElement> ) => {
         event.preventDefault();
 
-        const dataObject: PostRequestType = {
+        const dataObject: commonTypes.PostRequestType = {
             'upload_image': JSON.stringify(posts_state.post_write.postimage),
             'tags': JSON.stringify(posts_state.post_write.tags),
             'contents': posts_state.post_write.contents,

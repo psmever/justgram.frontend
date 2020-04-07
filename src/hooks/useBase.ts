@@ -6,7 +6,7 @@ import {
     checkServer,
     checkNotice
 } from "lib/API";
-import { ProcessStringStatus } from "modules/types";
+import * as commonTypes from "modules/commonTypes";
 import GlobalAlert from "lib/GlobalAlert";
 import { getRootDataAction } from "modules/sitedatas";
 import { getPostListAction } from "modules/posts";
@@ -18,7 +18,7 @@ export default function useBase() {
     /**
      * 진행중 표시용.
      */
-    const [ checkProgress, setCheckProgress ] = useState<ProcessStringStatus>("yet");
+    const [ checkProgress, setCheckProgress ] = useState<commonTypes.ProcessStringStatus>("yet");
 
     /**
      * 사이트 기본 데이터 리덕스 스토어 연결.
@@ -52,14 +52,14 @@ export default function useBase() {
      * 사이트 기본 정보 가지고 오는 사가 액션 콜.
      */
     const initialGetSiteData = async () => {
-        if(sitedataState === "yet") {
+        if(sitedataState === "idle") {
             dispatch(getRootDataAction());
         }
     }
 
 
     const initialGetPostList = async () => {
-        if(sitedataState === "yet") {
+        if(sitedataState === "idle") {
             dispatch(getPostListAction());
         }
     }
@@ -79,7 +79,7 @@ export default function useBase() {
 
         if(login_state === "true") {
             dispatch(loginLocalinfoToStore({
-                state: "yet",
+                state: "idle",
                 expires_in: Number(login_expires_in),
                 access_token: login_access_token,
                 refresh_token: login_refresh_token,
