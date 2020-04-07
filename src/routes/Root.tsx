@@ -75,25 +75,25 @@ const Root = ({
         return (
             <Router history={ Routerhistory }>
                 <Switch>
-                    <Route path="/" exact={ true } component={ LoginPage } />
-                    <Route path="/login" exact={ true } component={ LoginPage } />
-                    <Route path="/logout" exact={ true } component={ LogoutPage } />
-                    <Route path="/register" exact={ true } component={ RegisterPage } />
-                    <Route path="/feed" exact={ true } component={ FeedPage } />
-                    <Route path="/post" exact={ true } component={ PostPage } />
-                    <Route path="/explode" exact={ true } component={ ExplodePage } />
+                    <Route path={process.env.PUBLIC_URL + "/"} exact={ true } component={ LoginPage } />
+                    <Route path={process.env.PUBLIC_URL + "/login"} exact={ true } component={ LoginPage } />
+                    <Route path={process.env.PUBLIC_URL + "/logout"} exact={ true } component={ LogoutPage } />
+                    <Route path={process.env.PUBLIC_URL + "/register"} exact={ true } component={ RegisterPage } />
+                    <Route path={process.env.PUBLIC_URL + "/feed"} exact={ true } component={ FeedPage } />
+                    <Route path={process.env.PUBLIC_URL + "/post"} exact={ true } component={ PostPage } />
+                    <Route path={process.env.PUBLIC_URL + "/explode"} exact={ true } component={ ExplodePage } />
 
-                    <Route path="/:user_name/profile" exact={ true } component={ ProfilePage } />
-                    <Route path="/profile/edit" exact={ true } component={ EditProfilePage } />
+                    <Route path={process.env.PUBLIC_URL + "/:user_name/profile"} exact={ true } component={ ProfilePage } />
+                    <Route path={process.env.PUBLIC_URL + "/profile/edit"} exact={ true } component={ EditProfilePage } />
 
-                    <Route path="/:user_name/followers" exact={ true } component={ FollowersPage } />
-                    <Route path="/:user_name/following" exact={ true } component={ FollowingPage } />
+                    <Route path={process.env.PUBLIC_URL + "/:user_name/followers"} exact={ true } component={ FollowersPage } />
+                    <Route path={process.env.PUBLIC_URL + "/:user_name/following"} exact={ true } component={ FollowingPage } />
 
-                    <Route path="/main" exact={ true } component={ FeedPage } />
-                    <Route path="/default" exact={ true } component={ DefaultPage } />
-                    <Route path="/test" exact={ true } component={ TestPage } />
-                    <Route path="/test2" exact={ true } component={ TestPage2 } />
-                    <Redirect path="*" to="/login" />
+                    <Route path={process.env.PUBLIC_URL + "/main"} exact={ true } component={ FeedPage } />
+                    <Route path={process.env.PUBLIC_URL + "/default"} exact={ true } component={ DefaultPage } />
+                    <Route path={process.env.PUBLIC_URL + "/test"} exact={ true } component={ TestPage } />
+                    <Route path={process.env.PUBLIC_URL + "/test2"} exact={ true } component={ TestPage2 } />
+                    <Redirect path="*" to={process.env.PUBLIC_URL + "/login"} />
                 </Switch>
             </Router>
         );
