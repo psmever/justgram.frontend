@@ -89,10 +89,9 @@ export default function useBase() {
 
             //TODO: 로그인 완료후..??
             if(login_profile_active === "Y") {
-                // history.push(`/${getCookie('login_user_name')}/profile`);
-                history.push('/feed');
+                history.push(process.env.PUBLIC_URL + '/feed');
             } else {
-                history.push("/profile/edit");
+                history.push(process.env.PUBLIC_URL + "/profile/edit");
             }
 
         }

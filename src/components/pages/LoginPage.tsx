@@ -69,7 +69,7 @@ function LoginPage() {
                     </div>
                     <div className="login__box">
                             <span>Don't have an account?</span>
-                            <Link to="/register">Sign up</Link>
+                            <Link to={process.env.PUBLIC_URL + "/register"}>Sign up</Link>
                     </div>
                     <div className="login__box--transparent">
                         <span>Get the app.</span>

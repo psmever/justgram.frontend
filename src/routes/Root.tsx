@@ -55,7 +55,7 @@ const Root = ({
         }
 
         if(profile_active === "N") {
-            history.push('/profile/edit');
+            history.push(process.env.PUBLIC_URL + '/profile/edit');
         }
 
     }, [checkProgress, sitedataState, profile_active]);

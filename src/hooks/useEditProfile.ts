@@ -81,7 +81,7 @@ export default function useEditPRofile() {
 
     useEffect(() => {
         if(login_state === "yet") {
-            history.push("/");
+            history.push(process.env.PUBLIC_URL + "/");
         }
 
         const getProfileData = async () => {
