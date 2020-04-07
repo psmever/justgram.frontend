@@ -32,7 +32,7 @@ function PhotoComponent({ feeds, handleChangeComment, handleSaveComment, handleC
                         {
                             (function(){
                                 if(heartactionstate) {
-                                    return <span className="photo__action"><LoadingPage size={3} radius={10} color={"#FF1493"} stroke={2} visible={true} /></span>
+                                    return <span className="photo__action"><LoadingPage type={'Circles'} color={'#00BFFF'} height={15} width={15} /></span>
                                 } else {
                                     if(feeds.myheart) {
                                         return <span className="photo__action"><i className="fa fa-heart fa-lg" onClick={() => handleClickDeleteHeart(feeds.post_id)}></i></span>

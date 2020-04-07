@@ -64,11 +64,10 @@ const Root = ({
         return (
             <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <LoadingPage
-                    size={30}
-                    radius={40}
-                    color={"#FF1493"}
-                    stroke={2}
-                    visible={true}
+                    type={'BallTriangle'}
+                    color={'#00BFFF'}
+                    height={90}
+                    width={90}
                 />
             </div>
         );
