@@ -14,8 +14,8 @@ function DefaultNavComponent() {
     const login_user_name = useSelector((state: RootState) => state.login_state.user_name);
     const loginState = useMemo(() => login_state, [login_state]);
 
-    const homeLink = (loginState === "success") ? "/feed" : "/";
-    const profileLink = (loginState === "success") ? `/${login_user_name}/profile` : "/";
+    const homeLink = (loginState === "success") ? process.env.PUBLIC_URL + "/feed" : process.env.PUBLIC_URL + "/";
+    const profileLink = (loginState === "success") ? process.env.PUBLIC_URL + `/${login_user_name}/profile` : process.env.PUBLIC_URL + "/";
 
     return (
 
