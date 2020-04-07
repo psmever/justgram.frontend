@@ -25,8 +25,9 @@ function DefaultNavComponent() {
                     <Link to={homeLink}><img src={image_logo} alt="logo"/></Link>
                 </div>
                 <div className="navigation__column">
-                    <i className="fa fa-search"></i>
-                    <input type="text" placeholder="Search" />
+                    {/* 나중에 하자. */}
+                    {/* <i className="fa fa-search"></i> */}
+                    {/* <input type="text" placeholder="Search" /> */}
                 </div>
                 <div className="navigation__column">
                     <ul className="navigations__links">
