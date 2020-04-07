@@ -1,20 +1,20 @@
 import { GetProfileDataState } from './types';
 import { ActionType } from 'modules/models';
 import createReducer from 'modules/createReducer';
-import { Action, getProfileDataActionRequestType, getUserProfileDataResponseType} from 'modules/types';
+import * as commonTypes from 'modules/commonTypes';
 
 const initialState: GetProfileDataState = {
-    state: 'yet'
+    state: 'idle'
 }
 
 export const getProfileDataReducer = createReducer(initialState, {
-    [ActionType.GET_PROFILE_PAGE_DATA_REQUEST](state: getProfileDataActionRequestType, action: Action<getUserProfileDataResponseType>) {
+    [ActionType.GET_PROFILE_PAGE_DATA_REQUEST](state: commonTypes.getProfileDataActionRequestType, action: commonTypes.Action<commonTypes.getUserProfileDataResponseType>) {
         return {
             ...state,
-            state: 'yet'
+            state: 'loading'
         };
     },
-    [ActionType.GET_PROFILE_PAGE_DATA_SUCCESS](state: getUserProfileDataResponseType, action: Action<getUserProfileDataResponseType>) {
+    [ActionType.GET_PROFILE_PAGE_DATA_SUCCESS](state: commonTypes.getUserProfileDataResponseType, action: commonTypes.Action<commonTypes.getUserProfileDataResponseType>) {
         return {
             ...state,
             state: 'success',

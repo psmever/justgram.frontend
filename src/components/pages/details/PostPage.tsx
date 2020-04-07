@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import GlobalAlert  from 'lib/GlobalAlert';
+import React from 'react';
 import {
     DefaultNavComponent,
     FooterComponent,
@@ -15,22 +14,9 @@ function PostPage() {
         __setTags,
         __setPostContents,
         __handleSubmit,
-        __post_state
     } = usePost();
 
 
-    useEffect(() =>  {
-        if(__post_state === "failure") {
-            GlobalAlert.error({
-                text: "처리중 문제가 발생했습니다. 잠시후 다시 시도해 주세요."
-            });
-        } else if(__post_state === "success") {
-            GlobalAlert.thenHistoryPush({
-                text: "정상 처리 하였습니다.",
-                push_router: '/feed'
-            });
-        }
-    }, [__post_state])
 
     return (
         <>

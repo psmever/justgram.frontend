@@ -55,15 +55,20 @@ const Root = ({
         }
 
         if(profile_active === "N") {
-            history.push('/profile/edit');
+            history.push(process.env.PUBLIC_URL + '/profile/edit');
         }
 
     }, [checkProgress, sitedataState, profile_active]);
 
     if(isLoading) {
         return (
-            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center',}}>
-                <LoadingPage/>
+            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <LoadingPage
+                    type={'BallTriangle'}
+                    color={'#00BFFF'}
+                    height={90}
+                    width={90}
+                />
             </div>
         );
     } else {

@@ -1,26 +1,26 @@
-import { Action, FollowsStateType, APIResponseSubDataInfoType, followingAPIResponseType, followersAPIResponseType} from 'modules/types';
+import * as commonTypes from 'modules/commonTypes';
 import createReducer from 'modules/createReducer';
 import { ActionType } from 'modules/models';
 
-const initialState: FollowsStateType = {
+const initialState: commonTypes.FollowsStateType = {
     following: {
-        state: 'yet',
+        state: 'idle',
         list: [],
     },
     followers: {
-        state: 'yet',
+        state: 'idle',
         list: [],
     },
     follow: {
-        state: 'yet',
+        state: 'idle',
     },
     unfollow: {
-        state: 'yet',
+        state: 'idle',
     }
 }
 
 export const exploresReducer = createReducer(initialState, {
-    [ActionType.GET_USER_FOLLOWING_LIST_SUCCESS](state: FollowsStateType, action: Action<followingAPIResponseType>) {
+    [ActionType.GET_USER_FOLLOWING_LIST_SUCCESS](state: commonTypes.FollowsStateType, action: commonTypes.Action<commonTypes.followingAPIResponseType>) {
         return {
             ...state,
             following: {
@@ -29,7 +29,7 @@ export const exploresReducer = createReducer(initialState, {
             }
         }
     },
-    [ActionType.GET_USER_FOLLOWING_LIST_ERROR](state: FollowsStateType, action: Action<APIResponseSubDataInfoType>) {
+    [ActionType.GET_USER_FOLLOWING_LIST_ERROR](state: commonTypes.FollowsStateType, action: commonTypes.Action<commonTypes.APIResponseSubDataInfoType>) {
         return {
             ...state,
             following: {
@@ -37,7 +37,7 @@ export const exploresReducer = createReducer(initialState, {
             }
         }
     },
-    [ActionType.GET_USER_FOLLOWERS_LIST_SUCCESS](state: FollowsStateType, action: Action<followersAPIResponseType>) {
+    [ActionType.GET_USER_FOLLOWERS_LIST_SUCCESS](state: commonTypes.FollowsStateType, action: commonTypes.Action<commonTypes.followersAPIResponseType>) {
         return {
             ...state,
             followers: {
@@ -46,7 +46,7 @@ export const exploresReducer = createReducer(initialState, {
             }
         }
     },
-    [ActionType.GET_USER_FOLLOWERS_LIST_ERROR](state: FollowsStateType, action: Action<APIResponseSubDataInfoType>) {
+    [ActionType.GET_USER_FOLLOWERS_LIST_ERROR](state: commonTypes.FollowsStateType, action: commonTypes.Action<commonTypes.APIResponseSubDataInfoType>) {
         return {
             ...state,
             followers: {
@@ -54,7 +54,7 @@ export const exploresReducer = createReducer(initialState, {
             }
         }
     },
-    [ActionType.USER_FOLLOW_SUCCESS](state: FollowsStateType) {
+    [ActionType.USER_FOLLOW_SUCCESS](state: commonTypes.FollowsStateType) {
         return {
             ...state,
             follow: {
@@ -62,7 +62,7 @@ export const exploresReducer = createReducer(initialState, {
             }
         }
     },
-    [ActionType.USER_FOLLOW_ERROR](state: FollowsStateType) {
+    [ActionType.USER_FOLLOW_ERROR](state: commonTypes.FollowsStateType) {
         return {
             ...state,
             follow: {
@@ -70,7 +70,7 @@ export const exploresReducer = createReducer(initialState, {
             }
         }
     },
-    [ActionType.USER_UNFOLLOW_SUCCESS](state: FollowsStateType) {
+    [ActionType.USER_UNFOLLOW_SUCCESS](state: commonTypes.FollowsStateType) {
         return {
             ...state,
             unfollow: {
@@ -78,7 +78,7 @@ export const exploresReducer = createReducer(initialState, {
             }
         }
     },
-    [ActionType.USER_UNFOLLOW_ERROR](state: FollowsStateType) {
+    [ActionType.USER_UNFOLLOW_ERROR](state: commonTypes.FollowsStateType) {
         return {
             ...state,
             unfollow: {

@@ -1,5 +1,5 @@
 import { put, takeLatest, fork, call } from "redux-saga/effects";
-import * as _TYPES from 'modules/types';
+import * as _TYPES from 'modules/commonTypes';
 import { ActionType } from 'modules/models';
 import * as _API_ from 'lib/API';
 

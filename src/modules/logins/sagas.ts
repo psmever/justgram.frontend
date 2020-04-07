@@ -1,5 +1,5 @@
 import { put, takeLatest, fork, call } from "redux-saga/effects";
-import { userLoginRequestType } from 'modules/types';
+import * as commonTypes from 'modules/commonTypes';
 import { tryLogin } from 'lib/API';
 import { setLoginCookie } from 'lib/Helper';
 import { ActionType } from 'modules/models';
@@ -10,7 +10,7 @@ import default_avata from 'assets/images/default_profile.jpg';
  * @param actions
  * @constructor
  */
-function* loginSaga({ payload }: {payload: userLoginRequestType}) {
+function* loginSaga({ payload }: {payload: commonTypes.userLoginRequestType}) {
     const response = yield call(tryLogin, payload.email, payload.password);
 
     if(response.state === true) {

@@ -1,6 +1,8 @@
 import React, { FormEvent } from 'react';
+import * as commonTypes from 'modules/commonTypes';
 
 interface LoginFormProps  {
+    loginstate: commonTypes.SagaStatus;
     inputEmail: string;
     inputPassword: string;
     onChangeUserEmail: ( user_email: string ) => void;
@@ -9,7 +11,7 @@ interface LoginFormProps  {
     onSubmit: ( event: FormEvent<HTMLFormElement> ) => void;
 };
 
-function LoginFormComponent( { inputEmail, inputPassword, onChangeUserEmail, onChangeUserPassword, onSubmit }: LoginFormProps ) {
+function LoginFormComponent( { loginstate, inputEmail, inputPassword, onChangeUserEmail, onChangeUserPassword, onSubmit }: LoginFormProps ) {
     return (
         <form method="post" className="login__form" onSubmit={ onSubmit }>
             <input
@@ -28,7 +30,11 @@ function LoginFormComponent( { inputEmail, inputPassword, onChangeUserEmail, onC
                 value={inputPassword}
                 required
             />
-            <input type="submit" value="로그인" />
+            {loginstate === "loading"
+                ? <input type="submit" value="::잠시만 기다려주세요::" disabled/>
+                : <input type="submit" value="로그인" />
+            }
+
         </form>
     );
 }

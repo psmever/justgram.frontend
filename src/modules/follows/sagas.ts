@@ -1,10 +1,10 @@
 import { put, takeLatest, fork, call } from 'redux-saga/effects';
 import { ActionType } from 'modules/models';
-import { attemptGetFollowersListRequest, attemptGetFollowingListRequest, attempRequestUserUnFollow, attempRequestUserFollow} from 'lib/API';
-import { UserFollowListRequestType, UserFollowRequestType } from 'modules/types';
+import * as API from 'lib/API';
+import * as commonTypes from 'modules/commonTypes';
 
-function* requestGetFollowersListActionSaga({payload}: {payload: UserFollowListRequestType}) {
-    const response = yield call(attemptGetFollowersListRequest, payload);
+function* requestGetFollowersListActionSaga({payload}: {payload: commonTypes.UserFollowListRequestType}) {
+    const response = yield call(API.attemptGetFollowersListRequest, payload);
     if(response.state === true) {
         yield put({ type: ActionType.GET_USER_FOLLOWERS_LIST_SUCCESS, payload: response.data});
     } else {
@@ -12,16 +12,16 @@ function* requestGetFollowersListActionSaga({payload}: {payload: UserFollowListR
     }
 }
 
-function* requestGetFollowingListActionSaga({payload}: {payload: UserFollowListRequestType}) {
-    const response = yield call(attemptGetFollowingListRequest, payload);
+function* requestGetFollowingListActionSaga({payload}: {payload: commonTypes.UserFollowListRequestType}) {
+    const response = yield call(API.attemptGetFollowingListRequest, payload);
     if(response.state === true) {
         yield put({ type: ActionType.GET_USER_FOLLOWING_LIST_SUCCESS, payload: response.data});
     } else {
         yield put({ type: ActionType.GET_USER_FOLLOWING_LIST_ERROR, payload: response.data});
     }
 }
-function* requestUserFollowSaga({payload}: {payload: UserFollowRequestType}) {
-    const response = yield call(attempRequestUserFollow, payload);
+function* requestUserFollowSaga({payload}: {payload: commonTypes.UserFollowRequestType}) {
+    const response = yield call(API.attempRequestUserFollow, payload);
     if(response.state === true) {
         yield put({ type: ActionType.USER_FOLLOW_SUCCESS, payload: response.data});
     } else {
@@ -29,8 +29,8 @@ function* requestUserFollowSaga({payload}: {payload: UserFollowRequestType}) {
     }
 }
 
-function* requestUserUnFollowSaga({payload}: {payload: UserFollowRequestType}) {
-    const response = yield call(attempRequestUserUnFollow, payload);
+function* requestUserUnFollowSaga({payload}: {payload: commonTypes.UserFollowRequestType}) {
+    const response = yield call(API.attempRequestUserUnFollow, payload);
     if(response.state === true) {
         yield put({ type: ActionType.USER_UNFOLLOW_SUCCESS, payload: response.data});
     } else {

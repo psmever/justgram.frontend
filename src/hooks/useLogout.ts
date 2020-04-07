@@ -20,7 +20,7 @@ export default function useLogout() {
             // dispatch(initialLoginInfo());
             window.location.reload();
         } else {
-            history.push('/')
+            history.push(process.env.PUBLIC_URL + '/')
         }
     }
 
