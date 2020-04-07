@@ -1,18 +1,28 @@
-import GlobalService, {  uploadProfileImage }  from 'lib/GlobalService';
+import * as GlobalService from 'lib/GlobalService';
 import * as _TYPES from 'modules/commonTypes';
 
 /**
  * 서버 체크
  */
 export function checkServer(): Promise<_TYPES.APIResponseType> {
-    return GlobalService.init('get', '/api/justgram/v1/system/server', {});
+    return GlobalService.start({
+        authType: false,
+        method: 'get',
+        endpoint: '/api/justgram/v1/system/server',
+        payload: {}
+    });
 };
 
 /**
  * 공지 사항 체크
  */
 export function checkNotice(): Promise<_TYPES.APIResponseType> {
-    return GlobalService.init('get', '/api/justgram/v1/system/notice', {});
+    return GlobalService.start({
+        authType: false,
+        method: 'get',
+        endpoint: '/api/justgram/v1/system/notice',
+        payload: {}
+    });
 };
 
 /**
@@ -21,7 +31,12 @@ export function checkNotice(): Promise<_TYPES.APIResponseType> {
  * @param password
  */
 export function getSiteData(): Promise<_TYPES.APIResponseType> {
-    return GlobalService.init('get', '/api/justgram/v1/system/sitedata', {});
+    return GlobalService.start({
+        authType: false,
+        method: 'get',
+        endpoint: '/api/justgram/v1/system/sitedata',
+        payload: {}
+    });
 };
 
 /**
@@ -30,7 +45,12 @@ export function getSiteData(): Promise<_TYPES.APIResponseType> {
  * @param password
  */
 export function tryLogin(email: string, password: string): Promise<_TYPES.APIResponseType> {
-    return GlobalService.init('post', '/api/justgram/v1/login', {email: email, password: password});
+    return GlobalService.start({
+        authType: false,
+        method: 'post',
+        endpoint: '/api/justgram/v1/login',
+        payload: {email: email, password: password}
+    });
 };
 
 /**
@@ -38,11 +58,16 @@ export function tryLogin(email: string, password: string): Promise<_TYPES.APIRes
  * @param payload 회원 가입.
  */
 export function tryRegister<T>(payload: _TYPES.registerRequestType): Promise<_TYPES.APIResponseType> {
-    return GlobalService.init('post', '/api/justgram/v1/register', {
-        username: payload.username,
-        email: payload.email,
-        password: payload.password,
-        confirm_password: payload.confirm_password
+    return GlobalService.start({
+        authType: false,
+        method: 'post',
+        endpoint: '/api/justgram/v1/register',
+        payload: {
+            username: payload.username,
+            email: payload.email,
+            password: payload.password,
+            confirm_password: payload.confirm_password
+        }
     });
 }
 
@@ -51,7 +76,12 @@ export function tryRegister<T>(payload: _TYPES.registerRequestType): Promise<_TY
  * @param payload
  */
 export function getUserProfile(): Promise<_TYPES.APIResponseType> {
-    return GlobalService.init('get', '/api/justgram/v1/my/profile', {});
+    return GlobalService.start({
+        authType: true,
+        method: 'get',
+        endpoint: '/api/justgram/v1/my/profile',
+        payload: {}
+    });
 }
 
 /**
@@ -59,12 +89,17 @@ export function getUserProfile(): Promise<_TYPES.APIResponseType> {
  * @param payload
  */
 export function updateProfile<T>(payload: _TYPES.updateProfileRequestType): Promise<_TYPES.APIResponseType> {
-    return GlobalService.init('put', '/api/justgram/v1/my/profile', {
-        name: payload.name,
-        web_site: payload.web_site,
-        bio: payload.bio,
-        phone_number: payload.phone_number,
-        gender: payload.gender
+    return GlobalService.start({
+        authType: true,
+        method: 'put',
+        endpoint: '/api/justgram/v1/my/profile',
+        payload: {
+            name: payload.name,
+            web_site: payload.web_site,
+            bio: payload.bio,
+            phone_number: payload.phone_number,
+            gender: payload.gender
+        }
     });
 }
 
@@ -78,7 +113,7 @@ export function tryProfileImageUpload(profileImage : string | Blob): Promise<_TY
     imageFormData.append('upload_preset', "justgram_profile");
     imageFormData.append('file', profileImage);
 
-    return uploadProfileImage(imageFormData);
+    return GlobalService.uploadProfileImage(imageFormData);
 }
 
 /**
@@ -91,7 +126,7 @@ export function tryPostImageUpload(postimage : string | Blob): Promise<_TYPES.AP
     imageFormData.append('upload_preset', "justgram_image");
     imageFormData.append('file', postimage);
 
-    return uploadProfileImage(imageFormData);
+    return GlobalService.uploadProfileImage(imageFormData);
 }
 
 /**
@@ -99,10 +134,15 @@ export function tryPostImageUpload(postimage : string | Blob): Promise<_TYPES.AP
  * @param payload
  */
 export function attemptPostDataRequest(payload: _TYPES.PostRequestType): Promise<_TYPES.APIResponseType> {
-    return GlobalService.init('post', `/api/justgram/v1/post`, {
-        upload_image: payload.upload_image,
-        tags: payload.tags,
-        contents: payload.contents
+    return GlobalService.start({
+        authType: true,
+        method: 'post',
+        endpoint: `/api/justgram/v1/post`,
+        payload: {
+            upload_image: payload.upload_image,
+            tags: payload.tags,
+            contents: payload.contents
+        }
     });
 }
 
@@ -110,7 +150,12 @@ export function attemptPostDataRequest(payload: _TYPES.PostRequestType): Promise
  * 포스트 리스트 가지고 오기.
  */
 export function attemptGetPostListRequest(): Promise<_TYPES.APIResponseType> {
-    return GlobalService.init('get', `/api/justgram/v1/post`, {});
+    return GlobalService.start({
+        authType: false,
+        method: 'get',
+        endpoint: `/api/justgram/v1/post`,
+        payload: {}
+    });
 }
 
 /**
@@ -118,7 +163,12 @@ export function attemptGetPostListRequest(): Promise<_TYPES.APIResponseType> {
  * @param payload
  */
 export function putUserProfileImage(payload : _TYPES.CloudinaryResponseSubDataInfoType): Promise<_TYPES.APIResponseType> {
-    return GlobalService.init('put', '/api/justgram/v1/my/profile/image', payload);
+    return GlobalService.start({
+        authType: true,
+        method: 'put',
+        endpoint: '/api/justgram/v1/my/profile/image',
+        payload: payload
+    });
 }
 
 /**
@@ -126,7 +176,12 @@ export function putUserProfileImage(payload : _TYPES.CloudinaryResponseSubDataIn
  * @param payload user_name
  */
 export function getUserProfilePageData(payload: _TYPES.getProfileDataActionRequestType) {
-    return GlobalService.init('get', `/api/justgram/v1/user/${payload.user_name}/profile`, {});
+    return GlobalService.start({
+        authType: true,
+        method: 'get',
+        endpoint: `/api/justgram/v1/user/${payload.user_name}/profile`,
+        payload: {}
+    });
 }
 
 /**
@@ -134,7 +189,12 @@ export function getUserProfilePageData(payload: _TYPES.getProfileDataActionReque
  * @param payload
  */
 export function attemptPostCommentRequest(payload: _TYPES.PostsCommentRequestType): Promise<_TYPES.APIResponseType> {
-    return GlobalService.init('post', `/api/justgram/v1/post/comment`, payload);
+    return GlobalService.start({
+        authType: true,
+        method: 'post',
+        endpoint: `/api/justgram/v1/post/comment`,
+        payload: payload
+    });
 }
 
 
@@ -143,25 +203,55 @@ export function attemptPostCommentRequest(payload: _TYPES.PostsCommentRequestTyp
  * @param payload
  */
 export function attemptGetFollowersListRequest(payload: _TYPES.UserFollowListRequestType): Promise<_TYPES.APIResponseType> {
-    return GlobalService.init('get', `/api/justgram/v1/user/${payload.user_name}/followers`, {});
+    return GlobalService.start({
+        authType: true,
+        method: 'get',
+        endpoint: `/api/justgram/v1/user/${payload.user_name}/followers`,
+        payload: {}
+    });
 }
 
 export function attemptGetFollowingListRequest(payload: _TYPES.UserFollowListRequestType): Promise<_TYPES.APIResponseType> {
-    return GlobalService.init('get', `/api/justgram/v1/user/${payload.user_name}/following`, {});
+    return GlobalService.start({
+        authType: true,
+        method: 'get',
+        endpoint: `/api/justgram/v1/user/${payload.user_name}/following`,
+        payload: {}
+    });
 }
 
 export function attempRequestUserFollow(payload: _TYPES.UserFollowRequestType): Promise<_TYPES.APIResponseType> {
-    return GlobalService.init('post', '/api/justgram/v1/user/follow', payload);
+    return GlobalService.start({
+        authType: true,
+        method: 'post',
+        endpoint: '/api/justgram/v1/user/follow',
+        payload: payload
+    });
 }
 
 export function attempRequestUserUnFollow(payload: _TYPES.UserFollowRequestType): Promise<_TYPES.APIResponseType> {
-    return GlobalService.init('delete', '/api/justgram/v1/user/follow', {data: payload});
+    return GlobalService.start({
+        authType: true,
+        method: 'delete',
+        endpoint: '/api/justgram/v1/user/follow',
+        payload: {data: payload}
+    });
 }
 
 export function attempRequestPostAddHeart(payload: _TYPES.PostHeartRequestType): Promise<_TYPES.APIResponseType>{
-    return GlobalService.init('post', `/api/justgram/v1/post/heart`, payload);
+    return GlobalService.start({
+        authType: true,
+        method: 'post',
+        endpoint: `/api/justgram/v1/post/heart`,
+        payload: payload
+    });
 }
 
 export function attempRequestPostDeleteHeart(payload: _TYPES.PostHeartRequestType): Promise<_TYPES.APIResponseType> {
-    return GlobalService.init('delete', `/api/justgram/v1/post/heart`, {data: payload});
+    return GlobalService.start({
+        authType: true,
+        method: 'delete',
+        endpoint: `/api/justgram/v1/post/heart`,
+        payload: {data: payload}
+    });
 }

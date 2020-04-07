@@ -1,6 +1,6 @@
 import React, {useState, ChangeEvent, useEffect, useCallback, useRef} from 'react';
 import { tryProfileImageUpload, putUserProfileImage } from "lib/API";
-import { getCookie, setCookie } from "lib/Helper";
+import * as Helper from "lib/Helper";
 import * as commonTypes from "modules/commonTypes";
 
 type profileImageType = {
@@ -10,7 +10,7 @@ type profileImageType = {
 
 function ProfileImageComponent() {
 
-    const profile_image_url = getCookie("login_profile_image_url");
+    const profile_image_url = Helper.cookieManager.get("login_profile_image_url");
     const [profileImage, setProfileImage] = useState<profileImageType>({image: profile_image_url, file: ''});
     const [uploadData, setUploadData] = useState<commonTypes.CloudinaryResponseSubDataInfoType>();
     const isFirstProfileImage = useRef(true);
@@ -35,7 +35,7 @@ function ProfileImageComponent() {
     const updateProfileImage = async (payload: commonTypes.CloudinaryResponseSubDataInfoType) => {
         const result = await putUserProfileImage(payload);
         if(result.state === true) {
-            setCookie("login_profile_image_url", payload.secure_url);
+            Helper.cookieManager.set("login_profile_image_url", payload.secure_url);
         }
     }
 

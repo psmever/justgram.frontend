@@ -1,7 +1,7 @@
 import { useState, useMemo} from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'modules';
-import { getCookie } from "lib/Helper";
+import * as Helper from "lib/Helper";
 import {
     checkServer,
     checkNotice
@@ -70,12 +70,12 @@ export default function useBase() {
      * 로그인 정보가 없을떄 쿠키 로그인 체크후 로그인 사가 연결.
      */
     const initialLocalLoginInfo = async () => {
-        const login_state = getCookie("login_state");
-        const login_expires_in = getCookie("login_expires_in");
-        const login_access_token = getCookie("login_access_token");
-        const login_refresh_token = getCookie("login_refresh_token");
-        const login_user_name = getCookie("login_user_name");
-        const login_profile_active = getCookie("login_profile_active");
+        const login_state = Helper.cookieManager.get("login_state");
+        const login_expires_in = Helper.cookieManager.get("login_expires_in");
+        const login_access_token = Helper.cookieManager.get("login_access_token");
+        const login_refresh_token = Helper.cookieManager.get("login_refresh_token");
+        const login_user_name = Helper.cookieManager.get("login_user_name");
+        const login_profile_active = Helper.cookieManager.get("login_profile_active");
 
         if(login_state === "true") {
             dispatch(loginLocalinfoToStore({
@@ -89,7 +89,8 @@ export default function useBase() {
 
             //TODO: 로그인 완료후..??
             if(login_profile_active === "Y") {
-                history.push(process.env.PUBLIC_URL + '/feed');
+                // history.push(process.env.PUBLIC_URL + '/feed');
+                history.push(process.env.PUBLIC_URL + '/profile/edit');
             } else {
                 history.push(process.env.PUBLIC_URL + "/profile/edit");
             }

@@ -24,8 +24,8 @@ function ProfilePageHeaderComponent( { avatar_image, username, count_info, bio, 
     const params = useParams<RouteParams>();
 
 
-    const followersLink = (params.user_name) ? process.env.PUBLIC_URL + `/${params.user_name}/followers` : process.env.PUBLIC_URL + `/${Helper.getCookie('login_user_name')}/followers`;
-    const followingLink = (params.user_name) ? process.env.PUBLIC_URL + `/${params.user_name}/following` : process.env.PUBLIC_URL + `/${Helper.getCookie('login_user_name')}/following`;
+    const followersLink = (params.user_name) ? process.env.PUBLIC_URL + `/${params.user_name}/followers` : process.env.PUBLIC_URL + `/${Helper.cookieManager.get('login_user_name')}/followers`;
+    const followingLink = (params.user_name) ? process.env.PUBLIC_URL + `/${params.user_name}/following` : process.env.PUBLIC_URL + `/${Helper.cookieManager.get('login_user_name')}/following`;
 
     return (
         <header className="profile__header">
