@@ -1,5 +1,6 @@
 {
   "name": "justgram.frontend",
+  "homepage": "http://psmever.github.io/justgram.frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -42,7 +43,9 @@
     "build:dev": "cp config/development.env .env && react-scripts build",
     "build:prod": "cp config/production.env .env && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build:prod",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -58,5 +61,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
   }
 }
