@@ -62,8 +62,14 @@ const Root = ({
 
     if(isLoading) {
         return (
-            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center',}}>
-                <LoadingPage/>
+            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <LoadingPage
+                    size={30}
+                    radius={40}
+                    color={"#FF1493"}
+                    stroke={2}
+                    visible={true}
+                />
             </div>
         );
     } else {
