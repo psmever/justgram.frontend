@@ -1,8 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
 import { LoginFormComponent, FooterComponent } from 'components';
 import { Link } from 'react-router-dom';
-import GlobalAlert  from 'lib/GlobalAlert';
 import useLogin from "hooks/useLogin";
 
 import image_phoneImage from 'assets/images/phoneImage.png';
@@ -11,39 +10,14 @@ import image_loginLogo from 'assets/images/loginLogo.png';
 function LoginPage() {
 
     const {
-        loginState,
+        loginStatus,
         email,
         password,
         handleChangePassword,
         handleChangeEmail,
-        handleSubmit
+        handleSubmit,
+        loginRequired,
     } = useLogin();
-
-    const loginStatus = loginState?.state;
-
-    useEffect(() => {
-        console.debug(loginStatus);
-        switch (loginStatus) {
-            case "idle" : {
-
-                break;
-            }
-            case "success" : {
-                GlobalAlert.thenLocationReload({
-                    text: '로그인에 성공 했습니다.'
-                });
-                break;
-            }
-            case "failure" : {
-                GlobalAlert.error({
-                    text: "로그인에 성공하지 못했습니다."
-                });
-
-                // handleLoginInfoReset();
-                break;
-            }
-        }
-    }, [loginStatus])
 
     return (
         <div>
@@ -54,13 +28,14 @@ function LoginPage() {
                         <img src={ image_loginLogo } className="login__logo" alt="loginlogo"/>
 
                             <LoginFormComponent
+                                loginstate = {loginStatus}
                                 onChangeUserEmail={ handleChangeEmail }
                                 onChangeUserPassword={ handleChangePassword }
                                 onSubmit={ handleSubmit }
                                 inputEmail={ email }
                                 inputPassword={ password }
                             />
-
+                            {loginRequired&&<span>{loginRequired}</span>}
                         {/* <span className="login__divider">or</span> */}
                         {/* <a href={`/login`} className="login__link login__link--small">Forgot password</a> */}
                     </div>
