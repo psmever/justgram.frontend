@@ -3,7 +3,7 @@ import { ActionType } from "./models";
  * 기본 널 타입.
  */
 export type Nullable<T> = T | undefined | null;
-export type SagaStatus = "yet" | "request" | "success" | "failure" | "reset";
+export type SagaStatus = "idle" | "loading" | "success" | "failure" | "reset";
 
 
 type APIResponseSubInfoType = {

@@ -1,8 +1,8 @@
 import React, { FormEvent } from 'react';
-import {Nullable, APIResponseSubDataInfoType} from "modules/types";
+import * as commonTypes from "modules/commonTypes";
 
 interface EditProfileFormProps {
-    userProfile: Nullable<APIResponseSubDataInfoType>
+    userProfile: commonTypes.Nullable<commonTypes.APIResponseSubDataInfoType>
     handleChangeName: (name: string) => void;
     handleChangeWebSite: (website: string) => void;
     handleChangeBio: (bio: string) => void;

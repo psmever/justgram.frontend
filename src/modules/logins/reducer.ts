@@ -1,21 +1,21 @@
 import { LoginState } from './types';
 import { ActionType } from 'modules/models';
 import createReducer from 'modules/createReducer';
-import { Action, loginSagaResponseType, userLoginRequestType } from 'modules/types';
+import * as commonTypes from 'modules/commonTypes';
 
 
 const initialState: LoginState = {
-    state: 'yet'
+    state: 'idle'
 };
 
-export const loginReducer = createReducer<loginSagaResponseType>(initialState, {
-    [ActionType.LOGIN_REQUEST](state: loginSagaResponseType, action: Action<userLoginRequestType>) {
+export const loginReducer = createReducer<commonTypes.loginSagaResponseType>(initialState, {
+    [ActionType.LOGIN_REQUEST](state: commonTypes.loginSagaResponseType, action: commonTypes.Action<commonTypes.userLoginRequestType>) {
         return {
             ...state,
-            state: 'yet'
+            state: 'loading'
         };
     },
-    [ActionType.LOGIN_SUCCESS](state: loginSagaResponseType, action: Action<loginSagaResponseType>) {
+    [ActionType.LOGIN_SUCCESS](state: commonTypes.loginSagaResponseType, action: commonTypes.Action<commonTypes.loginSagaResponseType>) {
         return {
             ...state,
             state: 'success',
@@ -28,14 +28,14 @@ export const loginReducer = createReducer<loginSagaResponseType>(initialState, {
             profile_image_url: action.payload.profile_image_url,
         }
     },
-    [ActionType.LOGIN_ERROR](state: loginSagaResponseType, action: Action<loginSagaResponseType>) {
+    [ActionType.LOGIN_ERROR](state: commonTypes.loginSagaResponseType, action: commonTypes.Action<commonTypes.loginSagaResponseType>) {
         return {
             ...state,
             state: 'failure',
             message: action.payload
         }
     },
-    [ActionType.LOGIN_RESET](state: loginSagaResponseType) {
+    [ActionType.LOGIN_RESET](state: commonTypes.loginSagaResponseType) {
         return {
             ...state,
             state: 'yet'

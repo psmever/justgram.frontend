@@ -5,7 +5,7 @@ import {
     ProfilePageHeaderComponent,
     ProfilePostListComponent
 } from 'components';
-import { getUserProfileDataResponsePostType } from "modules/types";
+import * as commonTypes from "modules/commonTypes";
 import useUserProfileData from 'hooks/useUserProfileData';
 import { useParams } from 'react-router-dom';
 
@@ -47,7 +47,7 @@ function ProfilePage() {
                 />
 
                 <section className="profile__photos">
-                    {profile_state.state === 'success' && userPosts && userPosts.map((e: getUserProfileDataResponsePostType,i:any) =>
+                    {profile_state.state === 'success' && userPosts && userPosts.map((e: commonTypes.getUserProfileDataResponsePostType,i:any) =>
                         <ProfilePostListComponent
                             key={i}
                             post_id={e.post_id}
@@ -55,14 +55,10 @@ function ProfilePage() {
                             comment_count={e.count.comment_count}
                             heart_count={e.count.heart_count}
                         />
-
                     )}
 
                 </section>
             </main>
-
-
-
 
             <FooterComponent/>
         </div>

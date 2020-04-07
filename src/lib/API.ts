@@ -1,5 +1,5 @@
 import GlobalService, {  uploadProfileImage }  from 'lib/GlobalService';
-import * as _TYPES from 'modules/types';
+import * as _TYPES from 'modules/commonTypes';
 
 /**
  * 서버 체크

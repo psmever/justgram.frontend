@@ -55,15 +55,21 @@ const Root = ({
         }
 
         if(profile_active === "N") {
-            history.push('/profile/edit');
+            history.push(process.env.PUBLIC_URL + '/profile/edit');
         }
 
     }, [checkProgress, sitedataState, profile_active]);
 
     if(isLoading) {
         return (
-            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center',}}>
-                <LoadingPage/>
+            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <LoadingPage
+                    size={30}
+                    radius={40}
+                    color={"#FF1493"}
+                    stroke={2}
+                    visible={true}
+                />
             </div>
         );
     } else {

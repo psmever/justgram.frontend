@@ -1,7 +1,7 @@
 import * as actions from './actions';
 import { ActionType } from 'typesafe-actions';
-import { loginSagaResponseType } from 'modules/types';
+import * as commonTypes from 'modules/commonTypes';
 
 export type LoginAction = ActionType<typeof actions>;
 
-export type LoginState = loginSagaResponseType;
+export type LoginState = commonTypes.loginSagaResponseType;

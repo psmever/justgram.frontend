@@ -4,7 +4,7 @@ import axios ,{
 } from 'axios';
 import { getCookie } from "lib/Helper";
 
-import { APIResponseType, APICloudinaryResponseType } from 'modules/types';
+import * as commonTypes from 'modules/commonTypes';
 
 
 class GlobalService {
@@ -72,20 +72,20 @@ class GlobalService {
         throw new Error(message);
     };
 
-    init = (method : string, url: string, params: object): Promise<APIResponseType> => {
+    init = (method : string, url: string, params: object): Promise<commonTypes.APIResponseType> => {
 
         switch(method) {
             case 'get': {
-                return this.promise<APIResponseType>(this.axiosinstance.get(url, params));
+                return this.promise<commonTypes.APIResponseType>(this.axiosinstance.get(url, params));
             }
             case 'post': {
-                return this.promise<APIResponseType>(this.axiosinstance.post(url, params));
+                return this.promise<commonTypes.APIResponseType>(this.axiosinstance.post(url, params));
             }
             case 'put': {
-                return this.promise<APIResponseType>(this.axiosinstance.put(url, params));
+                return this.promise<commonTypes.APIResponseType>(this.axiosinstance.put(url, params));
             }
             case 'delete': {
-                return this.promise<APIResponseType>(this.axiosinstance.delete(url, params));
+                return this.promise<commonTypes.APIResponseType>(this.axiosinstance.delete(url, params));
             }
             default:
                 return this.error("Should never get here");
@@ -100,7 +100,7 @@ export default new GlobalService();
  * Cloudinary 프로필 이미지 업로드.
  * @param profileImage
  */
-export const uploadProfileImage = async (profileImage: FormData ): Promise<APICloudinaryResponseType> => {
+export const uploadProfileImage = async (profileImage: FormData ): Promise<commonTypes.APICloudinaryResponseType> => {
     try {
         const response = await axios.post( "https://api.cloudinary.com/v1_1/smcdnimg/image/upload", profileImage );
         // console.log('👉 uploadProfileImage data:', response.data);
@@ -122,7 +122,7 @@ export const uploadProfileImage = async (profileImage: FormData ): Promise<APICl
  * Cloudinary 포스트 이미지 업로드.
  * @param postimage
  */
-export const uploadPostImage = async (postimage: FormData ): Promise<APICloudinaryResponseType> => {
+export const uploadPostImage = async (postimage: FormData ): Promise<commonTypes.APICloudinaryResponseType> => {
     try {
         const response = await axios.post( "https://api.cloudinary.com/v1_1/smcdnimg/image/upload", postimage );
         // console.log('👉 uploadProfileImage data:', response.data);

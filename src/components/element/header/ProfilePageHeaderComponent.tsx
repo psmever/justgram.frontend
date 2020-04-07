@@ -24,8 +24,8 @@ function ProfilePageHeaderComponent( { avatar_image, username, count_info, bio, 
     const params = useParams<RouteParams>();
 
 
-    const followersLink = (params.user_name) ? `/${params.user_name}/followers` : `/${Helper.getCookie('login_user_name')}/followers`;
-    const followingLink = (params.user_name) ? `/${params.user_name}/following` : `/${Helper.getCookie('login_user_name')}/following`;
+    const followersLink = (params.user_name) ? process.env.PUBLIC_URL + `/${params.user_name}/followers` : process.env.PUBLIC_URL + `/${Helper.getCookie('login_user_name')}/followers`;
+    const followingLink = (params.user_name) ? process.env.PUBLIC_URL + `/${params.user_name}/following` : process.env.PUBLIC_URL + `/${Helper.getCookie('login_user_name')}/following`;
 
     return (
         <header className="profile__header">
@@ -35,7 +35,7 @@ function ProfilePageHeaderComponent( { avatar_image, username, count_info, bio, 
             <div className="profile__column">
             <div className="profile__title">
             <h3 className="profile__username">{ username }</h3>
-                <Link to="/profile/edit">Edit profile</Link>
+                <Link to={process.env.PUBLIC_URL + "/profile/edit"}>Edit profile</Link>
                 <i className="fa fa-cog fa-lg"></i>
             </div>
                 <ul className="profile__stats">
@@ -46,7 +46,7 @@ function ProfilePageHeaderComponent( { avatar_image, username, count_info, bio, 
                 <span className="profile__full-name">{ username }</span>
                 <p className="profile__bio">
                     { bio }
-                    <a href={`/profile`}>{web_site}</a>
+                    <a href={web_site}>{web_site}</a>
                 </p>
             </div>
         </header>
