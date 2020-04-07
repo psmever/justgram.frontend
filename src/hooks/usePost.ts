@@ -56,6 +56,7 @@ export default function usePost() {
                 push_router: '/feed'
             });
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [__post_state])
 
     return {

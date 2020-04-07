@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { PostListResponseType } from "modules/types";
 import {
     DefaultNavComponent,
@@ -12,11 +12,9 @@ import useFeed from "hooks/useFeed";
 function FeedPage() {
 
     const {
-        __post_state,
         __post_list,
         __handleChangeComment,
         __handleSaveComment,
-        post_comment_request_state,
         __handleClickAddHeart,
         __handleClickDeleteHeart,
     } = useFeed();

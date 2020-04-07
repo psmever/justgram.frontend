@@ -1,15 +1,8 @@
-import { useState, useEffect, useMemo, useCallback, MouseEvent} from "react";
+import { useState, useEffect, useMemo, MouseEvent} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "modules";
 import * as _posts from "modules/posts";
-import { PostsCommentRequestType } from "modules/types";
 import GlobalAlert from "lib/GlobalAlert";
-
-interface CommentValue {
-    post_id : number,
-    comment: string,
-
-}
 
 export default function useFeed() {
 
@@ -21,26 +14,15 @@ export default function useFeed() {
     const add_heart_request_state = useSelector((state: RootState) => state.posts_state.post_add_heart_request.state);
     const delete_heart_request_state = useSelector((state: RootState) => state.posts_state.post_delete_heart_request.state);
 
-
     const [ postComment, setPostComment] = useState<any>({data: []});
-
-    useEffect(() => console.debug(postComment), [postComment])
 
     const __post_state = post_list_state.state;
     const __post_list = post_list_state.list;
 
     const __handleChangeComment = (comment: string, post_id: number) => {
-        // setPostComment([...postComment, Object.assign({}, postComment, {post_id: post_id,comment: comment})]);
-
-        // setPostComment(Object.assign({}, ...postComment, {post_id: post_id,comment: comment}));
-        // setPostComment(Object.assign({}, postComment, {post_id: post_id,comment: comment}));
-
-        // setPostComment(postComment.concat(post_id{ post_id: post_id,comment: comment }));
         setPostComment({
             data: [...postComment, {post_id: post_id,comment: comment}]
           });
-
-        // console.debug();
     }
 
     const __handleSaveComment = (event: MouseEvent, post_id: number) => {
@@ -82,19 +64,15 @@ export default function useFeed() {
     }, [delete_heart_request_state]);
 
     useEffect(() => {
-        if(post_list_state.state === 'yet') {
-            // dispatch(_posts.getPostListAction());
-        }
-    }, [])
-
-    useEffect(() => {
         if(handleHeartAddState === "success") dispatch(_posts.getPostListAction());
         if(handleHeartAddState === "yet") return;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [handleHeartAddState])
 
     useEffect(() => {
         if(handleHeartDeleteState === "success") dispatch(_posts.getPostListAction());
         if(handleHeartDeleteState === "yet") return;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [handleHeartDeleteState])
 
 
@@ -109,11 +87,8 @@ export default function useFeed() {
                 text: "등록했습니다."
             });
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [post_comment_request_state])
-
-    useCallback(() => {
-        console.log(post_list_state.list);
-      }, [post_list_state.list])
 
     return {
         __post_state,
