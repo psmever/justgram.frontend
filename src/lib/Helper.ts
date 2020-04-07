@@ -104,7 +104,9 @@ export function getRefreshToken() {
 }
 
 export function setLoginInfoRefresh(payload: any) {
-    setLoginCookie(payload);
+    cookieManager.set("login_expires_in", payload.expires_in);
+    cookieManager.set("login_access_token", payload.access_token);
+    cookieManager.set("login_refresh_token", payload.refresh_token);
 }
 
 
