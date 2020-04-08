@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Provider } from 'react-redux';
-import { BrowserRouter } from "react-router-dom";
 import History from "./routes/History";
 import { createBrowserHistory } from 'history'
 import configureStore from 'configureStore'
@@ -30,9 +29,7 @@ const store = configureStore(history, initialState);
 const App = () => {
     return (
         <Provider store={ store }>
-            <BrowserRouter basename={process.env.PUBLIC_URL}>
-                <Root Routerhistory={ History }/>
-            </BrowserRouter>
+            <Root Routerhistory={ History }/>
         </Provider>
     );
 }
