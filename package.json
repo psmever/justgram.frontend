@@ -36,11 +36,9 @@
     "typescript": "3.7.2"
   },
   "scripts": {
-    "start": "unset REACT_APP_ENV && unset REACT_APP_API_URL && cp config/local.env .env && PORT=4000 react-scripts start --reset-cache",
-    "start:dev": "unset REACT_APP_ENV && unset REACT_APP_API_URL && cp config/development.env .env && PORT=4000 react-scripts start --reset-cache",
+    "start": "unset REACT_APP_ENV && unset REACT_APP_API_URL && cp config/development.env .env && PORT=4000 react-scripts start --reset-cache",
     "start:prod": "unset REACT_APP_ENV && unset REACT_APP_API_URL && cp config/production.env .env && PORT=4000 react-scripts start",
-    "build": "unset REACT_APP_ENV && unset REACT_APP_API_URL && cp config/local.env .env && react-scripts build",
-    "build:dev": "unset REACT_APP_ENV && unset REACT_APP_API_URL && cp config/development.env .env && react-scripts build",
+    "build": "unset REACT_APP_ENV && unset REACT_APP_API_URL && cp config/development.env .env && react-scripts build",
     "build:prod": "unset REACT_APP_ENV && unset REACT_APP_API_URL && cp config/production.env .env && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
