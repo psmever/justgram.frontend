@@ -1,13 +1,8 @@
-import axios ,{
-    AxiosInstance,
-    AxiosPromise,
-    AxiosResponse
-} from 'axios';
+import axios from 'axios';
 
 import * as _TYPES from 'modules/commonTypes';
 import * as Helper from 'lib/Helper';
 import GlobalAlert from 'lib/GlobalAlert';
-import history from 'routes/History';
 
 export interface tokenRefreshInterface {
     state: boolean;
