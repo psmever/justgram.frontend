@@ -7,7 +7,6 @@ import * as commonTypes from "modules/commonTypes";
 import * as _ from 'lodash';
 
 function commentReducer(state:any, action:any) {
-    // console.debug(state,action);
     return {
         ...state,
         [action.name] : action.post_comment
@@ -39,7 +38,6 @@ export default function useFeed() {
     const __handleSaveComment = (event: MouseEvent, post_id: number) => {
 
         if(_.isEmpty(commentState[`post_${post_id}`]) === true) {
-            console.debug('코멘트를 입력해 주세요.');
             return;
         }
 

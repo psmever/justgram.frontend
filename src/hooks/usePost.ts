@@ -63,9 +63,6 @@ export default function usePost() {
             'tags': tags,
             'contents': contents,
         };
-
-        console.debug(dataObject);
-
         dispatch(postRequestAction(dataObject));
     }
 
