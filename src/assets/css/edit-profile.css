@@ -64,6 +64,14 @@
   width: 80%;
 }
 
+.form__row .form__loading {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    margin: 10px auto;
+}
+
+
 .form__row .form__input,
 .form__row textarea {
   padding: 8px;

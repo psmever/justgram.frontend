@@ -19,7 +19,9 @@ function EditProfilePage() {
         handleChangeWebSite,
         handleChangeGender,
         handleSubmit,
-        genderCode
+        genderCode,
+        getProfileDataState,
+        profileDataUpdateState
     } = useEditProfile();
 
 
@@ -53,6 +55,8 @@ function EditProfilePage() {
                         handleChangeGender={handleChangeGender}
                         handleSubmit={handleSubmit}
                         genderCode={genderCode}
+                        getProfileDataState={getProfileDataState}
+                        profileDataUpdateState={profileDataUpdateState}
                     />
 
                 </div>

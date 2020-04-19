@@ -8,7 +8,9 @@ body {
 main {
   animation: fadeInMain 0.5s linear;
 }
-
+.swal2-popup {
+    font-size: 0.8rem;
+}
 @keyframes fadeInMain {
   from {
     opacity: 0;

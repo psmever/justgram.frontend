@@ -10,7 +10,11 @@ export default function useEditPRofile() {
 
     const siteCodedata = useSelector((state: RootState) => state.sitedata.code_list );
     const login_state = useSelector((state: RootState) => state.login_state.state );
+    const login_user_name = useSelector((state: RootState) => state.login_state.user_name);
     const [genderCode, setGenderCode] = useState();
+
+    const [getProfileDataState, setGetProfileDataState] = useState<commonTypes.SagaStatus>('idle');
+    const [profileDataUpdateState, setProfileDataUpdateState] = useState<commonTypes.SagaStatus>('idle');
 
     const [profileData, setProfileData] = useState<Partial<{user_name: string, name: string, web_site: string, bio: string, phone_number: string, gender: string}> | commonTypes.APIResponseSubDataInfoType | undefined>({
         user_name: '',
@@ -59,6 +63,8 @@ export default function useEditPRofile() {
 
     const handleSubmit = async ( event: FormEvent<HTMLFormElement> ) => {
         event.preventDefault();
+
+        setProfileDataUpdateState('loading');
         const updateResult = await updateProfile({
             name: profileData?.name,
             web_site: profileData?.web_site,
@@ -67,11 +73,14 @@ export default function useEditPRofile() {
             gender: profileData?.gender
         });
 
-        if(updateResult.state === true || updateResult.state === false){
-            GlobalAlert.thenHistoryPush({
-                text: '수정 되었습니다.',
-                push_router: '/profile'
-            });
+
+        if(updateResult.state === true){
+            setProfileDataUpdateState('success');
+            history.push(process.env.PUBLIC_URL + process.env.PUBLIC_URL + `/${login_user_name}/profile`);
+        }
+
+        if(updateResult.state === false){
+            setProfileDataUpdateState('failure');
         }
     }
 
@@ -85,13 +94,17 @@ export default function useEditPRofile() {
         }
 
         const getProfileData = async () => {
+            setGetProfileDataState('loading');
             const result = await getUserProfile();
             if(result.state === true) {
                 setProfileData(result.data);
+                setGetProfileDataState('success');
             } else {
-                GlobalAlert.thenLocationReload({
-                    text: "프로필 정보를 가지고 오지 못했습니다."
+                GlobalAlert.thenHistoryPush({
+                    text: "프로필 정보를 가지고 오지 못했습니다.",
+                    push_router: '/profile'
                 });
+                setGetProfileDataState('failure');
             }
         }
         getProfileData();
@@ -105,6 +118,8 @@ export default function useEditPRofile() {
         handleChangeWebSite,
         handleChangeGender,
         handleSubmit,
-        genderCode
+        genderCode,
+        getProfileDataState,
+        profileDataUpdateState,
     };
 }
