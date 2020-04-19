@@ -17,7 +17,6 @@ function* setPostsContentsSaga( {payload}: {payload: string}) {
 
 function* attemptPostRequestSaga({ payload }: { payload: _TYPES.PostRequestType }) {
     const response = yield call(_API_.attemptPostDataRequest, payload);
-
     if(response.state === true) {
         yield put({ type: ActionType.POST_DATA_SUCCESS, payload: response.payload });
     } else {
@@ -27,7 +26,6 @@ function* attemptPostRequestSaga({ payload }: { payload: _TYPES.PostRequestType 
 
 function* attemptGetPostListRequestSaga() {
     const response = yield call(_API_.attemptGetPostListRequest)
-
     if(response.state === true) {
         yield put({ type: ActionType.GET_POST_LIST_SUCCESS, payload: response.data });
     } else {
@@ -37,7 +35,6 @@ function* attemptGetPostListRequestSaga() {
 
 function* attemptPostsCommentRequestSaga( {payload}: {payload: _TYPES.PostsCommentRequestType}) {
     const response = yield call(_API_.attemptPostCommentRequest, payload);
-
     if(response.state === true) {
         yield put({ type: ActionType.POST_COMMENT_DATA_SUCCESS, payload: response.data });
     } else {
@@ -47,7 +44,6 @@ function* attemptPostsCommentRequestSaga( {payload}: {payload: _TYPES.PostsComme
 
 function* attemptPostAddHeartRequestSaga( {payload}: {payload: _TYPES.PostHeartRequestType}) {
     const response = yield call(_API_.attempRequestPostAddHeart, payload);
-
     if(response.state === true) {
         yield put({ type: ActionType.POST_HEART_ADD_SUCCESS, payload: response.data});
     } else {
@@ -57,7 +53,6 @@ function* attemptPostAddHeartRequestSaga( {payload}: {payload: _TYPES.PostHeartR
 
 function* attemptPostDeleteHeartRequestSaga( {payload}: {payload: _TYPES.PostHeartRequestType}) {
     const response = yield call(_API_.attempRequestPostDeleteHeart, payload);
-
     if(response.state === true) {
         yield put({ type: ActionType.POST_HEART_DELETE_SUCCESS, payload: response.data});
     } else {
@@ -72,7 +67,6 @@ function* onPostsWatcher() {
     yield takeLatest(ActionType.POST_DATA_REQUEST as any, attemptPostRequestSaga);
     yield takeLatest(ActionType.GET_POST_LIST_REQUEST as any, attemptGetPostListRequestSaga);
     yield takeLatest(ActionType.POST_COMMENT_DATA_REQUEST as any, attemptPostsCommentRequestSaga);
-
     yield takeLatest(ActionType.POST_HEART_ADD_REQUEST as any, attemptPostAddHeartRequestSaga);
     yield takeLatest(ActionType.POST_HEART_DELETE_REQUEST as any, attemptPostDeleteHeartRequestSaga);
 }

@@ -12,10 +12,8 @@ import default_avata from 'assets/images/default_profile.jpg';
  */
 function* loginSaga({ payload }: {payload: commonTypes.userLoginRequestType}) {
     const response = yield call(tryLogin, payload.email, payload.password);
-
     if(response.state === true) {
         yield put({ type: ActionType.LOGIN_SUCCESS, payload: response.data });
-        // storageManager.set("login_info", response.data); // 로그인 정보 로컬 스토리지에 저장.
         if(response.data.profile_image_url === null) {
             response.data.profile_image_url = default_avata;
         }
@@ -28,7 +26,6 @@ function* loginSaga({ payload }: {payload: commonTypes.userLoginRequestType}) {
 function* loginResetSaga() {
     yield put({ type: ActionType.LOGIN_RESET});
 };
-
 
 function* onLoginRequestWatcher() {
     yield takeLatest(ActionType.LOGIN_REQUEST as any, loginSaga);
