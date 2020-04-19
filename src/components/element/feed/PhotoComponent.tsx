@@ -59,9 +59,8 @@ function PhotoComponent({ feeds, handleChangeComment, handleSaveComment, handleC
                     <span className="photo__time-ago">{feeds.post_datetime.create_time_string}</span>
                     <div className="photo__add-comment-container">
                         {saveCommentState === 'loading'
-                            ? <span className="photo__time-ago">등록중</span>
+                            ? <span className="photo__time-ago"><LoadingPage type={'Circles'} color={'#00BFFF'} height={15} width={15} /></span>
                             :<><textarea name={`post_`+feeds.post_id} placeholder="댓글을 입력해 주세요." onChange={ e => handleChangeComment(e.target.value, feeds.post_id)}></textarea><i className="fa fa-ellipsis-h" onClick={(e) => handleSaveComment(e, feeds.post_id)}></i></>
-
                         }
                     </div>
                 </div>

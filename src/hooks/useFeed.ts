@@ -4,6 +4,7 @@ import { RootState } from "modules";
 import * as _posts from "modules/posts";
 import GlobalAlert from "lib/GlobalAlert";
 import * as commonTypes from "modules/commonTypes";
+import * as _ from 'lodash';
 
 function commentReducer(state:any, action:any) {
     // console.debug(state,action);
@@ -34,12 +35,21 @@ export default function useFeed() {
         commentDispatch({name:`post_${post_id}`, post_comment: comment});
     }
 
+
     const __handleSaveComment = (event: MouseEvent, post_id: number) => {
-        const dataObject: commonTypes.PostsCommentRequestType = {
-            post_id : post_id,
-            contents : commentState[`post_${post_id}`]
+
+        if(_.isEmpty(commentState[`post_${post_id}`]) === true) {
+            console.debug('코멘트를 입력해 주세요.');
+            return;
         }
-        dispatch(_posts.requestPostCommentAction(dataObject));
+
+        if(commentState[`post_${post_id}`].length > 0){
+            const dataObject: commonTypes.PostsCommentRequestType = {
+                post_id : post_id,
+                contents : commentState[`post_${post_id}`]
+            }
+            dispatch(_posts.requestPostCommentAction(dataObject));
+        }
     }
 
     const __handleClickAddHeart = (post_id: number) => {
