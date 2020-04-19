@@ -42,8 +42,8 @@
     "build:prod": "unset REACT_APP_ENV && unset REACT_APP_API_URL && cp config/production.env .env && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "predeploy": "yarn build:prod",
+    "deploy": "gh-pages -d build:prod"
   },
   "eslintConfig": {
     "extends": "react-app"
