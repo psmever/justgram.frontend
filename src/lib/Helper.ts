@@ -41,7 +41,7 @@ export const storageManager = {
  * 로컬 스토리지 관리
  */
 export const cookieManager = {
-    set: (cname: string, cvalue: string, hours: number = 1) => {
+    set: (cname: string, cvalue: string, hours: number = 24) => {
         let d = new Date();
         d.setTime(d.getTime() + hours * 60 * 60 * 1000); // (exdays * 24 * 60 * 60 * 1000));
         let expires = "expires=" + d.toUTCString();
