@@ -131,7 +131,7 @@ export function attempRequestUserUnFollow(payload: _TYPES.UserFollowRequestType)
 }
 
 export function attempRequestPostAddHeart(payload: _TYPES.PostHeartRequestType): Promise<_TYPES.APIResponseType>{
-    return GlobalService._Axios_.post(`/api/justgram/v1/post/heart`, {data: payload});
+    return GlobalService._Axios_.post(`/api/justgram/v1/post/heart`, payload);
 }
 
 export function attempRequestPostDeleteHeart(payload: _TYPES.PostHeartRequestType): Promise<_TYPES.APIResponseType> {
