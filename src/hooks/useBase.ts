@@ -89,7 +89,7 @@ export default function useBase() {
 
             //TODO: 로그인 완료후..??
             if(login_profile_active === "Y") {
-                history.push(process.env.PUBLIC_URL + '/feed');
+                // history.push(process.env.PUBLIC_URL + '/feed');
                 // history.push(process.env.PUBLIC_URL + '/profile/edit');
             } else {
                 history.push(process.env.PUBLIC_URL + "/profile/edit");
