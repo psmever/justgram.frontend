@@ -17,6 +17,8 @@ function DefaultNavComponent() {
     const homeLink = (loginState === "success") ? process.env.PUBLIC_URL + "/feed" : process.env.PUBLIC_URL + "/";
     const profileLink = (loginState === "success" && login_user_name) ? process.env.PUBLIC_URL + `/${login_user_name}/profile` : process.env.PUBLIC_URL + "/";
 
+    const signLink = (loginState === "success" && login_user_name) ? process.env.PUBLIC_URL + `/logout` : process.env.PUBLIC_URL + "/login";
+
     return (
 
         <div>
@@ -39,6 +41,9 @@ function DefaultNavComponent() {
                         </li>
                         <li className="navigation__list-item">
                             <Link to={profileLink} className="navigation__link"><i className="fa fa-user-o fa-lg"></i></Link>
+                        </li>
+                        <li className="navigation__list-item">
+                            <Link to={signLink} className="navigation__link"><i className="fa fa-sign-out fa-lg"></i></Link>
                         </li>
                     </ul>
                 </div>
