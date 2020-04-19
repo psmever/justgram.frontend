@@ -14,6 +14,8 @@ function PostPage() {
         __setTags,
         __setPostContents,
         __handleSubmit,
+        checkPostInputData,
+        __post_state
     } = usePost();
 
 
@@ -30,6 +32,8 @@ function PostPage() {
                                 handleSetTags={__setTags}
                                 handleSetContents={__setPostContents}
                                 handleSubmit={__handleSubmit}
+                                checkPostInputData={checkPostInputData}
+                                post_state={__post_state}
                             />
                         </div>
                     </div>

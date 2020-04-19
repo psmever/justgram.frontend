@@ -1,5 +1,5 @@
 import React, {FormEvent} from 'react';
-
+import * as _TYPES from 'modules/commonTypes'
 import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
 
@@ -7,18 +7,27 @@ import {
     PostImageUploadComponent
 } from 'components';
 
+const inputCheckDataMessageStyle = {
+    'font-size': '0,6rem',
+    'color': '#e88080'
+};
+
 interface PostFormProps {
     tagString: string[];
     handleSetTags: ( tag_string: string ) => void;
     handleSetContents: ( contents_string: string) => void;
     handleSubmit: ( event: FormEvent<HTMLFormElement>) => void;
+    checkPostInputData: {state: boolean, message: string};
+    post_state: _TYPES.SagaStatus
 }
 
 function PostFormComponent({
     tagString,
     handleSetTags,
     handleSetContents,
-    handleSubmit
+    handleSubmit,
+    checkPostInputData,
+    post_state,
 }: PostFormProps) {
     return (
         <form className="writer__form" onSubmit={ handleSubmit }>
@@ -43,8 +52,16 @@ function PostFormComponent({
                     onChange={(newTags: any) => handleSetTags(newTags)}
                 />
             </div>
+            {checkPostInputData.state === false &&
+                <div className="form__row" style={inputCheckDataMessageStyle}>{checkPostInputData.message}</div>
+            }
 
-        <input className="input_box1" type="submit" value="등록" />
+            {post_state === 'loading'
+            ? <input className="input_box1" type="submit" value="등록중" disabled={true}/>
+            : <input className="input_box1" type="submit" value="등록" />
+            }
+
+
     </form>
     );
 }
