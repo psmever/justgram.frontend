@@ -11,15 +11,15 @@ export default function configureStore(history: History, initialState: RootState
 
     let compose;
 
-    const isDevelopment = process.env.REACT_APP_ENV === 'development1';
+    const isDevelopment = process.env.REACT_APP_ENV === 'production';
 
     const composeEnhancers = composeWithDevTools({});
     const sagaMiddleware = createSagaMiddleware();
 
     if( isDevelopment ) {
-        compose = composeEnhancers(applyMiddleware(routerMiddleware(history), sagaMiddleware, createLogger()));
+        compose = applyMiddleware(routerMiddleware(history), sagaMiddleware);
     } else {
-        compose = composeEnhancers(applyMiddleware(routerMiddleware(history), sagaMiddleware));
+        compose = composeEnhancers(applyMiddleware(routerMiddleware(history), sagaMiddleware, createLogger()));
     }
 
     const store = createStore(
