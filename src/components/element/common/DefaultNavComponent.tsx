@@ -1,13 +1,20 @@
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-
 import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
-
+import { useParams } from 'react-router-dom';
+import * as Helper from 'lib/Helper';
 
 import image_logo from 'assets/images/logo.png';
 
+interface RouteParams {
+    user_name: string
+}
+
+
 function DefaultNavComponent() {
+
+    const params = useParams<RouteParams>();
 
     // 로그인 상태가 정상일떄 홈 링크 변경. 로그인 페이지로 보내지 않기 위해.
     const login_state = useSelector((state: RootState) => state.login_state.state);
@@ -18,6 +25,9 @@ function DefaultNavComponent() {
     const profileLink = (loginState === "success" && login_user_name) ? process.env.PUBLIC_URL + `/${login_user_name}/profile` : process.env.PUBLIC_URL + "/";
 
     const signLink = (loginState === "success" && login_user_name) ? process.env.PUBLIC_URL + `/logout` : process.env.PUBLIC_URL + "/login";
+
+
+    const followersLink = (params.user_name) ? process.env.PUBLIC_URL + `/${params.user_name}/followers` : process.env.PUBLIC_URL + `/${Helper.cookieManager.get('login_user_name')}/followers`;
 
     return (
 
@@ -37,7 +47,7 @@ function DefaultNavComponent() {
                             <Link to={process.env.PUBLIC_URL + "/post"} className="navigation__link"><i className="fa fa-edit fa-lg"></i></Link>
                         </li>
                         <li className="navigation__list-item">
-                            <Link to={process.env.PUBLIC_URL + "/explode"} className="navigation__link"><i className="fa fa-heart-o fa-lg"></i></Link>
+                            <Link to={followersLink} className="navigation__link"><i className="fa fa-heart-o fa-lg"></i></Link>
                         </li>
                         <li className="navigation__list-item">
                             <Link to={profileLink} className="navigation__link"><i className="fa fa-user-o fa-lg"></i></Link>
