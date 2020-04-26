@@ -1,4 +1,6 @@
 import React from 'react';
+import * as _ from 'lodash';
+import ProfileNoImage from 'assets/images/no_image.jpg';
 
 interface initializeProps {
     list_type: 'followers' | 'following',
@@ -16,7 +18,13 @@ function FollowListElement( {list_type, user_id, profile_image, user_name, user_
         <>
             <li className="explore__user">
                 <div className="explore__user-column">
-                    <img src={ profile_image } className="explore__avatar" alt="avatar"/>
+                    {_.isEmpty(profile_image) === false
+                    ?
+                        <img src={ profile_image } className="explore__avatar" alt="avatar"/>
+                    :
+                        <img src={ ProfileNoImage } className="explore__avatar" alt="avatar"/>
+                    }
+
                     <div className="explore__info">
                         <span className="explore__username">{user_name}</span>
                         <span className="explore__full-name">{user_profile_name}</span>
