@@ -1,8 +1,9 @@
 import * as React from 'react';
+import {FooterStyled, FooterColumnStyled, FooterCopyrightStyled} from 'styles';
 
 function FooterComponent() {
     return (
-        <footer className="footer">
+        <FooterStyled>
             {/* <div className="footer__column">
                 <nav className="footer__nav">
                     <ul className="footer__list">
@@ -19,10 +20,12 @@ function FooterComponent() {
                     </ul>
                 </nav>
             </div> */}
-            <div className="footer__column">
-                <span className="footer__copyright">© 2020 Justgram</span>
-            </div>
-        </footer>
+            <FooterColumnStyled>
+            </FooterColumnStyled>
+            <FooterColumnStyled>
+                <FooterCopyrightStyled>© 2020 Justgram</FooterCopyrightStyled>
+            </FooterColumnStyled>
+        </FooterStyled>
     );
 }
 
