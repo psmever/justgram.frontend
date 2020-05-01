@@ -4,6 +4,7 @@ import useBase from "hooks/useBase";
 import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
 import history from "routes/History";
+import GlobalStyle from 'styles/GlobalStyle';
 
 import {
     LoginPage,
@@ -74,6 +75,7 @@ const Root = ({
     } else {
         return (
             <BrowserRouter basename={process.env.PUBLIC_URL}>
+                <GlobalStyle/>
                 <Router history={ Routerhistory }>
                     <Switch>
                         <Route path={process.env.PUBLIC_URL + "/"} exact={ true } component={ LoginPage } />
