@@ -6,6 +6,9 @@ yarn start
 ```
 
 
+~~~~
+
+
 [Redux 4 + TypeScript: A type-safe approach](https://medium.com/@resir014/redux-4-typescript-2-9-a-type-safe-approach-7f073917b803).
 
 [리액트와 리덕스 그리고 리덕스 사가, 타입스크립트 - Redux series(3)](https://byseop.netlify.com/redux-03/).
