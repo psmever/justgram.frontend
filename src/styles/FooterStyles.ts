@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-
-export const FooterStyled = styled.footer`
+const FooterStyled = styled.footer`
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -13,11 +12,17 @@ export const FooterStyled = styled.footer`
     font-weight: 600;
 `;
 
-export const FooterColumnStyled = styled.div`
+const FooterColumnStyled = styled.div`
     text-align: center;
 `;
 
-export const FooterCopyrightStyled = styled.span`
+const FooterCopyrightStyled = styled.span`
     text-align: center;
     color: hsl(0, 0%, 60%);
 `;
+
+export {
+    FooterStyled,
+    FooterColumnStyled,
+    FooterCopyrightStyled,
+}
