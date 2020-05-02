@@ -13,6 +13,12 @@ const PhotoStyle = styled.div`
     width: 100%;
     max-width: 600px;
     margin-bottom: 65px;
+
+    @media screen and (min-width: 375px) and (max-width: 667px) {
+        background-color: transparent;
+        border: 0;
+        margin-bottom: 20px;
+    }
 `
 
 const PhotoHeaderStyle = styled.header`
@@ -98,6 +104,10 @@ const PhotoAddCommentContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media screen and (min-width: 375px) and (max-width: 667px) {
+        display: none;
+    }
 `
 
 const PhotoAddCommentContainerTextArea = styled.textarea`

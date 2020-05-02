@@ -11,7 +11,6 @@ import {
     ProfileUsername,
     ProfileStats,
     ProfileStat,
-    ProfileStatPost,
     ProfileStatLink,
     ProfileStatNumber,
     ProfileFullName,
@@ -55,7 +54,7 @@ function ProfilePageHeaderComponent( { avatar_image, username, count_info, bio, 
                     <i className="fa fa-cog fa-lg"></i>
                 </ProfileTitle>
                 <ProfileStats>
-                    <ProfileStatPost><ProfileStatNumber>{ count_info?.posts }</ProfileStatNumber> posts</ProfileStatPost>
+                    <ProfileStat><ProfileStatLink to={followersLink}><ProfileStatNumber>{ count_info?.posts }</ProfileStatNumber> posts</ProfileStatLink></ProfileStat>
                     <ProfileStat><ProfileStatLink to={followersLink}><ProfileStatNumber>{ count_info?.followers }</ProfileStatNumber> followers</ProfileStatLink></ProfileStat>
                     <ProfileStat><ProfileStatLink to={followingLink}><ProfileStatNumber>{ count_info?.following }</ProfileStatNumber> following</ProfileStatLink></ProfileStat>
                 </ProfileStats>

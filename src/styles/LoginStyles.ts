@@ -10,6 +10,15 @@ export const LoginMain = styled.main`
 
 export const LoginColumn = styled.div`
     width: 45%;
+
+    @media screen and (min-width: 375px) and (max-width: 667px) {
+        width: 100%;
+
+        &:first-child {
+            display: none;
+        }
+
+    }
 `
 
 export const LoginPhone = styled.img`

@@ -10,6 +10,11 @@ const NavigationStyle = styled.nav`
     justify-content: space-between;
     padding: 0 100px;
     margin-bottom: 60px;
+
+    @media screen and (min-width: 375px) and (max-width: 667px) {
+        padding: 0 20px;
+        margin-bottom: 0;
+    }
 `
 
 const NavigationNavigationColumn = styled.div`

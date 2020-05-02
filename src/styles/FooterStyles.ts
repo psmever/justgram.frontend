@@ -10,6 +10,12 @@ const FooterStyled = styled.footer`
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 600;
+
+    @media screen and (min-width: 375px) and (max-width: 667px) {
+        width: 80%;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 `;
 
 const FooterColumnStyled = styled.div`
