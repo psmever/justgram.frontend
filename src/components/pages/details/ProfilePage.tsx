@@ -3,8 +3,13 @@ import {
     DefaultNavComponent,
     FooterComponent,
     ProfilePageHeaderComponent,
-    ProfilePostListComponent
+    ProfilePostListComponent,
 } from 'components';
+import {
+    ProfileMain,
+    ProfilePhotosSection
+} from 'styles';
+
 import * as commonTypes from "modules/commonTypes";
 import useUserProfileData from 'hooks/useUserProfileData';
 import { useParams } from 'react-router-dom';
@@ -37,7 +42,7 @@ function ProfilePage() {
 
             <DefaultNavComponent/>
 
-            <main id="profile">
+            <ProfileMain>
                 <ProfilePageHeaderComponent
                     avatar_image={profile_state.profile_image?.secure_url}
                     username={profile_state.profile?.name}
@@ -46,7 +51,7 @@ function ProfilePage() {
                     web_site={profile_state.profile?.web_site}
                 />
 
-                <section className="profile__photos">
+                <ProfilePhotosSection>
                     {profile_state.state === 'success' && userPosts && userPosts.map((e: commonTypes.getUserProfileDataResponsePostType,i:any) =>
                         <ProfilePostListComponent
                             key={i}
@@ -56,9 +61,8 @@ function ProfilePage() {
                             heart_count={e.count.heart_count}
                         />
                     )}
-
-                </section>
-            </main>
+                </ProfilePhotosSection>
+            </ProfileMain>
 
             <FooterComponent/>
         </div>

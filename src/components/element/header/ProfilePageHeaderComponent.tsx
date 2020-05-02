@@ -3,6 +3,20 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import * as Helper from 'lib/Helper';
 
+import {
+    ProfileHeader,
+    ProfileColumnImage,
+    ProfileColumn,
+    ProfileTitle,
+    ProfileUsername,
+    ProfileStats,
+    ProfileStat,
+    ProfileStatNumber,
+    ProfileFullName,
+    ProfileBio,
+} from 'styles';
+
+
 interface ProfilePageHeaderComponentProps  {
     avatar_image: string | undefined,
     username: string | undefined,
@@ -28,28 +42,28 @@ function ProfilePageHeaderComponent( { avatar_image, username, count_info, bio, 
     const followingLink = (params.user_name) ? process.env.PUBLIC_URL + `/${params.user_name}/following` : process.env.PUBLIC_URL + `/${Helper.cookieManager.get('login_user_name')}/following`;
 
     return (
-        <header className="profile__header">
+        <ProfileHeader>
             { avatar_image &&
-                <div className="profile__column"><img src={ avatar_image } alt="avatar"/></div>
+                <ProfileColumnImage><img src={ avatar_image } alt="avatar"/></ProfileColumnImage>
             }
-            <div className="profile__column">
-            <div className="profile__title">
-            <h3 className="profile__username">{ username }</h3>
-                <Link to={process.env.PUBLIC_URL + "/profile/edit"}>Edit profile</Link>
-                <i className="fa fa-cog fa-lg"></i>
-            </div>
-                <ul className="profile__stats">
-                    <li className="profile__stat"><span className="stat__number">{ count_info?.posts }</span> posts</li>
-                    <Link to={followersLink}><li className="profile__stat"><span className="stat__number">{ count_info?.followers }</span> followers</li></Link>
-                    <Link to={followingLink}><li className="profile__stat"><span className="stat__number">{ count_info?.following }</span> following</li></Link>
-                </ul>
-                <span className="profile__full-name">{ username }</span>
-                <p className="profile__bio">
+            <ProfileColumn>
+                <ProfileTitle>
+                    <ProfileUsername>{ username }</ProfileUsername>
+                    <Link to={process.env.PUBLIC_URL + "/profile/edit"}>Edit profile</Link>
+                    <i className="fa fa-cog fa-lg"></i>
+                </ProfileTitle>
+                <ProfileStats>
+                    <ProfileStat><ProfileStatNumber>{ count_info?.posts }</ProfileStatNumber> posts</ProfileStat>
+                    <Link to={followersLink}><ProfileStat><ProfileStatNumber>{ count_info?.followers }</ProfileStatNumber> followers</ProfileStat></Link>
+                    <Link to={followingLink}><ProfileStat><ProfileStatNumber>{ count_info?.following }</ProfileStatNumber> following</ProfileStat></Link>
+                </ProfileStats>
+                <ProfileFullName>{ username }</ProfileFullName>
+                <ProfileBio>
                     { bio }
                     <a href={web_site}>{web_site}</a>
-                </p>
-            </div>
-        </header>
+                </ProfileBio>
+            </ProfileColumn>
+        </ProfileHeader>
     );
 }
 
