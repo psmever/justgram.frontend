@@ -13,6 +13,11 @@ const FollowUsers = styled.ul`
     border-radius: 3px;
     width: 100%;
     max-width: 600px;
+
+    @media screen and (min-width: 375px) and (max-width: 667px) {
+        background-color: transparent;
+        border: 0;
+    }
 `
 
 const FollowUser = styled.li`
@@ -23,6 +28,10 @@ const FollowUser = styled.li`
     border-bottom: 1px solid #e6e6e6;
 
     &:last-child {
+        border: 0;
+    }
+
+    @media screen and (min-width: 375px) and (max-width: 667px) {
         border: 0;
     }
 `

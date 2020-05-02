@@ -11,6 +11,12 @@ const EditProfileContainer = styled.div`
     width: 100%;
     max-width: 800px;
     padding: 40px 0;
+
+    @media screen and (min-width: 375px) and (max-width: 667px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `
 
 const EditProfileHeader = styled.header`
@@ -34,15 +40,30 @@ const EditProfileAvatarContainer = styled.div`
         height: 38px;
         border-radius: 50%;
     }
+
+    @media screen and (min-width: 375px) and (max-width: 667px) {
+        flex-direction: column;
+        width: 0;
+    }
 `
 
 const EditProfileForm = styled.form`
+
+    @media screen and (min-width: 375px) and (max-width: 667px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `
 const EditProfileFormRow = styled.div`
     display: flex;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
+
+    @media screen and (min-width: 375px) and (max-width: 667px) {
+        flex-direction: column;
+    }
 `
 
 const EditProfileFormLavel = styled.label`
@@ -54,6 +75,12 @@ const EditProfileFormLavel = styled.label`
     font-size: 16px;
     /* font-size: 15px; */
     /* width: 80%; */
+
+    @media screen and (min-width: 375px) and (max-width: 667px) {
+        margin: 0;
+        text-align: center;
+        margin-bottom: 10px;
+    }
 `
 const EditProfileFormInput = styled.input`
     padding: 8px;
