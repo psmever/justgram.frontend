@@ -2,13 +2,13 @@ import React from 'react';
 import * as _ from 'lodash';
 import ProfileNoImage from 'assets/images/no_image.jpg';
 import {
-    FollowersUser,
-    FollowersUserColumn,
-    FollowersUserInfo,
-    FollowersUserUserName,
-    FollowersUserFullUserName,
-    FollowersUserAvatar,
-    FollowersButton,
+    FollowUser,
+    FollowUserColumn,
+    FollowUserInfo,
+    FollowUserUserName,
+    FollowUserFullUserName,
+    FollowUserAvatar,
+    FollowButton,
 } from 'styles';
 
 interface initializeProps {
@@ -25,31 +25,31 @@ interface initializeProps {
 function FollowListElement( {list_type, user_id, profile_image, user_name, user_profile_name, followstate, clickUnFollowButton, clickFollowButton } : initializeProps) {
     return (
         <>
-            <FollowersUser>
-                <FollowersUserColumn>
+            <FollowUser>
+                <FollowUserColumn>
                     {_.isEmpty(profile_image) === false
                     ?
-                        <FollowersUserAvatar src={ profile_image } alt="avatar"/>
+                        <FollowUserAvatar src={ profile_image } alt="avatar"/>
                     :
-                        <FollowersUserAvatar src={ ProfileNoImage } alt="avatar"/>
+                        <FollowUserAvatar src={ ProfileNoImage } alt="avatar"/>
                     }
 
-                    <FollowersUserInfo>
-                        <FollowersUserUserName>{user_name}</FollowersUserUserName>
-                        <FollowersUserFullUserName>{user_profile_name}</FollowersUserFullUserName>
-                    </FollowersUserInfo>
-                </FollowersUserColumn>
+                    <FollowUserInfo>
+                        <FollowUserUserName>{user_name}</FollowUserUserName>
+                        <FollowUserFullUserName>{user_profile_name}</FollowUserFullUserName>
+                    </FollowUserInfo>
+                </FollowUserColumn>
                 {
                     (function(){
                         switch(list_type) {
                             case "followers" :
                                 if(followstate) {
-                                    return <FollowersUserColumn><FollowersButton onClick={() => clickUnFollowButton(user_id)}>unFollow</FollowersButton></FollowersUserColumn>
+                                    return <FollowUserColumn><FollowButton onClick={() => clickUnFollowButton(user_id)}>unFollow</FollowButton></FollowUserColumn>
                                 } else {
-                                    return <FollowersUserColumn><FollowersButton onClick={() => clickFollowButton(user_id)}>Follow</FollowersButton></FollowersUserColumn>
+                                    return <FollowUserColumn><FollowButton onClick={() => clickFollowButton(user_id)}>Follow</FollowButton></FollowUserColumn>
                                 }
                             case "following" :
-                                return <FollowersUserColumn><FollowersButton onClick={() => clickUnFollowButton(user_id)}>UnFollow</FollowersButton></FollowersUserColumn>
+                                return <FollowUserColumn><FollowButton onClick={() => clickUnFollowButton(user_id)}>UnFollow</FollowButton></FollowUserColumn>
                         }
 
                     })()
@@ -63,7 +63,7 @@ function FollowListElement( {list_type, user_id, profile_image, user_name, user_
                     <div className="explore__user-column"><button onClick={() => clickFollowButton(user_id)}>Follow</button></div>
                 } */
                 }
-            </FollowersUser>
+            </FollowUser>
         </>
     );
 }

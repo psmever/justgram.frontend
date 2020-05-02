@@ -1,13 +1,13 @@
-import styled, {keyframes} from 'styled-components';
+import styled from 'styled-components';
 
-const FollowersMain = styled.main`
+const FollowMain = styled.main`
     display: flex;
     justify-content: center;
     align-items: flex-start;
     min-height: 500px;
 `
 
-const FollowersUsers = styled.ul`
+const FollowUsers = styled.ul`
     background-color: white;
     border: 1px solid #e6e6e6;
     border-radius: 3px;
@@ -15,7 +15,7 @@ const FollowersUsers = styled.ul`
     max-width: 600px;
 `
 
-const FollowersUser = styled.li`
+const FollowUser = styled.li`
     padding: 10px 15px;
     display: flex;
     align-items: center;
@@ -27,30 +27,30 @@ const FollowersUser = styled.li`
     }
 `
 
-const FollowersUserColumn = styled.div`
+const FollowUserColumn = styled.div`
     display: flex;
     align-items: center;
 `
 
-const FollowersUserInfo = styled.div`
+const FollowUserInfo = styled.div`
     margin-left: 15px;
 `
 
-const FollowersUserAvatar = styled.img`
+const FollowUserAvatar = styled.img`
     width: 55px;
     border-radius: 50%;
 `
 
-const FollowersUserUserName = styled.span`
+const FollowUserUserName = styled.span`
     display: block;
     font-weight: 600;
     margin-bottom: 5px;
 `
-const FollowersUserFullUserName = styled.span`
+const FollowUserFullUserName = styled.span`
     color: #999;
 `
 
-const FollowersButton = styled.button`
+const FollowButton = styled.button`
     background-color: var(--fd-blue);
     color: white;
     border: 0;
@@ -72,13 +72,13 @@ const FollowersButton = styled.button`
 `
 
 export {
-    FollowersMain,
-    FollowersUsers,
-    FollowersUser,
-    FollowersUserColumn,
-    FollowersUserInfo,
-    FollowersUserUserName,
-    FollowersUserFullUserName,
-    FollowersUserAvatar,
-    FollowersButton,
+    FollowMain,
+    FollowUsers,
+    FollowUser,
+    FollowUserColumn,
+    FollowUserInfo,
+    FollowUserUserName,
+    FollowUserFullUserName,
+    FollowUserAvatar,
+    FollowButton,
 }
