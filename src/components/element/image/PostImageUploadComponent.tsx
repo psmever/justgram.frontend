@@ -4,7 +4,6 @@ import {
     PostImagePreview,
     PostImagePreviewBox,
     PostImageMessageBox,
-    PostImageUploadButton,
 } from 'styles';
 
 import { tryPostImageUpload } from "lib/API";
