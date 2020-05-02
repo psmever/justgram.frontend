@@ -11,7 +11,6 @@ import {
     LogoutPage,
     RegisterPage,
     FeedPage,
-    ExplodePage,
     ProfilePage,
     EditProfilePage,
     DefaultPage,
@@ -84,7 +83,6 @@ const Root = ({
                         <Route path={process.env.PUBLIC_URL + "/register"} exact={ true } component={ RegisterPage } />
                         <Route path={process.env.PUBLIC_URL + "/feed"} exact={ true } component={ FeedPage } />
                         <Route path={process.env.PUBLIC_URL + "/post"} exact={ true } component={ PostPage } />
-                        <Route path={process.env.PUBLIC_URL + "/explode"} exact={ true } component={ ExplodePage } />
 
                         <Route path={process.env.PUBLIC_URL + "/:user_name/profile"} exact={ true } component={ ProfilePage } />
                         <Route path={process.env.PUBLIC_URL + "/profile/edit"} exact={ true } component={ EditProfilePage } />
