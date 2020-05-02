@@ -2,6 +2,10 @@ import React, {useState, ChangeEvent, useEffect, useCallback, useRef} from 'reac
 import { tryProfileImageUpload, putUserProfileImage } from "lib/API";
 import * as Helper from "lib/Helper";
 import * as commonTypes from "modules/commonTypes";
+import {
+
+} from 'styles';
+
 
 type profileImageType = {
     image: string | null,
