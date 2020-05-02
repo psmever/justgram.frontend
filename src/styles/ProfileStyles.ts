@@ -1,4 +1,5 @@
 import styled, {keyframes} from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const ProfileMain = styled.main`
     display: flex;
@@ -106,8 +107,44 @@ const ProfileStats = styled.ul`
     margin-bottom: 30px;
 `
 const ProfileStat = styled.li`
-    margin-right: 40px;
+    /* margin-right: 40px; */
 `
+
+const ProfileStatPost = styled.li`
+    /* margin-right: 40px; */
+    border: 2px solid #f4f4f4;
+    border-radius: 5px;
+    background-color: #00ae9673;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+    margin : 20px;
+    padding: 10px 20px 10px 20px;
+    display: inline-block;
+
+    &:hover {
+        border: 2px solid #009900;
+        background-color: #00cc00;
+    }
+`
+
+const ProfileStatLink = styled(Link)`
+    border: 2px solid #f4f4f4;
+    border-radius: 5px;
+    background-color: #00ae9673;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+    margin : 20px;
+    padding: 10px 20px 10px 20px;
+    display: inline-block;
+
+    &:hover {
+        border: 2px solid #009900;
+        background-color: #00cc00;
+    }
+`
+
 const ProfileStatNumber = styled.span`
     font-weight: 600;
 `
@@ -116,11 +153,12 @@ const ProfileFullName = styled.span`
 `
 const ProfileBio = styled.p`
     a {
-    color: var(--link-color);
-    font-weight: 600;
-    text-decoration: none;
-    display: block;
+        color: var(--link-color);
+        font-weight: 600;
+        text-decoration: none;
+        display: block;
     }
+
     line-height: 125%;
 `
 
@@ -186,6 +224,8 @@ export {
     ProfileUsername,
     ProfileStats,
     ProfileStat,
+    ProfileStatPost,
+    ProfileStatLink,
     ProfileStatNumber,
     ProfileFullName,
     ProfileBio,
