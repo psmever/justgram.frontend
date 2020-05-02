@@ -94,7 +94,7 @@ const Root = ({
                         <Route path={process.env.PUBLIC_URL + "/default"} exact={ true } component={ DefaultPage } />
                         <Route path={process.env.PUBLIC_URL + "/test"} exact={ true } component={ TestPage } />
                         <Route path={process.env.PUBLIC_URL + "/test2"} exact={ true } component={ TestPage2 } />
-                        <Redirect path="*" to={process.env.PUBLIC_URL + "/login"} />
+                        <Redirect path="*" to={process.env.PUBLIC_URL + "/feed"} />
                     </Switch>
                 </Router>
             </BrowserRouter>
