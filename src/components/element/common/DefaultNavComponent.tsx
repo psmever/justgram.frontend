@@ -20,13 +20,9 @@ function DefaultNavComponent() {
     const login_state = useSelector((state: RootState) => state.login_state.state);
     const login_user_name = useSelector((state: RootState) => state.login_state.user_name);
     const loginState = useMemo(() => login_state, [login_state]);
-
-    const homeLink = (loginState === "success") ? process.env.PUBLIC_URL + "/feed" : process.env.PUBLIC_URL + "/";
-    const profileLink = (loginState === "success" && login_user_name) ? process.env.PUBLIC_URL + `/${login_user_name}/profile` : process.env.PUBLIC_URL + "/";
-
+    const homeLink = (loginState === "success") ? process.env.PUBLIC_URL + "/feed" : process.env.PUBLIC_URL + "/login";
+    const profileLink = (loginState === "success" && login_user_name) ? process.env.PUBLIC_URL + `/${login_user_name}/profile` : process.env.PUBLIC_URL + "/login";
     const signLink = (loginState === "success" && login_user_name) ? process.env.PUBLIC_URL + `/logout` : process.env.PUBLIC_URL + "/login";
-
-
     const followersLink = (params.user_name) ? process.env.PUBLIC_URL + `/${params.user_name}/followers` : process.env.PUBLIC_URL + `/${Helper.cookieManager.get('login_user_name')}/followers`;
 
     return (

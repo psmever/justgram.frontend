@@ -66,8 +66,8 @@ const Root = ({
                 <LoadingPage
                     type={'BallTriangle'}
                     color={'#00BFFF'}
-                    height={90}
-                    width={90}
+                    height={50}
+                    width={50}
                 />
             </div>
         );
@@ -77,7 +77,7 @@ const Root = ({
                 <GlobalStyle/>
                 <Router history={ Routerhistory }>
                     <Switch>
-                        <Route path={process.env.PUBLIC_URL + "/"} exact={ true } component={ LoginPage } />
+                        <Route path={process.env.PUBLIC_URL + "/"} exact={ true } component={ FeedPage } />
                         <Route path={process.env.PUBLIC_URL + "/login"} exact={ true } component={ LoginPage } />
                         <Route path={process.env.PUBLIC_URL + "/logout"} exact={ true } component={ LogoutPage } />
                         <Route path={process.env.PUBLIC_URL + "/register"} exact={ true } component={ RegisterPage } />
