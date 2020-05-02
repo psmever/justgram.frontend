@@ -1,4 +1,5 @@
 import React, { FormEvent } from 'react';
+import { RegisterFormInput, RegisterFormInputSubmit } from 'styles';
 
 interface RegisterFormProps {
     handleChangeUserName: ( username: string ) => void;
@@ -16,9 +17,9 @@ function RegisterFormComponent({
     handleSubmit
 }: RegisterFormProps) {
     return (
-        <form className="register__form" onSubmit={ handleSubmit }>
+        <form onSubmit={ handleSubmit }>
             <div className="form__row">
-                <input
+                <RegisterFormInput
                     name="email"
                     type="text"
                     className="form__input2"
@@ -27,7 +28,7 @@ function RegisterFormComponent({
                 />
             </div>
             <div className="form__row">
-                <input
+                <RegisterFormInput
                     name="password"
                     type="password"
                     className="form__input2"
@@ -36,7 +37,7 @@ function RegisterFormComponent({
                 />
             </div>
             <div className="form__row">
-                <input
+                <RegisterFormInput
                     name="confirm_password"
                     type="password"
                     className="form__input2"
@@ -45,7 +46,7 @@ function RegisterFormComponent({
                 />
             </div>
             <div className="form__row">
-                <input
+                <RegisterFormInput
                     name="username"
                     type="text"
                     className="form__input2"
@@ -53,7 +54,7 @@ function RegisterFormComponent({
                     onChange={ e => handleChangeUserName(e.target.value)}
                 />
             </div>
-            <input type="submit" value="submit"/>
+            <RegisterFormInputSubmit type="submit" value="submit"/>
         </form>
     );
 }

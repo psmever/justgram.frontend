@@ -1,6 +1,15 @@
 import React, { FormEvent } from 'react';
 import * as commonTypes from "modules/commonTypes";
 import {LoadingPage} from "components";
+import {
+    EditProfileForm,
+    EditProfileFormRow,
+    EditProfileFormInput,
+    EditProfileFormTextarea,
+    EditProfileFormLavel,
+    EditProfileFormLoading,
+    EditProfileFormSubmit,
+} from 'styles';
 
 interface EditProfileFormProps {
     userProfile: commonTypes.Nullable<commonTypes.APIResponseSubDataInfoType>
@@ -29,69 +38,63 @@ function EditProfileFormComponent({
 }: EditProfileFormProps) {
     //TODO: genderCode 3번 바뀜.
     return (
-        <form className="edit-profile__form" onSubmit={ handleSubmit }>
+        <EditProfileForm onSubmit={ handleSubmit }>
             {
                 getProfileDataState === 'loading'
                 ?
-                <>
-                    <div className="form__row">
-                        <div className="form__loading">
+                    <EditProfileFormRow>
+                        <EditProfileFormLoading>
                             <LoadingPage type={'Circles'} color={'#00BFFF'} height={25} width={25} />
-                        </div>
-                    </div>
-                </>
+                        </EditProfileFormLoading>
+                    </EditProfileFormRow>
                 :
                 <>
-                    <div className="form__row">
-                        <label htmlFor="user-name" className="form__label">Username:</label>
-                        <input
+                    <EditProfileFormRow>
+                        <EditProfileFormLavel htmlFor="user-name" className="form__label">Username:</EditProfileFormLavel>
+                        <EditProfileFormInput
                             id="username"
                             type="text"
-                            className="form__input"
                             disabled
                             value={userProfile?.user_name}
                         />
-                    </div>
-                    <div className="form__row">
-                        <label htmlFor="full-name" className="form__label">Name:</label>
-                        <input
+                    </EditProfileFormRow>
+                    <EditProfileFormRow>
+                        <EditProfileFormLavel htmlFor="full-name" className="form__label">Name:</EditProfileFormLavel>
+                        <EditProfileFormInput
                             id="name"
                             type="text"
-                            className="form__input"
                             onChange={ e => handleChangeName(e.target.value)}
                             value={userProfile?.name}
                         />
-                    </div>
-                    <div className="form__row">
-                        <label htmlFor="website" className="form__label">Website:</label>
-                        <input
+                    </EditProfileFormRow>
+                    <EditProfileFormRow>
+                        <EditProfileFormLavel htmlFor="website" className="form__label">Website:</EditProfileFormLavel>
+                        <EditProfileFormInput
                             id="website"
                             type="url"
-                            className="form__input"
                             onChange={ e => handleChangeWebSite(e.target.value)}
                             value={userProfile?.web_site}
                         />
-                    </div>
-                    <div className="form__row">
-                        <label htmlFor="bio" className="form__label">Bio:</label>
-                        <textarea
+                    </EditProfileFormRow>
+                    <EditProfileFormRow>
+                        <EditProfileFormLavel htmlFor="bio" className="form__label">Bio:</EditProfileFormLavel>
+                        <EditProfileFormTextarea
                             id="bio"
                             onChange={e => handleChangeBio(e.target.value)}
                             value={userProfile?.bio}
-                        ></textarea>
-                    </div>
-                    <div className="form__row">
-                        <label htmlFor="phone" className="form__label">Phone Number:</label>
-                        <input
+                        ></EditProfileFormTextarea>
+                    </EditProfileFormRow>
+                    <EditProfileFormRow>
+                        <EditProfileFormLavel htmlFor="phone" className="form__label">Phone Number:</EditProfileFormLavel>
+                        <EditProfileFormInput
                             id="phonenumber"
                             type="tel"
-                            className="form__input"
                             value={userProfile?.phone_number}
                             onChange={ e => handleChangePhoneNumber(e.target.value)}
                         />
-                    </div>
-                    <div className="form__row">
-                        <label htmlFor="gender" className="form__label">Gender:</label>
+                    </EditProfileFormRow>
+                    <EditProfileFormRow>
+                        <EditProfileFormLavel htmlFor="gender" className="form__label">Gender:</EditProfileFormLavel>
                         <select id="gender"
                             onChange={ e => handleChangeGender(e.target.value)}
                             value={userProfile?.gender}
@@ -104,22 +107,20 @@ function EditProfileFormComponent({
 
 
                         </select>
-                    </div>
-                    <div className="form__row">
+                    </EditProfileFormRow>
+                    <EditProfileFormRow>
                     {
                         profileDataUpdateState === 'loading'
                         ?
-                            <div className="form__loading">
+                            <EditProfileFormLoading>
                                 <LoadingPage type={'Circles'} color={'#00BFFF'} height={25} width={25} />
-                            </div>
-                        : <input type="submit" value="저장"/>
+                            </EditProfileFormLoading>
+                        : <EditProfileFormSubmit/>
                     }
-                    </div>
+                    </EditProfileFormRow>
                 </>
             }
-
-
-        </form>
+        </EditProfileForm>
     );
 }
 

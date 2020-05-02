@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-
+import { FollowMain, FollowUsers } from 'styles';
 import {
     DefaultNavComponent,
     FooterComponent,
@@ -35,8 +35,8 @@ function FollowingPage() {
     return (
         <div>
             <DefaultNavComponent/>
-            <main id="explore">
-                <ul className="explore__users">
+            <FollowMain>
+                <FollowUsers>
                     {following_state.state === "success" && following_state.list.map((e: any, i: number) =>
                             <FollowListElement
                                 key={i}
@@ -52,8 +52,8 @@ function FollowingPage() {
                         )
 
                     }
-                </ul>
-            </main>
+                </FollowUsers>
+            </FollowMain>
             <FooterComponent/>
         </div>
     );

@@ -2,6 +2,13 @@ import React, {FormEvent} from 'react';
 import * as _TYPES from 'modules/commonTypes'
 import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
+import {
+    PostForm,
+    PostFormRow,
+    PostFormTextArea,
+    PostFormInputBox1,
+    PostFormInputBox2,
+} from 'styles';
 
 import {
     PostImageUploadComponent
@@ -30,18 +37,18 @@ function PostFormComponent({
     post_state,
 }: PostFormProps) {
     return (
-        <form className="writer__form" onSubmit={ handleSubmit }>
-            <div className="form__row form__filebox">
+        <PostForm onSubmit={ handleSubmit }>
+            <PostFormRow>
                 <PostImageUploadComponent/>
-            </div>
-            <div className="form__row">
-                <textarea className="writer__textarea" placeholder="글을 등록해 주세요."
+            </PostFormRow>
+            <PostFormRow>
+                <PostFormTextArea placeholder="글을 등록해 주세요."
                     onChange={ e => handleSetContents(e.target.value)}
                 >
-                </textarea>
-            </div>
+                </PostFormTextArea>
+            </PostFormRow>
 
-            <div className="form__row">
+            <PostFormRow>
                 <ReactTagInput
                     tags={tagString}
                     placeholder="해시테그를 입력하고 엔터를 눌러 주세요(엔터를 눌러야지 저장 됩니다.)"
@@ -51,18 +58,18 @@ function PostFormComponent({
                     removeOnBackspace={true}
                     onChange={(newTags: any) => handleSetTags(newTags)}
                 />
-            </div>
+            </PostFormRow>
             {checkPostInputData.state === false &&
-                <div className="form__row" style={inputCheckDataMessageStyle}>{checkPostInputData.message}</div>
+                <PostFormRow style={inputCheckDataMessageStyle}>{checkPostInputData.message}</PostFormRow>
             }
 
             {post_state === 'loading'
-            ? <input className="input_box1" type="submit" value="등록중" disabled={true}/>
-            : <input className="input_box1" type="submit" value="등록" />
+            ? <PostFormInputBox1 type="submit" value="등록중" disabled={true}/>
+            : <PostFormInputBox2 type="submit" value="등록" />
             }
 
 
-    </form>
+    </PostForm>
     );
 }
 

@@ -1,5 +1,11 @@
 import * as React from 'react';
-
+import {
+    EditProfileMain,
+    EditProfileContainer,
+    EditProfileHeader,
+    EditProfileUsername,
+    EditProfileAvatarContainer,
+} from 'styles';
 import {
     DefaultNavComponent,
     FooterComponent
@@ -24,27 +30,25 @@ function EditProfilePage() {
         profileDataUpdateState
     } = useEditProfile();
 
-
-
     return (
         <div>
 
             <DefaultNavComponent/>
 
-            <main id="edit-profile">
-                <div className="edit-profile__container">
+            <EditProfileMain>
+                <EditProfileContainer>
 
-                    <header className="edit-profile__header">
+                    <EditProfileHeader>
                         {/* <div className="edit-profile__avatar-container">
                             <img src={ image_avatar } className="edit-profile__avatar" alt="avatar"/>
                         </div> */}
 
-                        <div className="edit-profile__avatar-container">
+                        <EditProfileAvatarContainer>
                             <ProfileImageComponent/>
-                        </div>
+                        </EditProfileAvatarContainer>
 
-                        <h4 className="edit-profile__username">{ profileData?.user_name }</h4>
-                    </header>
+                        <EditProfileUsername>{ profileData?.user_name }</EditProfileUsername>
+                    </EditProfileHeader>
 
                     <EditProfileFormComponent
                         userProfile={profileData}
@@ -59,8 +63,8 @@ function EditProfilePage() {
                         profileDataUpdateState={profileDataUpdateState}
                     />
 
-                </div>
-            </main>
+                </EditProfileContainer>
+            </EditProfileMain>
 
             <FooterComponent/>
         </div>

@@ -1,4 +1,23 @@
 import React, {MouseEvent} from 'react';
+import {
+    PhotoStyle,
+    PhotoHeaderStyle,
+    PhotoHeaderAvatarStyle,
+    PhotouserInfoStyle,
+    PhotouserInfoAuthorStyle,
+    PhotouserInfoLocationSttyle,
+    PhotoFeedPhotoStyle,
+    PhotoFeedPhotoimgStyle,
+    PhotoInfoStyle,
+    PhotoActionsStyle,
+    PhotoActionStyle,
+    PhotoLikes,
+    PhotoComments,
+    PhotoTimeAgo,
+    PhotoAddCommentContainer,
+    PhotoAddCommentContainerTextArea,
+    PhotoAddCommentContainerTextAreaI,
+} from 'styles';
 import { CommentComponent } from "components";
 import * as commonTypes from "modules/commonTypes";
 import { Link } from 'react-router-dom';
@@ -18,36 +37,36 @@ interface PhotoProps {
 function PhotoComponent({ feeds, handleChangeComment, handleSaveComment, handleClickAddHeart, handleClickDeleteHeart, heartactionstate, saveCommentState } : PhotoProps) {
     return (
         <>
-            <div className="photo">
-                <header className="photo__header">
-                    <Link to={process.env.PUBLIC_URL + `/${feeds.user_info.user_name}/profile`}><img src={feeds.user_info.user_profile_image} className="photo__avatar" alt="avatar"/></Link>
-                    <div className="photo__user-info">
-                        <Link to={process.env.PUBLIC_URL + `/${feeds.user_info.user_name}/profile`}><span className="photo__author">{feeds.user_info.user_name}</span></Link>
-                        <Link to={process.env.PUBLIC_URL + `/${feeds.user_info.user_name}/profile`}><span className="photo__location">{feeds.user_info.user_email}</span></Link>
-                    </div>
-                </header>
-                <div className="photo_feedphoto"><img src={feeds.image.cloudinary.secure_url} alt="feedphoto"/></div>
-                <div className="photo__info">
-                    <div className="photo__actions">
+            <PhotoStyle>
+                <PhotoHeaderStyle>
+                    <Link to={process.env.PUBLIC_URL + `/${feeds.user_info.user_name}/profile`}><PhotoHeaderAvatarStyle src={feeds.user_info.user_profile_image} alt="avatar"/></Link>
+                    <PhotouserInfoStyle>
+                        <Link to={process.env.PUBLIC_URL + `/${feeds.user_info.user_name}/profile`}><PhotouserInfoAuthorStyle>{feeds.user_info.user_name}</PhotouserInfoAuthorStyle></Link>
+                        <Link to={process.env.PUBLIC_URL + `/${feeds.user_info.user_name}/profile`}><PhotouserInfoLocationSttyle>{feeds.user_info.user_email}</PhotouserInfoLocationSttyle></Link>
+                    </PhotouserInfoStyle>
+                </PhotoHeaderStyle>
+                <PhotoFeedPhotoStyle><PhotoFeedPhotoimgStyle src={feeds.image.cloudinary.secure_url} alt="feedphoto"/></PhotoFeedPhotoStyle>
+                <PhotoInfoStyle>
+                    <PhotoActionsStyle>
                         {
                             (function(){
                                 if(heartactionstate) {
-                                    return <span className="photo__action"><LoadingPage type={'Circles'} color={'#00BFFF'} height={15} width={15} /></span>
+                                    return <PhotoActionStyle><LoadingPage type={'Circles'} color={'#00BFFF'} height={15} width={15} /></PhotoActionStyle>
                                 } else {
                                     if(feeds.myheart) {
-                                        return <span className="photo__action"><i className="fa fa-heart fa-lg" onClick={() => handleClickDeleteHeart(feeds.post_id)}></i></span>
+                                        return <PhotoActionStyle><i className="fa fa-heart fa-lg" onClick={() => handleClickDeleteHeart(feeds.post_id)}></i></PhotoActionStyle>
                                     } else {
-                                        return <span className="photo__action"><i className="fa fa-heart-o fa-lg" onClick={() => handleClickAddHeart(feeds.post_id)}></i></span>
+                                        return <PhotoActionStyle><i className="fa fa-heart-o fa-lg" onClick={() => handleClickAddHeart(feeds.post_id)}></i></PhotoActionStyle>
                                     }
                                 }
                             })()
                         }
-                        <span className="photo__action"><i className="fa fa-comment-o fa-lg"></i></span>
-                    </div>
-                    <span className="photo__likes">{feeds.tags.string}</span>
-                    <span className="photo__likes">{feeds.hearts_count} hearts</span>
-                    <span className="photo__likes">{feeds.contents.split('\n').map( (it, i) => <div key={'x'+i}>{it}</div> )}</span>
-                    <ul className="photo__comments">
+                        <PhotoActionStyle><i className="fa fa-comment-o fa-lg"></i></PhotoActionStyle>
+                    </PhotoActionsStyle>
+                    <PhotoLikes>{feeds.tags.string}</PhotoLikes>
+                    <PhotoLikes>{feeds.hearts_count} hearts</PhotoLikes>
+                    <PhotoLikes>{feeds.contents.split('\n').map( (it, i) => <div key={'x'+i}>{it}</div> )}</PhotoLikes>
+                    <PhotoComments>
                         {feeds.comments && feeds.comments.map((comment: commonTypes.PostListCommentType, i:number) =>
                             <CommentComponent
                                 key={i}
@@ -55,16 +74,16 @@ function PhotoComponent({ feeds, handleChangeComment, handleSaveComment, handleC
                             />
                             )
                         }
-                    </ul>
-                    <span className="photo__time-ago">{feeds.post_datetime.create_time_string}</span>
-                    <div className="photo__add-comment-container">
+                    </PhotoComments>
+                    <PhotoTimeAgo>{feeds.post_datetime.create_time_string}</PhotoTimeAgo>
+                    <PhotoAddCommentContainer>
                         {saveCommentState === 'loading'
-                            ? <span className="photo__time-ago"><LoadingPage type={'Circles'} color={'#00BFFF'} height={15} width={15} /></span>
-                            :<><textarea name={`post_`+feeds.post_id} placeholder="댓글을 입력해 주세요." onChange={ e => handleChangeComment(e.target.value, feeds.post_id)}></textarea><i className="fa fa-ellipsis-h" onClick={(e) => handleSaveComment(e, feeds.post_id)}></i></>
+                            ? <PhotoTimeAgo><LoadingPage type={'Circles'} color={'#00BFFF'} height={15} width={15} /></PhotoTimeAgo>
+                            :<><PhotoAddCommentContainerTextArea name={`post_`+feeds.post_id} placeholder="댓글을 입력해 주세요." onChange={ e => handleChangeComment(e.target.value, feeds.post_id)}></PhotoAddCommentContainerTextArea><PhotoAddCommentContainerTextAreaI className="fa fa-ellipsis-h" onClick={(e) => handleSaveComment(e, feeds.post_id)}></PhotoAddCommentContainerTextAreaI></>
                         }
-                    </div>
-                </div>
-            </div>
+                    </PhotoAddCommentContainer>
+                </PhotoInfoStyle>
+            </PhotoStyle>
         </>
     );
 }

@@ -4,13 +4,13 @@ import useBase from "hooks/useBase";
 import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
 import history from "routes/History";
+import GlobalStyle from 'styles/GlobalStyle';
 
 import {
     LoginPage,
     LogoutPage,
     RegisterPage,
     FeedPage,
-    ExplodePage,
     ProfilePage,
     EditProfilePage,
     DefaultPage,
@@ -74,6 +74,7 @@ const Root = ({
     } else {
         return (
             <BrowserRouter basename={process.env.PUBLIC_URL}>
+                <GlobalStyle/>
                 <Router history={ Routerhistory }>
                     <Switch>
                         <Route path={process.env.PUBLIC_URL + "/"} exact={ true } component={ LoginPage } />
@@ -82,7 +83,6 @@ const Root = ({
                         <Route path={process.env.PUBLIC_URL + "/register"} exact={ true } component={ RegisterPage } />
                         <Route path={process.env.PUBLIC_URL + "/feed"} exact={ true } component={ FeedPage } />
                         <Route path={process.env.PUBLIC_URL + "/post"} exact={ true } component={ PostPage } />
-                        <Route path={process.env.PUBLIC_URL + "/explode"} exact={ true } component={ ExplodePage } />
 
                         <Route path={process.env.PUBLIC_URL + "/:user_name/profile"} exact={ true } component={ ProfilePage } />
                         <Route path={process.env.PUBLIC_URL + "/profile/edit"} exact={ true } component={ EditProfilePage } />

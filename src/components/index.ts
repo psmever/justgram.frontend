@@ -10,7 +10,6 @@ export { default as RegisterPage } from './pages/RegisterPage';
 
 export { default as FeedPage } from './pages/details/FeedPage';
 export { default as PostPage } from './pages/details/PostPage';
-export { default as ExplodePage } from './pages/details/ExplodePage';
 export { default as ProfilePage } from './pages/details/ProfilePage';
 export { default as EditProfilePage } from './pages/details/EditProfilePage';
 

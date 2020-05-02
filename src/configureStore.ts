@@ -15,11 +15,16 @@ export default function configureStore(history: History, initialState: RootState
 
     const composeEnhancers = composeWithDevTools({});
     const sagaMiddleware = createSagaMiddleware();
+    const useReduxLogger = false;
 
     if( isDevelopment ) {
         compose = applyMiddleware(routerMiddleware(history), sagaMiddleware);
     } else {
-        compose = composeEnhancers(applyMiddleware(routerMiddleware(history), sagaMiddleware, createLogger()));
+        if(useReduxLogger) {
+            compose = composeEnhancers(applyMiddleware(routerMiddleware(history), sagaMiddleware, createLogger()));
+        } else {
+            compose = composeEnhancers(applyMiddleware(routerMiddleware(history), sagaMiddleware));
+        }
     }
 
     const store = createStore(

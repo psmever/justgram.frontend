@@ -1,5 +1,10 @@
 import React from 'react';
 import * as commonTypes from "modules/commonTypes";
+import {
+    PhotoComment,
+    PhotoCommentAuthor,
+
+} from 'styles';
 
 interface CommentProps {
     comment: commonTypes.PostListCommentType
@@ -8,7 +13,7 @@ interface CommentProps {
 function CommentComponent({ comment} : CommentProps) {
     return (
         <>
-            <li className="photo__comment"><span className="photo__comment-author">{comment.contents}</span> {`<`+comment.user.user_name+`>`}</li>
+            <PhotoComment><PhotoCommentAuthor>{comment.contents}</PhotoCommentAuthor> {`<`+comment.user.user_name+`>`}</PhotoComment>
         </>
     );
 }

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import GlobalAlert from 'lib/GlobalAlert';
-
+import {RegisterMainStyle, RegisterColumnStyle, RegisterBoxStyle, RegisterLogoStyle } from 'styles';
 import {
     FooterComponent,
     RegisterFormComponent,
@@ -38,10 +38,10 @@ export default function RegisterPage() {
 
     return (
         <>
-            <main id="register">
-                <div className="register__column">
-                    <div className="register__box">
-                        <img src={ image_loginLogo } className="register__logo" alt="register_logo"/>
+            <RegisterMainStyle>
+                <RegisterColumnStyle>
+                    <RegisterBoxStyle>
+                        <RegisterLogoStyle src={ image_loginLogo } alt="register_logo"/>
 
                         <RegisterFormComponent
                             handleChangeUserName={handleChangeUserName}
@@ -51,9 +51,9 @@ export default function RegisterPage() {
                             handleSubmit={handleSubmit}
                         />
 
-                    </div>
-                </div>
-            </main>
+                    </RegisterBoxStyle>
+                </RegisterColumnStyle>
+            </RegisterMainStyle>
 
             <FooterComponent />
         </>
