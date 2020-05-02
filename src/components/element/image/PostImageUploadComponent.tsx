@@ -1,4 +1,12 @@
 import React, {ChangeEvent, useCallback, useState, useRef, useEffect} from 'react';
+
+import {
+    PostImagePreview,
+    PostImagePreviewBox,
+    PostImageMessageBox,
+    PostImageUploadButton,
+} from 'styles';
+
 import { tryPostImageUpload } from "lib/API";
 import * as commonTypes from "modules/commonTypes";
 import usePost from "hooks/usePost";
@@ -65,13 +73,11 @@ function PostImageUploadComponent() {
 
     return (
         <>
-        <div>
-            <div>{postImage.image ? <img className="image_preview" src={postImage.image} alt="post_image"/> : <></>}</div>
+            <PostImagePreviewBox>{postImage.image ? <PostImagePreview src={postImage.image} alt="post_image"/> : <></>}</PostImagePreviewBox>
             <label htmlFor="upload-button">
-                <div className="form__filebox">업로드할 이미지를 선택해주세요.</div>
+                <PostImageMessageBox>업로드할 이미지를 선택해주세요.</PostImageMessageBox>
             </label>
             <input type="file" id="upload-button" style={{ display: 'none' }} onChange={(e) => _handleChange(e)}/>
-        </div>
         </>
       );
 }

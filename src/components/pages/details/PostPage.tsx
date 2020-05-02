@@ -1,5 +1,10 @@
 import React from 'react';
 import {
+    PostMain,
+    PostColumn,
+    PostBox,
+} from 'styles';
+import {
     DefaultNavComponent,
     FooterComponent,
     PostFormComponent
@@ -18,15 +23,13 @@ function PostPage() {
         __post_state
     } = usePost();
 
-
-
     return (
         <>
             <DefaultNavComponent/>
 
-                <main id="writer">
-                    <div className="writer__column">
-                        <div className="writer__box">
+                <PostMain>
+                    <PostColumn>
+                        <PostBox>
                             <PostFormComponent
                                 tagString={tags}
                                 handleSetTags={__setTags}
@@ -35,9 +38,9 @@ function PostPage() {
                                 checkPostInputData={checkPostInputData}
                                 post_state={__post_state}
                             />
-                        </div>
-                    </div>
-                </main>
+                        </PostBox>
+                    </PostColumn>
+                </PostMain>
 
             <FooterComponent/>
         </>

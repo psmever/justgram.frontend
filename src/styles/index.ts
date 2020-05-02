@@ -6,3 +6,4 @@ export * from './RegisterStyles';
 export * from './NavigationStyles';
 export * from './NavigationStyles';
 export * from './FeedStyles';
+export * from './PostStyles';

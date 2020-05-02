@@ -40,24 +40,24 @@
     color: #333;
     border: 1px solid #e1e1e1;
     font-size: 0.9rem;
-  }
-  .writer__form .react-tag-input__input {
+}
+.writer__form .react-tag-input__input {
     background: transparent;
     color: #333;
     font-size: 12px;
-  }
-  .writer__form .react-tag-input__input::placeholder, .react-tag-input__input:-moz-placeholder, .react-tag-input__input:-ms-input-placeholder, .react-tag-input__input::-moz-placeholder, .react-tag-input__input::-webkit-input-placeholder {
+}
+.writer__form .react-tag-input__input::placeholder, .react-tag-input__input:-moz-placeholder, .react-tag-input__input:-ms-input-placeholder, .react-tag-input__input::-moz-placeholder, .react-tag-input__input::-webkit-input-placeholder {
     color: #333; /* Input placeholder */
-  }
-  .writer__form .react-tag-input__tag {
+}
+.writer__form .react-tag-input__tag {
     background: #e1e1e1;
-  }
-  .writer__form .react-tag-input__tag__remove {
+}
+.writer__form .react-tag-input__tag__remove {
     background: #d4d4d4;
-  }
-  .writer__form .react-tag-input__tag__remove:before, .react-tag-input__tag__remove:after {
+}
+.writer__form .react-tag-input__tag__remove:before, .react-tag-input__tag__remove:after {
     background: #333; /* X icon in remove button */
-  }
+}
 
 
 
@@ -109,42 +109,6 @@
     max-width: 90%;
 
 }
-
-/* .writer__form .form__filebox label:hover {
-    background-color: #1E90FF;
-    display: block;
-    max-width: 90%;
-    box-sizing: border-box;
-    padding: 7px;
-    font-size: 14px;
-    border: 0;
-    border: 1px solid #e6e6e6;
-    border-radius: 5px;
-} */
-
-/* .writer__form .form__filebox label:hover {
-    background-color: #1E90FF;
-    display: block;
-    max-width: 90%;
-    box-sizing: border-box;
-    padding: 7px;
-    font-size: 14px;
-    border: 0;
-    border: 1px solid #e6e6e6;
-    border-radius: 5px;
-} */
-
-/* .writer__form .form__filebox label:active {
-    background-color: #1E90FF;
-    display: block;
-    max-width: 90%;
-    box-sizing: border-box;
-    padding: 7px;
-    font-size: 14px;
-    border: 0;
-    border: 1px solid #e6e6e6;
-    border-radius: 5px;
-} */
 
 .writer__form .form__filebox input[type="file"] {
     text-align: left;
