@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
 import { useParams } from 'react-router-dom';
 import * as Helper from 'lib/Helper';
-
+import { NavigationStyle, NavigationNavigationColumn, NavigationColumn, NavigationsLinks, NavigationListItem, NavigationLink } from 'styles';
 import image_logo from 'assets/images/logo.png';
 
 interface RouteParams {
@@ -30,35 +30,32 @@ function DefaultNavComponent() {
     const followersLink = (params.user_name) ? process.env.PUBLIC_URL + `/${params.user_name}/followers` : process.env.PUBLIC_URL + `/${Helper.cookieManager.get('login_user_name')}/followers`;
 
     return (
-
-        <div>
-            <nav className="navigation">
-                <div className="navigation__column">
+            <NavigationStyle>
+                <NavigationNavigationColumn>
                     <Link to={homeLink}><img src={image_logo} alt="logo"/></Link>
-                </div>
-                <div className="navigation__column">
+                </NavigationNavigationColumn>
+                <NavigationColumn>
                     {/* 나중에 하자. */}
                     {/* <i className="fa fa-search"></i> */}
                     {/* <input type="text" placeholder="Search" /> */}
-                </div>
-                <div className="navigation__column">
-                    <ul className="navigations__links">
-                        <li className="navigation__list-item">
-                            <Link to={process.env.PUBLIC_URL + "/post"} className="navigation__link"><i className="fa fa-edit fa-lg"></i></Link>
-                        </li>
-                        <li className="navigation__list-item">
-                            <Link to={followersLink} className="navigation__link"><i className="fa fa-heart-o fa-lg"></i></Link>
-                        </li>
-                        <li className="navigation__list-item">
-                            <Link to={profileLink} className="navigation__link"><i className="fa fa-user-o fa-lg"></i></Link>
-                        </li>
-                        <li className="navigation__list-item">
-                            <Link to={signLink} className="navigation__link"><i className="fa fa-sign-out fa-lg"></i></Link>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+                </NavigationColumn>
+                <NavigationColumn>
+                    <NavigationsLinks>
+                        <NavigationListItem>
+                            <NavigationLink to={process.env.PUBLIC_URL + "/post"}><i className="fa fa-edit fa-lg"></i></NavigationLink>
+                        </NavigationListItem>
+                        <NavigationListItem>
+                            <NavigationLink to={followersLink}><i className="fa fa-heart-o fa-lg"></i></NavigationLink>
+                        </NavigationListItem>
+                        <NavigationListItem>
+                            <NavigationLink to={profileLink}><i className="fa fa-user-o fa-lg"></i></NavigationLink>
+                        </NavigationListItem>
+                        <NavigationListItem>
+                            <NavigationLink to={signLink}><i className="fa fa-sign-out fa-lg"></i></NavigationLink>
+                        </NavigationListItem>
+                    </NavigationsLinks>
+                </NavigationColumn>
+            </NavigationStyle>
     );
 }
 
