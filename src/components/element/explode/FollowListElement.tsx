@@ -1,6 +1,15 @@
 import React from 'react';
 import * as _ from 'lodash';
 import ProfileNoImage from 'assets/images/no_image.jpg';
+import {
+    FollowersUser,
+    FollowersUserColumn,
+    FollowersUserInfo,
+    FollowersUserUserName,
+    FollowersUserFullUserName,
+    FollowersUserAvatar,
+    FollowersButton,
+} from 'styles';
 
 interface initializeProps {
     list_type: 'followers' | 'following',
@@ -16,31 +25,31 @@ interface initializeProps {
 function FollowListElement( {list_type, user_id, profile_image, user_name, user_profile_name, followstate, clickUnFollowButton, clickFollowButton } : initializeProps) {
     return (
         <>
-            <li className="explore__user">
-                <div className="explore__user-column">
+            <FollowersUser>
+                <FollowersUserColumn>
                     {_.isEmpty(profile_image) === false
                     ?
-                        <img src={ profile_image } className="explore__avatar" alt="avatar"/>
+                        <FollowersUserAvatar src={ profile_image } alt="avatar"/>
                     :
-                        <img src={ ProfileNoImage } className="explore__avatar" alt="avatar"/>
+                        <FollowersUserAvatar src={ ProfileNoImage } alt="avatar"/>
                     }
 
-                    <div className="explore__info">
-                        <span className="explore__username">{user_name}</span>
-                        <span className="explore__full-name">{user_profile_name}</span>
-                    </div>
-                </div>
+                    <FollowersUserInfo>
+                        <FollowersUserUserName>{user_name}</FollowersUserUserName>
+                        <FollowersUserFullUserName>{user_profile_name}</FollowersUserFullUserName>
+                    </FollowersUserInfo>
+                </FollowersUserColumn>
                 {
                     (function(){
                         switch(list_type) {
                             case "followers" :
                                 if(followstate) {
-                                    return <div className="explore__user-column"><button onClick={() => clickUnFollowButton(user_id)}>unFollow</button></div>
+                                    return <FollowersUserColumn><FollowersButton onClick={() => clickUnFollowButton(user_id)}>unFollow</FollowersButton></FollowersUserColumn>
                                 } else {
-                                    return <div className="explore__user-column"><button onClick={() => clickFollowButton(user_id)}>Follow</button></div>
+                                    return <FollowersUserColumn><FollowersButton onClick={() => clickFollowButton(user_id)}>Follow</FollowersButton></FollowersUserColumn>
                                 }
                             case "following" :
-                                return <div className="explore__user-column"><button onClick={() => clickUnFollowButton(user_id)}>UnFollow</button></div>
+                                return <FollowersUserColumn><FollowersButton onClick={() => clickUnFollowButton(user_id)}>UnFollow</FollowersButton></FollowersUserColumn>
                         }
 
                     })()
@@ -54,7 +63,7 @@ function FollowListElement( {list_type, user_id, profile_image, user_name, user_
                     <div className="explore__user-column"><button onClick={() => clickFollowButton(user_id)}>Follow</button></div>
                 } */
                 }
-            </li>
+            </FollowersUser>
         </>
     );
 }

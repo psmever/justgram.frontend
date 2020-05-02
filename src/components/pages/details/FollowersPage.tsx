@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-
+import { FollowersMain, FollowersUsers } from 'styles';
 import {
     DefaultNavComponent,
     FooterComponent,
@@ -34,8 +34,8 @@ function FollowersPage() {
     return (
         <div>
             <DefaultNavComponent/>
-            <main id="explore">
-                <ul className="explore__users">
+            <FollowersMain>
+                <FollowersUsers>
                     {followers_state.state === "success" && followers_state.list.map((e: any, i: number) =>
                         <FollowListElement
                             key={i}
@@ -49,8 +49,8 @@ function FollowersPage() {
                             clickFollowButton = {__handleClickFollowButton}
                         />
                     )}
-                </ul>
-            </main>
+                </FollowersUsers>
+            </FollowersMain>
             <FooterComponent/>
         </div>
     );

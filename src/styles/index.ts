@@ -9,3 +9,4 @@ export * from './FeedStyles';
 export * from './PostStyles';
 export * from './ProfileStyles';
 export * from './ProfileEditStyles';
+export * from './FollowersStyles';
