@@ -90,7 +90,7 @@ export default function useEditPRofile() {
 
     useEffect(() => {
         if(login_state === "idle") {
-            history.push(process.env.PUBLIC_URL + "/");
+            // history.push(process.env.PUBLIC_URL + "/");
         }
 
         const getProfileData = async () => {

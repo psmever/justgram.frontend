@@ -23,13 +23,8 @@ function* loginSaga({ payload }: {payload: commonTypes.userLoginRequestType}) {
     }
 };
 
-function* loginResetSaga() {
-    yield put({ type: ActionType.LOGIN_RESET});
-};
-
 function* onLoginRequestWatcher() {
     yield takeLatest(ActionType.LOGIN_REQUEST as any, loginSaga);
-    yield takeLatest(ActionType.LOGIN_RESET as any, loginResetSaga);
 }
 
 export default [

@@ -13,15 +13,6 @@ export const userLoginAction = (payload: commonTypes.userLoginRequestType) => {
 }
 
 /**
- * 로그인 리덕스 정보 리셋?
- */
-export const userLoginResetAction = () => {
-    return {
-        type:ActionType.LOGIN_RESET
-    };
-}
-
-/**
  * 로컬 로근 정보를 스토어에 연결.
  * @param payload
  */

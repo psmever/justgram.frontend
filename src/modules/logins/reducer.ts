@@ -36,9 +36,9 @@ export const loginReducer = createReducer<commonTypes.loginSagaResponseType>(ini
         }
     },
     [ActionType.LOGIN_RESET](state: commonTypes.loginSagaResponseType) {
+        console.debug(1111);
         return {
-            ...state,
-            state: 'yet'
+            state: 'idle'
         };
     }
 });
