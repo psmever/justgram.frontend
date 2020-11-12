@@ -1,7 +1,7 @@
 import React from "react";
-import { Route, Switch, HashRouter } from "react-router-dom";
+import { Route, Router, Switch } from "react-router-dom";
 import * as Pages from "components/pages";
-
+import { BrowserRouter } from "react-router-dom";
 
 interface RootProps  {
     Routerhistory: any
@@ -10,12 +10,15 @@ interface RootProps  {
 const Routes = ({Routerhistory} : RootProps) => {
 
     return (
-        <HashRouter basename={process.env.PUBLIC_URL + "/pages"}>
+        <BrowserRouter>
+            <Router history={ Routerhistory }>
+                <Pages.TestHeader/>
                 <Switch>
                     <Route path={process.env.PUBLIC_URL + "/test"} exact={true} component={ Pages.TestPage } />
                     <Route path={process.env.PUBLIC_URL + "/default"} exact={true} component={ Pages.DefaultPage } />
                 </Switch>
-        </HashRouter>
+            </Router>
+        </BrowserRouter>
     );
 }
 
