@@ -1,2 +1,2 @@
-export * as DefaultPage from './DefaultPage'
-export * as TestPage from './TestPage'
+export { default as DefaultPage } from './DefaultPage'
+export { default as TestPage } from './TestPage'
