@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
     Navigation,
     NavigationColumn,
@@ -11,6 +11,16 @@ import {
 import { SearchIcon, TopHomeIcon, TopCompassIcon } from 'styled/StyledIcons';
 
 export default function MainNavigation() {
+
+    const history = useHistory();
+
+    const handleClickUserHome = (e: any) => {
+        e.preventDefault();
+        history.push({
+            pathname: process.env.PUBLIC_URL + `/profile/psmever`
+        });
+    }
+
     return (
         <React.Fragment>
             <Navigation>
@@ -24,7 +34,7 @@ export default function MainNavigation() {
                 <NavigationColumn>
                     <NavigationLinks>
                         <NavigationListItem>
-                            <NavigationLink to="" onClick={(e) => e.preventDefault()}>
+                            <NavigationLink to="" onClick={(e) => handleClickUserHome(e)}>
                                 <TopHomeIcon size="25px"/>
                             </NavigationLink>
                         </NavigationListItem>

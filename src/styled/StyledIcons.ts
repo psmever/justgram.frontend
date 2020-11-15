@@ -1,11 +1,18 @@
 import styled from 'styled-components';
-import { SearchAlt, HomeCircle } from '@styled-icons/boxicons-regular';
-import { Compass } from '@styled-icons/fa-regular';
-import { HeartOutline } from '@styled-icons/evaicons-outline';
-import { Comment } from '@styled-icons/evil';
-import { EllipsisHorizontal } from '@styled-icons/ionicons-solid';
+import { SearchAlt as _TopSearchIcon, HomeCircle as _TopHomeIcon } from '@styled-icons/boxicons-regular';
+import { Compass as _TopCompassIcon } from '@styled-icons/fa-regular';
+import { HeartOutline as _PhotoHeartIcon } from '@styled-icons/evaicons-outline';
+import { Comment as _PhotoCommentIcon } from '@styled-icons/evil';
+import { EllipsisHorizontal as _PhotoAddCommentTextAreaIcon } from '@styled-icons/ionicons-solid';
+import { Cog as _ProfileSettingIcon} from '@styled-icons/open-iconic';
 
-export const SearchIcon = styled(SearchAlt)`
+import { Heart as _ProfilePhotoOverlayItemHeartIcon } from '@styled-icons/evaicons-solid';
+import { Comment as _ProfilePhotoOverlayItemCommentIcon } from '@styled-icons/foundation';
+
+
+
+
+export const SearchIcon = styled(_TopSearchIcon)`
     position: absolute;
     top: 5px;
     left: 10px;
@@ -13,27 +20,43 @@ export const SearchIcon = styled(SearchAlt)`
     font-size: 12px;
 `
 
-export const TopHomeIcon = styled(HomeCircle)`
+export const TopHomeIcon = styled(_TopHomeIcon)`
     font-size: 12px;
     color: rgba(var(--fe0,0,55,107),1);
 `
-export const TopCompassIcon = styled(Compass)`
-    font-size: 12px;
-    color: rgba(var(--fe0,0,55,107),1);
-`
-
-export const PhotoHeartIcon = styled(HeartOutline)`
+export const TopCompassIcon = styled(_TopCompassIcon)`
     font-size: 12px;
     color: rgba(var(--fe0,0,55,107),1);
 `
 
-export const PhotoCommentIcon = styled(Comment)`
+export const PhotoHeartIcon = styled(_PhotoHeartIcon)`
     font-size: 12px;
     color: rgba(var(--fe0,0,55,107),1);
 `
 
-export const PhotoAddCommentTextAreaIcon = styled(EllipsisHorizontal)`
+export const PhotoCommentIcon = styled(_PhotoCommentIcon)`
+    font-size: 12px;
+    color: rgba(var(--fe0,0,55,107),1);
+`
+
+export const PhotoAddCommentTextAreaIcon = styled(_PhotoAddCommentTextAreaIcon)`
     font-size: 12px;
     color: rgba(var(--fe0,0,55,107),1);
     cursor: pointer;
+`
+
+export const ProfileSettingIcon = styled(_ProfileSettingIcon)`
+    font-size: 12px;
+    color: rgba(var(--fe0,0,55,107),1);
+    cursor: pointer;
+`
+
+export const ProfilePhotoOverlayItemHeartIcon = styled(_ProfilePhotoOverlayItemHeartIcon)`
+    font-size: 130%;
+    margin-right: 5px;
+`
+
+export const ProfilePhotoOverlayItemCommentIcon = styled(_ProfilePhotoOverlayItemCommentIcon)`
+    font-size: 130%;
+    margin-right: 5px;
 `

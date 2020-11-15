@@ -32,6 +32,8 @@ const Routes = ({Routerhistory} : RootProps) => {
                         <MainLayoutComponent>
                             <Switch>
                                 <Route path={process.env.PUBLIC_URL + "/feed/main"} exact component={ Pages.MainPage } />
+                                <Route path={process.env.PUBLIC_URL + "/profile/:user_name"} exact component={ Pages.HomePage } />
+                                <Route path={process.env.PUBLIC_URL + "/profile/:user_name/edit"} exact component={ Pages.EditProfilePage } />
                             </Switch>
                         </MainLayoutComponent>
                     </Route>
