@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function MainHeader() {
+export default function MainNavigation() {
     return (
         <React.Fragment>
-            MainHeader
+            MainNavigation
         </React.Fragment>
     );
 }
