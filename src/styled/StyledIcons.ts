@@ -64,3 +64,13 @@ export const ProfilePhotoOverlayItemCommentIcon = styled(_ProfilePhotoOverlayIte
     font-size: 130%;
     margin-right: 5px;
 `
+
+export const ExplorePhotoOverlayItemHeartIcon = styled(_ProfilePhotoOverlayItemHeartIcon)`
+    font-size: 130%;
+    margin-right: 5px;
+`
+
+export const ExplorePhotoOverlayItemCommentIcon = styled(_ProfilePhotoOverlayItemCommentIcon)`
+    font-size: 130%;
+    margin-right: 5px;
+`

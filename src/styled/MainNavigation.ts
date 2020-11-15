@@ -61,3 +61,8 @@ export const NavigationLink = styled(Link)`
     /* color: rgba(0, 0, 0, 0.8); */
     font-size: 18px;
 `
+
+export const NavigationAvatar = styled.img`
+    width: 25px;
+    border-radius: 50%;
+`
