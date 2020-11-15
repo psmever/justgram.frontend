@@ -19,22 +19,27 @@ const Routes = ({Routerhistory} : RootProps) => {
 
                     <Route path={process.env.PUBLIC_URL + "/auth/login"} exact component={ Pages.LoginPage } />
 
-                    <Route path='/main/:path?' exact>
-                        <MainLayoutComponent>
-                            <Switch>
-                                <Route path={process.env.PUBLIC_URL + "/main/test"} exact component={ Pages.TestPage } />
-                                <Route path={process.env.PUBLIC_URL + "/main/default"} exact component={ Pages.DefaultPage } />
-                            </Switch>
-                        </MainLayoutComponent>
-                    </Route>
-
-                    <Route>
+                    <Route path='/etc/:path?' exact>
                         <EtcLayoutComponent>
                             <Switch>
                                 <Route path='/etc/test' exact component={ Pages.TestPage } />
                                 <Route path='/etc/default' exact component={ Pages.DefaultPage } />
                             </Switch>
                         </EtcLayoutComponent>
+                    </Route>
+
+                    <Route>
+                        <MainLayoutComponent>
+                            <Switch>
+                                <Route path={process.env.PUBLIC_URL + "/feed/main"} exact component={ Pages.MainPage } />
+
+                                <Route path={process.env.PUBLIC_URL + "/recommend"} exact component={ Pages.RecommendPage } />
+                                <Route path={process.env.PUBLIC_URL + "/explore"} exact component={ Pages.ExplorePage } />
+
+                                <Route path={process.env.PUBLIC_URL + "/profile/:user_name"} exact component={ Pages.HomePage } />
+                                <Route path={process.env.PUBLIC_URL + "/profile/:user_name/edit"} exact component={ Pages.EditProfilePage } />
+                            </Switch>
+                        </MainLayoutComponent>
                     </Route>
 
                 </Switch>

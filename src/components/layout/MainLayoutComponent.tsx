@@ -1,5 +1,5 @@
 import React from 'react';
-import MainHeader from "components/common/MainHeader";
+import MainNavigation from "components/common/MainNavigation";
 import MainFooter from "components/common/MainFooter";
 
 interface MainLayoutComponentProps  {
@@ -9,7 +9,7 @@ interface MainLayoutComponentProps  {
 export default function MainLayoutComponent({ children } : MainLayoutComponentProps) {
     return (
         <React.Fragment>
-            <MainHeader/>
+            <MainNavigation/>
             {children}
             <MainFooter/>
         </React.Fragment>
