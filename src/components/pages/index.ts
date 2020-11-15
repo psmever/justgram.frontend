@@ -4,4 +4,4 @@ export { default as TestPage } from './etc/TestPage'
 
 export { default as LoginPage } from './auth/LoginPage'
 
-export { default as FeedPage } from './feed/FeedPage'
+export { default as MainPage } from './feed/MainPage'

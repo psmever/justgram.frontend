@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function FeedPage() {
+export default function MainPage() {
     return (
         <>
-            FeedPage
+            MainPage
         </>
     );
 }
