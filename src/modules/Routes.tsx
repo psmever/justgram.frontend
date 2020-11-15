@@ -19,22 +19,21 @@ const Routes = ({Routerhistory} : RootProps) => {
 
                     <Route path={process.env.PUBLIC_URL + "/auth/login"} exact component={ Pages.LoginPage } />
 
-                    <Route path='/main/:path?' exact>
-                        <MainLayoutComponent>
-                            <Switch>
-                                <Route path={process.env.PUBLIC_URL + "/main/test"} exact component={ Pages.TestPage } />
-                                <Route path={process.env.PUBLIC_URL + "/main/default"} exact component={ Pages.DefaultPage } />
-                            </Switch>
-                        </MainLayoutComponent>
-                    </Route>
-
-                    <Route>
+                    <Route path='/etc/:path?' exact>
                         <EtcLayoutComponent>
                             <Switch>
                                 <Route path='/etc/test' exact component={ Pages.TestPage } />
                                 <Route path='/etc/default' exact component={ Pages.DefaultPage } />
                             </Switch>
                         </EtcLayoutComponent>
+                    </Route>
+
+                    <Route>
+                        <MainLayoutComponent>
+                            <Switch>
+                                <Route path={process.env.PUBLIC_URL + "/feed/main"} exact component={ Pages.MainPage } />
+                            </Switch>
+                        </MainLayoutComponent>
                     </Route>
 
                 </Switch>
