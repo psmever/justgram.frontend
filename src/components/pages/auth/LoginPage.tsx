@@ -16,6 +16,7 @@ import {
     LoginGoAppStores,
     LoginGoAppStore,
 } from 'styled/Login';
+import MainFooter from 'components/common/MainFooter';
 
 export default function LoginPage() {
 
@@ -53,19 +54,8 @@ export default function LoginPage() {
                     </LoginBoxTransparent>
                 </LoginColumn>
             </LoginMain>
-            <footer className="footer">
-                <div className="footer__column">
-                    <nav className="footer__nav">
-                        <ul className="footer__list">
-                            <li className="footer__list-item"><a href="LINK" className="footer__link">Blog Front</a></li>
-                            <li className="footer__list-item"><a href="LINK" className="footer__link">Blog Backend</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div className="footer__column">
-                    <span className="footer__copyright">© 2020 JustGram</span>
-                </div>
-            </footer>
+
+            <MainFooter/>
         </>
     );
 }

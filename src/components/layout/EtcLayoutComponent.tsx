@@ -1,5 +1,5 @@
 import React from 'react';
-import EtcHeader from 'components/header/EtcHeader';
+import EtcHeader from 'components/common/EtcHeader';
 
 interface EtcLayoutComponentsProps  {
     children: any
@@ -7,9 +7,9 @@ interface EtcLayoutComponentsProps  {
 
 export default function EtcLayoutComponent({ children } : EtcLayoutComponentsProps) {
     return (
-        <>
+        <React.Fragment>
             <EtcHeader/>
                 {children}
-        </>
+        </React.Fragment>
     );
 }
