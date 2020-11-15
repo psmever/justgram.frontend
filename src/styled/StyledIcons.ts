@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { SearchAlt as _TopSearchIcon, HomeCircle as _TopHomeIcon } from '@styled-icons/boxicons-regular';
 import { Compass as _TopCompassIcon } from '@styled-icons/fa-regular';
+import { Heart as _TopHeartIcon } from '@styled-icons/remix-line';
 import { HeartOutline as _PhotoHeartIcon } from '@styled-icons/evaicons-outline';
 import { Comment as _PhotoCommentIcon } from '@styled-icons/evil';
 import { EllipsisHorizontal as _PhotoAddCommentTextAreaIcon } from '@styled-icons/ionicons-solid';
@@ -8,9 +9,6 @@ import { Cog as _ProfileSettingIcon} from '@styled-icons/open-iconic';
 
 import { Heart as _ProfilePhotoOverlayItemHeartIcon } from '@styled-icons/evaicons-solid';
 import { Comment as _ProfilePhotoOverlayItemCommentIcon } from '@styled-icons/foundation';
-
-
-
 
 export const SearchIcon = styled(_TopSearchIcon)`
     position: absolute;
@@ -24,7 +22,13 @@ export const TopHomeIcon = styled(_TopHomeIcon)`
     font-size: 12px;
     color: rgba(var(--fe0,0,55,107),1);
 `
+
 export const TopCompassIcon = styled(_TopCompassIcon)`
+    font-size: 12px;
+    color: rgba(var(--fe0,0,55,107),1);
+`
+
+export const TopHeartIcon = styled(_TopHeartIcon)`
     font-size: 12px;
     color: rgba(var(--fe0,0,55,107),1);
 `

@@ -8,7 +8,7 @@ import {
     NavigationListItem,
     NavigationLink,
 } from 'styled/MainNavigation';
-import { SearchIcon, TopHomeIcon, TopCompassIcon } from 'styled/StyledIcons';
+import { SearchIcon, TopHomeIcon, TopCompassIcon, TopHeartIcon } from 'styled/StyledIcons';
 
 export default function MainNavigation() {
 
@@ -18,6 +18,13 @@ export default function MainNavigation() {
         e.preventDefault();
         history.push({
             pathname: process.env.PUBLIC_URL + `/profile/psmever`
+        });
+    }
+
+    const handleClickRecommend = (e: any) => {
+        e.preventDefault();
+        history.push({
+            pathname: process.env.PUBLIC_URL + `/recommend`
         });
     }
 
@@ -41,6 +48,11 @@ export default function MainNavigation() {
                         <NavigationListItem>
                             <NavigationLink to="" onClick={(e) => e.preventDefault()}>
                                 <TopCompassIcon size="25px"/>
+                            </NavigationLink>
+                        </NavigationListItem>
+                        <NavigationListItem>
+                            <NavigationLink to="" onClick={(e) => handleClickRecommend(e)}>
+                                <TopHeartIcon size="27px"/>
                             </NavigationLink>
                         </NavigationListItem>
                     </NavigationLinks>

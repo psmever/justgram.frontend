@@ -8,3 +8,5 @@ export { default as MainPage } from './feed/MainPage'
 
 export { default as HomePage } from './profile/HomePage'
 export { default as EditProfilePage } from './profile/EditProfilePage';
+
+export { default as RecommendPage } from './recommend/RecommendPage';
